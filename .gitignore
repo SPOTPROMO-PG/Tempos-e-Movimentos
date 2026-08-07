@@ -9,4 +9,4 @@
 # deve ir para um repositório público). Guarde isso em local seguro,
 # fora do git; é necessário para publicar futuras atualizações do app
 # com a mesma identidade.
-apk-build/
+apk-build*/
