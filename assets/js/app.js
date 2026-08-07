@@ -1,16 +1,18 @@
 /**
  * Pesquisa de Tempos e Movimentos — motor do formulário
  * Lê a estrutura de schema.js, renderiza passo a passo (estilo "forms"),
- * salva progresso localmente (localStorage) e prepara o payload final
- * para envio futuro a um Google Apps Script Web App (ver CONFIG.SCRIPT_URL).
+ * salva progresso localmente (localStorage) e envia o resultado final a
+ * um Google Apps Script Web App (ver apps-script/Code.gs e apps-script/README.md).
  */
 
 const CONFIG = {
   STORAGE_KEY: 'tm_survey_state_v1',
   SUBMISSIONS_KEY: 'tm_survey_submissions_v1',
   LOGIN_KEY: 'tm_login_v1',
-  // Preencher na próxima etapa com a URL do Web App do Apps Script.
+  // URL do Web App do Apps Script (termina em /exec). Ver apps-script/README.md.
   SCRIPT_URL: '',
+  // Só necessário se REQUIRE_TOKEN estiver true em apps-script/Code.gs.
+  SUBMIT_TOKEN: '',
 };
 
 /* ---------------- State ---------------- */
@@ -691,6 +693,7 @@ function downloadJSON() {
 
 async function submitSurvey() {
   const payload = { ...state, meta: { ...state.meta, submittedAt: new Date().toISOString() } };
+  if (CONFIG.SUBMIT_TOKEN) payload.token = CONFIG.SUBMIT_TOKEN;
 
   if (CONFIG.SCRIPT_URL) {
     try {
