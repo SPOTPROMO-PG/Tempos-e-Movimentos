@@ -11,32 +11,6 @@
 
 const BLOCKS = [
   {
-    key: 'pre_chegada', title: 'Pré-Chegada',
-    subtitle: 'Do momento em que sai da origem até chegar à loja',
-    activities: [
-      { id: 1, nome: 'Saída da origem (casa/base/loja anterior)', obs: [
-        { key: 'origem', label: 'Origem', type: 'text', placeholder: 'Ex: casa, base, loja anterior' },
-      ]},
-      { id: 2, nome: 'Espera pelo transporte', obs: [
-        { key: 'meio', label: 'Meio', type: 'select', options: ['Carro', 'Ônibus', 'Trem', 'Misto', 'A pé'] },
-      ]},
-      { id: 3, nome: 'Deslocamento até a região da loja', obs: [
-        { key: 'distancia', label: 'Distância', type: 'number', unit: 'km', min: 0, step: '0.1' },
-        { key: 'integracoes', label: 'Nº integrações', type: 'number', min: 0 },
-      ]},
-      { id: 4, nome: 'Estacionamento / procura por vaga', obs: [
-        { key: 'dificuldade', label: 'Dificuldade', type: 'select', options: ['Baixa', 'Média', 'Alta'] },
-      ]},
-      { id: 5, nome: 'Trajeto a pé até a loja', obs: [
-        { key: 'tempo', label: 'Tempo aprox.', type: 'number', unit: 'min', min: 0 },
-      ]},
-    ],
-    extra: [
-      { key: 'ocorrencias_trajeto', label: 'Ocorrências no trajeto', type: 'text' },
-      { key: 'dificuldade_acesso', label: 'Dificuldade de acesso ao local', type: 'select', options: ['Fácil', 'Moderado', 'Difícil'] },
-    ],
-  },
-  {
     key: 'entrada', title: 'Entrada',
     subtitle: 'Chegada e liberação de acesso à loja',
     activities: [
