@@ -157,15 +157,6 @@ function renderLogin() {
   lojaSection.appendChild(lojaList);
   wrap.appendChild(lojaSection);
 
-  const detailsSection = document.createElement('div');
-  detailsSection.className = 'login__section';
-  detailsSection.style.display = 'none';
-  detailsSection.innerHTML = '<h2>Dados da visita</h2>';
-  const detailsCard = document.createElement('div');
-  detailsCard.className = 'card';
-  detailsSection.appendChild(detailsCard);
-  wrap.appendChild(detailsSection);
-
   const confirmBtn = document.createElement('button');
   confirmBtn.type = 'button';
   confirmBtn.className = 'btn btn-primary login__confirm';
@@ -177,8 +168,7 @@ function renderLogin() {
   let selectedLoja = null;
 
   function refreshConfirm() {
-    const fieldsOk = CADASTRO_FIELDS.filter((f) => f.required).every((f) => !!getPath(state, ['cadastro', f.key]));
-    confirmBtn.disabled = !(selectedSetor && selectedLoja && fieldsOk);
+    confirmBtn.disabled = !(selectedSetor && selectedLoja);
   }
 
   function renderLojas(setorObj) {
@@ -192,9 +182,7 @@ function renderLogin() {
         selectedLoja = l.id;
         lojaList.querySelectorAll('.pick-item').forEach((el) => el.classList.remove('active'));
         item.classList.add('active');
-        detailsSection.style.display = 'block';
         refreshConfirm();
-        detailsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
       lojaList.appendChild(item);
     });
@@ -210,7 +198,6 @@ function renderLogin() {
     item.addEventListener('click', () => {
       selectedSetor = s.setor;
       selectedLoja = null;
-      detailsSection.style.display = 'none';
       refreshConfirm();
       setorList.querySelectorAll('.pick-item').forEach((el) => el.classList.remove('active'));
       item.classList.add('active');
@@ -230,14 +217,11 @@ function renderLogin() {
 
   backBtn.addEventListener('click', () => {
     lojaSection.style.display = 'none';
-    detailsSection.style.display = 'none';
     selectedSetor = null;
     selectedLoja = null;
     refreshConfirm();
     setorList.querySelectorAll('.pick-item').forEach((el) => el.classList.remove('active'));
   });
-
-  renderCadastroFields(detailsCard, refreshConfirm);
 
   confirmBtn.addEventListener('click', () => {
     if (confirmBtn.disabled) return;
@@ -442,29 +426,6 @@ function createTimePair(basePath, onUpdate) {
 
   refreshNowBtn();
   return outer;
-}
-
-/* ---------------- Cadastro fields (usados dentro do login) ---------------- */
-
-// Renderiza os campos de CADASTRO_FIELDS (promotor, condução, data, porte,
-// nº de visita) direto num container. Usado pela tela de login — não existe
-// mais uma etapa "Cadastro" separada no assistente.
-function renderCadastroFields(container, onChange) {
-  let i = 0;
-  while (i < CADASTRO_FIELDS.length) {
-    const def = CADASTRO_FIELDS[i];
-    if (def.half && CADASTRO_FIELDS[i + 1] && CADASTRO_FIELDS[i + 1].half) {
-      const row = document.createElement('div');
-      row.className = 'field-row';
-      row.appendChild(createField(def, ['cadastro', def.key], { onChange }));
-      row.appendChild(createField(CADASTRO_FIELDS[i + 1], ['cadastro', CADASTRO_FIELDS[i + 1].key], { onChange }));
-      container.appendChild(row);
-      i += 2;
-    } else {
-      container.appendChild(createField(def, ['cadastro', def.key], { onChange }));
-      i += 1;
-    }
-  }
 }
 
 /* ---------------- Section: Activity block ---------------- */

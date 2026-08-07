@@ -5,17 +5,9 @@
  * Alterar aqui reflete automaticamente na UI (app.js lê este schema).
  */
 
-// Setor, Loja e Canal não aparecem aqui: são definidos na tela de
-// identificação (login), a partir do catálogo de assignação (catalogo.js),
-// e ficam gravados em state.cadastro.setor / loja / canal / cidade / estado.
-const CADASTRO_FIELDS = [
-  { key: 'promotor', label: 'Nome do promotor', type: 'text', required: true, placeholder: 'Nome completo' },
-  { key: 'conducao', label: 'Meio de condução', type: 'select', options: ['Motorizado', 'Não motorizado'], required: true },
-  { key: 'data', label: 'Data da visita', type: 'date', required: true },
-  { key: 'porte', label: 'Porte da loja', type: 'select', options: ['P', 'M', 'G'], required: true },
-  { key: 'visita_atual', label: 'Nº da visita (atual)', type: 'number', half: true, min: 1 },
-  { key: 'visita_total', label: 'Total de visitas no dia', type: 'number', half: true, min: 1 },
-];
+// O login (Setor -> Loja, ver catalogo.js e app.js) é o único passo antes
+// da pesquisa. Promotor, data, porte etc. não são mais pedidos aqui: a
+// data fica a cargo do timestamp gravado pelo Apps Script no envio.
 
 const BLOCKS = [
   {
