@@ -4,13 +4,14 @@
  *
  * Como instalar: ver apps-script/README.md no repositório.
  *
- * Design: o front-end manda o `state` inteiro em JSON (estrutura livre,
- * definida em assets/js/schema.js). Este script "achata" o objeto em
- * colunas do tipo "blocks.pre_chegada.activities.1.inicio" e gerencia o
- * cabeçalho da planilha sozinho — se o schema do formulário mudar (novo
- * bloco, novo campo), novas colunas aparecem automaticamente no final,
- * sem precisar editar este arquivo. O JSON bruto também é salvo numa
- * coluna à parte, como backup, caso algo se perca no achatamento.
+ * Design: o front-end (assets/js/app.js, função buildReadablePayload) já
+ * manda os dados achatados com rótulos legíveis — as mesmas perguntas do
+ * formulário (ex: "Pré-Chegada - Saída da origem - Início") — no formato
+ * clássico de planilha de respostas: 1 linha por visita, 1 coluna por
+ * pergunta. Este script só grava: gerencia o cabeçalho sozinho (se o
+ * formulário ganhar um campo novo, uma coluna nova aparece no final,
+ * sem precisar editar este arquivo) e guarda o JSON bruto do `state`
+ * completo numa coluna à parte, como backup.
  */
 
 const SHEET_NAME = 'Respostas';
@@ -38,10 +39,16 @@ function doPost(e) {
       }
     }
 
+    // "_raw" (backup do state aninhado) e "token" não são perguntas do
+    // formulário — tiram fora antes de virarem coluna.
+    const rawBackup = payload._raw;
+    delete payload._raw;
+    delete payload.token;
+
     const sheet = getOrCreateSheet();
-    const flat = flatten(payload);
+    const flat = flatten(payload); // já vem achatado; flatten() aqui é só uma rede de segurança
     flat['servidor_timestamp'] = new Date();
-    flat['payload_json'] = JSON.stringify(payload);
+    flat['payload_json'] = rawBackup || JSON.stringify(payload);
 
     writeRow(sheet, flat);
 
@@ -87,9 +94,9 @@ function formatValue(v) {
   return v;
 }
 
-// Achata um objeto aninhado em chaves "a.b.c" -> valor.
-// Ex: { blocks: { pre_chegada: { activities: { 1: { inicio: "08:00" } } } } }
-//  => { "blocks.pre_chegada.activities.1.inicio": "08:00" }
+// Achata um objeto aninhado em chaves "a.b.c" -> valor (rede de segurança:
+// o payload que chega já vem achatado do front-end, então isso normalmente
+// não faz nada além de devolver o próprio objeto).
 function flatten(obj, prefix, out) {
   out = out || {};
   prefix = prefix || '';

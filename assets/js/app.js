@@ -692,6 +692,65 @@ function downloadJSON() {
   URL.revokeObjectURL(url);
 }
 
+// Converte o `state` (aninhado, chaves técnicas) numa única linha "achatada"
+// com rótulos legíveis — as mesmas perguntas que aparecem no formulário —
+// no formato clássico de planilha de respostas: 1 linha por visita, 1
+// coluna por pergunta. Os rótulos vêm do schema.js (mesma fonte que gera a
+// UI), então nunca ficam fora de sincronia com o que o promotor realmente
+// respondeu.
+function buildReadablePayload() {
+  const out = {};
+  const set = (label, value) => {
+    if (value !== undefined && value !== null && value !== '') out[label] = value;
+  };
+
+  set('Setor', state.cadastro.setor);
+  set('Loja', state.cadastro.loja);
+  set('ID Loja', state.cadastro.lojaId);
+  set('Canal', state.cadastro.canal);
+  set('Cidade', state.cadastro.cidade);
+  set('Estado', state.cadastro.estado);
+
+  BLOCKS.forEach((block) => {
+    block.activities.forEach((act) => {
+      const base = `${block.title} - ${act.nome}`;
+      const a = getPath(state, ['blocks', block.key, 'activities', act.id]) || {};
+      set(`${base} - Início`, a.inicio);
+      set(`${base} - Término`, a.fim);
+      (act.obs || []).forEach((obsDef) => {
+        set(`${base} - ${obsDef.label}`, getPath(a, ['obs', obsDef.key]));
+      });
+    });
+    (block.extra || []).forEach((def) => {
+      set(`${block.title} - ${def.label}`, getPath(state, ['blocks', block.key, 'extra', def.key]));
+    });
+  });
+
+  CATEGORIAS.forEach((cat) => {
+    const c = getPath(state, ['categorias', cat]) || {};
+    set(`Categoria ${cat} - Status`, c.status);
+    FASES_CATEGORIA.forEach((fase) => {
+      const f = getPath(c, ['fases', fase.key]) || {};
+      set(`Categoria ${cat} - ${fase.label} - Início`, f.inicio);
+      set(`Categoria ${cat} - ${fase.label} - Término`, f.fim);
+    });
+  });
+
+  FECHAMENTO_FIELDS.forEach((def) => {
+    set(def.label, getPath(state, ['fechamento', def.key]));
+  });
+
+  set('Iniciado em', state.meta.startedAt);
+  set('Enviado em (app)', new Date().toISOString());
+
+  // Backup do state inteiro (aninhado), separado das colunas legíveis —
+  // o Apps Script move isso para uma coluna própria (payload_json).
+  out._raw = JSON.stringify(state);
+  if (CONFIG.SUBMIT_TOKEN) out.token = CONFIG.SUBMIT_TOKEN;
+
+  return out;
+}
+
 // Envia um payload ao Apps Script e devolve true só se o servidor confirmou
 // (resposta JSON com ok:true) — sem mode:'no-cors', então dá pra saber de
 // verdade se gravou na planilha, em vez de torcer às cegas.
@@ -729,8 +788,7 @@ async function flushPendingSubmissions() {
 }
 
 async function submitSurvey() {
-  const payload = { ...state, meta: { ...state.meta, submittedAt: new Date().toISOString() } };
-  if (CONFIG.SUBMIT_TOKEN) payload.token = CONFIG.SUBMIT_TOKEN;
+  const payload = buildReadablePayload();
 
   const sentOk = await sendToSheet(payload);
 
