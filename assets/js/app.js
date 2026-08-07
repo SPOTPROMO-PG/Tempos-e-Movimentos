@@ -20,8 +20,9 @@ const CONFIG = {
 function defaultState() {
   return {
     cadastro: {},
+    // blocks[chave] guarda tanto blocos de atividade (.activities) quanto
+    // blocos por categoria (.categorias) — ver schema.js
     blocks: {},
-    categorias: {},
     fechamento: {},
     meta: { currentStep: 0, startedAt: new Date().toISOString() },
   };
@@ -255,7 +256,6 @@ function boot() {
 
 const STEPS = [
   ...BLOCKS.map((b) => ({ type: 'block', block: b, title: b.title, subtitle: b.subtitle })),
-  { type: 'categorias', title: 'Categorias', subtitle: 'Tempo de abastecimento por categoria' },
   { type: 'fechamento', title: 'Fechamento', subtitle: 'Encerramento do dia de trabalho' },
   { type: 'review', title: 'Revisão', subtitle: 'Confira antes de enviar' },
 ];
@@ -315,21 +315,26 @@ function createField(def, path, opts = {}) {
     inner.value = current || '';
     inner.addEventListener('input', () => { setPath(state, path, inner.value); saveState(); });
   } else {
-    const box = def.unit ? document.createElement('div') : null;
-    if (box) box.className = 'field-with-unit';
-    inner = document.createElement('input');
-    inner.type = def.type === 'number' ? 'number' : def.type === 'date' ? 'date' : def.type === 'time' ? 'time' : 'text';
-    if (def.placeholder) inner.placeholder = def.placeholder;
-    if (def.min !== undefined) inner.min = def.min;
-    if (def.step) inner.step = def.step;
-    inner.value = current ?? '';
-    inner.addEventListener('input', () => {
-      setPath(state, path, inner.value === '' ? undefined : inner.value);
+    // O listener precisa fechar sobre o <input> em si (`input`), e não sobre
+    // `inner` — quando o campo tem unidade, `inner` vira o <div> wrapper mais
+    // abaixo, e ler `.value` de um div devolve undefined (nada era salvo).
+    const input = document.createElement('input');
+    input.type = def.type === 'number' ? 'number' : def.type === 'date' ? 'date' : def.type === 'time' ? 'time' : 'text';
+    if (def.placeholder) input.placeholder = def.placeholder;
+    if (def.min !== undefined) input.min = def.min;
+    if (def.step) input.step = def.step;
+    input.value = current ?? '';
+    input.addEventListener('input', () => {
+      setPath(state, path, input.value === '' ? undefined : input.value);
       saveState();
       if (opts.onChange) opts.onChange();
     });
-    if (box) {
-      box.appendChild(inner);
+    inner = input;
+
+    if (def.unit) {
+      const box = document.createElement('div');
+      box.className = 'field-with-unit';
+      box.appendChild(input);
       const unit = document.createElement('span');
       unit.className = 'unit';
       unit.textContent = def.unit;
@@ -493,10 +498,19 @@ function renderBlock(container, block) {
   }
 }
 
-/* ---------------- Section: Categorias (Bloco 8) ---------------- */
+/* ---------------- Section: bloco preenchido por categoria ----------------
+ * Usado por Check Out, Ponto Natural e Ponto Extra. Cada categoria é um
+ * acordeão: marca Feito/N-A e, se for Feito, abre os passos daquele bloco
+ * com início/término (e observações, quando o passo tiver).
+ * Estado: state.blocks[bloco].categorias[categoria]
+ */
 
-function renderCategorias(container) {
-  CATEGORIAS.forEach((cat) => {
+function renderBlocoCategorias(container, block) {
+  const passos = block.porCategoria.passos;
+
+  categoriasDoBloco(block).forEach((cat) => {
+    const basePath = ['blocks', block.key, 'categorias', cat];
+
     const item = document.createElement('div');
     item.className = 'cat-item';
 
@@ -518,7 +532,7 @@ function renderCategorias(container) {
     body.className = 'cat-item__body';
 
     function refreshStatusChip() {
-      const st = getPath(state, ['categorias', cat, 'status']);
+      const st = getPath(state, [...basePath, 'status']);
       status.classList.remove('feito', 'na');
       if (st === 'feito') { status.textContent = 'Feito'; status.classList.add('feito'); }
       else if (st === 'na') { status.textContent = 'N/A'; status.classList.add('na'); }
@@ -532,32 +546,36 @@ function renderCategorias(container) {
       btn.type = 'button';
       btn.dataset.v = v;
       btn.textContent = label;
-      if (getPath(state, ['categorias', cat, 'status']) === v) btn.classList.add('active');
+      if (getPath(state, [...basePath, 'status']) === v) btn.classList.add('active');
       btn.addEventListener('click', () => {
-        setPath(state, ['categorias', cat, 'status'], v);
+        setPath(state, [...basePath, 'status'], v);
         toggle.querySelectorAll('button').forEach((b) => b.classList.remove('active'));
         btn.classList.add('active');
         refreshStatusChip();
-        fasesWrap.style.display = v === 'feito' ? 'block' : 'none';
+        passosWrap.style.display = v === 'feito' ? 'block' : 'none';
         saveState();
       });
       toggle.appendChild(btn);
     });
     body.appendChild(toggle);
 
-    const fasesWrap = document.createElement('div');
-    fasesWrap.style.display = getPath(state, ['categorias', cat, 'status']) === 'feito' ? 'block' : 'none';
-    FASES_CATEGORIA.forEach((fase) => {
+    const passosWrap = document.createElement('div');
+    passosWrap.style.display = getPath(state, [...basePath, 'status']) === 'feito' ? 'block' : 'none';
+    passos.forEach((passo) => {
+      const passoPath = [...basePath, 'passos', passo.key];
       const row = document.createElement('div');
       row.className = 'fase-row';
       const label = document.createElement('div');
       label.className = 'fase-row__label';
-      label.textContent = fase.label;
+      label.textContent = passo.label;
       row.appendChild(label);
-      row.appendChild(createTimePair(['categorias', cat, 'fases', fase.key], () => {}));
-      fasesWrap.appendChild(row);
+      row.appendChild(createTimePair(passoPath, () => {}));
+      (passo.obs || []).forEach((obsDef) => {
+        row.appendChild(createField(obsDef, [...passoPath, 'obs', obsDef.key]));
+      });
+      passosWrap.appendChild(row);
     });
-    body.appendChild(fasesWrap);
+    body.appendChild(passosWrap);
 
     head.addEventListener('click', () => item.classList.toggle('open'));
 
@@ -583,16 +601,18 @@ function renderFechamento(container) {
 
 function countFilled(step) {
   if (step.type === 'block') {
+    // Bloco por categoria: conta categorias já resolvidas (Feito ou N/A).
+    if (step.block.porCategoria) {
+      const cats = categoriasDoBloco(step.block);
+      const filled = cats.filter((c) => getPath(state, ['blocks', step.block.key, 'categorias', c, 'status'])).length;
+      return `${filled}/${cats.length} categorias`;
+    }
     const total = step.block.activities.length;
     const filled = step.block.activities.filter((a) => {
       const p = ['blocks', step.block.key, 'activities', a.id];
       return getPath(state, [...p, 'inicio']) && getPath(state, [...p, 'fim']);
     }).length;
     return `${filled}/${total} atividades`;
-  }
-  if (step.type === 'categorias') {
-    const filled = CATEGORIAS.filter((c) => getPath(state, ['categorias', c, 'status'])).length;
-    return `${filled}/${CATEGORIAS.length} categorias`;
   }
   if (step.type === 'fechamento') {
     const total = FECHAMENTO_FIELDS.length;
@@ -712,6 +732,24 @@ function buildReadablePayload() {
   set('Estado', state.cadastro.estado);
 
   BLOCKS.forEach((block) => {
+    // Blocos por categoria: uma coluna por categoria x passo.
+    if (block.porCategoria) {
+      categoriasDoBloco(block).forEach((cat) => {
+        const c = getPath(state, ['blocks', block.key, 'categorias', cat]) || {};
+        set(`${block.title} - ${cat} - Status`, c.status);
+        block.porCategoria.passos.forEach((passo) => {
+          const p = getPath(c, ['passos', passo.key]) || {};
+          const base = `${block.title} - ${cat} - ${passo.label}`;
+          set(`${base} - Início`, p.inicio);
+          set(`${base} - Término`, p.fim);
+          (passo.obs || []).forEach((obsDef) => {
+            set(`${base} - ${obsDef.label}`, getPath(p, ['obs', obsDef.key]));
+          });
+        });
+      });
+      return;
+    }
+
     block.activities.forEach((act) => {
       const base = `${block.title} - ${act.nome}`;
       const a = getPath(state, ['blocks', block.key, 'activities', act.id]) || {};
@@ -723,16 +761,6 @@ function buildReadablePayload() {
     });
     (block.extra || []).forEach((def) => {
       set(`${block.title} - ${def.label}`, getPath(state, ['blocks', block.key, 'extra', def.key]));
-    });
-  });
-
-  CATEGORIAS.forEach((cat) => {
-    const c = getPath(state, ['categorias', cat]) || {};
-    set(`Categoria ${cat} - Status`, c.status);
-    FASES_CATEGORIA.forEach((fase) => {
-      const f = getPath(c, ['fases', fase.key]) || {};
-      set(`Categoria ${cat} - ${fase.label} - Início`, f.inicio);
-      set(`Categoria ${cat} - ${fase.label} - Término`, f.fim);
     });
   });
 
@@ -895,8 +923,10 @@ function render() {
   `;
   main.appendChild(headWrap);
 
-  if (step.type === 'block') renderBlock(main, step.block);
-  else if (step.type === 'categorias') renderCategorias(main);
+  if (step.type === 'block') {
+    if (step.block.porCategoria) renderBlocoCategorias(main, step.block);
+    else renderBlock(main, step.block);
+  }
   else if (step.type === 'fechamento') renderFechamento(main);
   else if (step.type === 'review') renderReview(main);
 

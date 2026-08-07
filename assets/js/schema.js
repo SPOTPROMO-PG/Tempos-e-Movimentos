@@ -47,40 +47,55 @@ const BLOCKS = [
       { id: 5, nome: 'Retorno ao setor com os produtos' },
     ],
   },
+  // --- Blocos preenchidos POR CATEGORIA (ver porCategoria abaixo) ---
+  // Nestes, o promotor escolhe a categoria, marca Feito/N-A (nem toda loja
+  // tem todas as categorias) e cronometra os passos daquela categoria.
   {
     key: 'checkout', title: 'Check Out',
-    subtitle: 'Abastecimento padrão do setor',
-    activities: [
-      { id: 1, nome: 'Limpeza dos móveis antes do abastecimento' },
-      { id: 2, nome: 'Abastecer seguindo o guia de execução' },
-      { id: 3, nome: "Conferir KBD's (Direcionamentos Chaves)" },
-      { id: 4, nome: 'Precificar todos os itens' },
-    ],
+    subtitle: 'Abastecimento padrão, por categoria',
+    porCategoria: {
+      // Só um recorte das categorias aparece no Check Out.
+      categorias: ['Lâminas Masculinas', 'Lâminas Femininas', 'Escovas'],
+      passos: [
+        { key: 'limpeza', label: 'Limpeza dos móveis antes do abastecimento' },
+        { key: 'abastecimento', label: 'Abastecer seguindo o guia de execução' },
+        { key: 'kbds', label: "Conferir KBD's (Direcionamentos Chaves)" },
+        { key: 'precificacao', label: 'Precificar todos os itens' },
+      ],
+    },
   },
   {
     key: 'ponto_natural', title: 'Ponto Natural',
-    subtitle: 'Reposição no ponto natural da categoria',
-    activities: [
-      { id: 1, nome: 'Buscar itens faltantes no estoque' },
-      { id: 2, nome: 'Contar estoque e comparar com relatório', obs: [
-        { key: 'qtd_divergente', label: 'Qtd. divergente', type: 'number', unit: 'und', min: 0 },
-      ]},
-      { id: 3, nome: 'Limpeza antes do abastecimento' },
-      { id: 4, nome: 'Abastecimento e organização (Layout/KBDs etc)' },
-      { id: 5, nome: 'Precificar todos os itens' },
-    ],
+    subtitle: 'Reposição no ponto natural, por categoria',
+    porCategoria: {
+      categorias: null, // null = todas as categorias
+      passos: [
+        // Estes dois são passos distintos: o primeiro é feito fisicamente
+        // no estoque, o segundo é a conferência do relatório no celular.
+        { key: 'busca_estoque', label: 'Buscar itens faltantes no estoque' },
+        { key: 'estoque_virtual', label: 'Validar estoque virtual', obs: [
+          { key: 'qtd_divergente', label: 'Qtd. divergente', type: 'number', unit: 'und', min: 0 },
+        ]},
+        { key: 'limpeza', label: 'Limpeza antes do abastecimento' },
+        { key: 'abastecimento', label: 'Abastecimento e organização (Layout/KBDs etc)' },
+        { key: 'precificacao', label: 'Precificar todos os itens' },
+      ],
+    },
   },
   {
     key: 'ponto_extra', title: 'Ponto Extra',
-    subtitle: 'Montagem e abastecimento de ponto extra',
-    activities: [
-      { id: 1, nome: 'Limpeza do móvel / display' },
-      { id: 2, nome: 'Montagem do display / ponto extra', obs: [
-        { key: 'tipo', label: 'Tipo', type: 'select', options: ['Chão', 'Gôndola', 'Ilha', 'Balcão'] },
-      ]},
-      { id: 3, nome: "Abastecer seguindo guia de execução + KBD's" },
-      { id: 4, nome: 'Precificar todos os itens' },
-    ],
+    subtitle: 'Montagem e abastecimento de ponto extra, por categoria',
+    porCategoria: {
+      categorias: null,
+      passos: [
+        { key: 'montagem', label: 'Montagem do display / ponto extra', obs: [
+          { key: 'tipo', label: 'Tipo', type: 'select', options: ['Chão', 'Gôndola', 'Ilha', 'Balcão'] },
+        ]},
+        { key: 'limpeza', label: 'Limpeza do móvel / display' },
+        { key: 'abastecimento', label: "Abastecer seguindo guia de execução + KBD's" },
+        { key: 'precificacao', label: 'Precificar todos os itens' },
+      ],
+    },
   },
   {
     key: 'outras', title: 'Outras Atividades',
@@ -107,7 +122,8 @@ const BLOCKS = [
   },
 ];
 
-// Bloco 8 — Categorias: uma matriz categoria x fase, cada fase com início/término
+// Catálogo completo de categorias. Cada bloco com `porCategoria` usa esta
+// lista inteira, ou um recorte dela (ver `porCategoria.categorias`).
 const CATEGORIAS = [
   'Lâminas Masculinas', 'Lâminas Femininas', 'Escovas', 'Antissépticos',
   'Fios Dentais', 'Cremes Dentais', 'Desodorantes Masculinos', 'Desodorantes Femininos',
@@ -115,17 +131,11 @@ const CATEGORIAS = [
   'Fraldas / Lenços Umedecidos', 'Amaciantes Downy', 'Detergente Líquido Ariel',
 ];
 
-const FASES_CATEGORIA = [
-  { key: 'busca_estoque', label: 'Buscar itens faltantes no estoque' },
-  { key: 'conf_estoque_virtual', label: 'Conferência do estoque virtual' },
-  { key: 'limpeza_pn', label: 'Limpeza antes do abastecimento' },
-  { key: 'abastecimento_pn', label: 'Abastecimento / organização (Ponto Natural)' },
-  { key: 'precificacao_pn', label: 'Precificação (Ponto Natural)' },
-  { key: 'montagem_pe', label: 'Montagem PE / Móvel / Display' },
-  { key: 'limpeza_pe', label: 'Limpeza do móvel / display / PE' },
-  { key: 'abastecimento_pe', label: 'Abastecimento PE / Móvel / Display' },
-  { key: 'precificacao_pe', label: 'Precificação PE / Móvel / Display' },
-];
+// Resolve quais categorias um bloco mostra: a lista filtrada dele, ou todas.
+function categoriasDoBloco(block) {
+  const filtro = block.porCategoria && block.porCategoria.categorias;
+  return filtro ? CATEGORIAS.filter((c) => filtro.includes(c)) : CATEGORIAS;
+}
 
 const FECHAMENTO_FIELDS = [
   { key: 'saida_ultima_loja', label: 'Horário de saída da última loja', type: 'time' },
