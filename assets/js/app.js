@@ -870,7 +870,11 @@ function showDoneScreen(sentOk) {
 
 /* ---------------- Navigation & shell ---------------- */
 
-let currentStep = state.meta.currentStep || 0;
+// Limita ao intervalo válido: se o formulário mudou de tamanho desde a
+// última vez que este aparelho abriu o app (bloco removido, etapa fundida),
+// a etapa salva pode apontar para um índice que não existe mais — e aí o
+// promotor abriria numa tela vazia, sem conseguir nem voltar.
+let currentStep = Math.max(0, Math.min(STEPS.length - 1, state.meta.currentStep || 0));
 
 function goToStep(idx) {
   currentStep = Math.max(0, Math.min(STEPS.length - 1, idx));
@@ -895,6 +899,9 @@ function toast(msg) {
 }
 
 function render() {
+  // Rede de segurança: nunca renderizar fora do intervalo — tela vazia sem
+  // saída é pior do que voltar para o começo.
+  if (!STEPS[currentStep]) currentStep = 0;
   const step = STEPS[currentStep];
   const total = STEPS.length;
 
