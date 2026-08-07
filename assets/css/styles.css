@@ -187,6 +187,7 @@ html, body {
   text-align: left;
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   gap: 2px;
   min-height: var(--tap);
   padding: 12px 14px;
@@ -347,8 +348,9 @@ input.invalid { border-color: var(--danger); background: #fff5f5; }
 
 .activity__head {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
-  gap: 10px;
+  gap: 6px 10px;
   margin-bottom: 12px;
 }
 .activity__badge {
@@ -430,6 +432,8 @@ input.invalid { border-color: var(--danger); background: #fff5f5; }
 .duration-chip {
   display: inline-flex;
   align-items: center;
+  flex-shrink: 0;
+  white-space: nowrap;
   gap: 4px;
   font-size: 11.5px;
   font-weight: 700;
@@ -566,6 +570,16 @@ input.invalid { border-color: var(--danger); background: #fff5f5; }
 .summary-row .name { font-weight: 600; }
 .summary-row .count { color: var(--ink-soft); font-size: 13px; }
 .summary-row .jump { color: var(--accent); font-size: 13px; font-weight: 700; cursor: pointer; background: none; border: none; }
+
+.id-summary__label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--ink-soft);
+  margin-bottom: 4px;
+}
+.id-summary__value { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
 
 .toast {
   position: fixed;

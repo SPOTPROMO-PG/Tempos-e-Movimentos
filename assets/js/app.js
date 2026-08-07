@@ -603,27 +603,16 @@ function renderReview(container) {
   const loja = isLoggedIn() ? getLojaObj(loginState.setor, loginState.lojaId) : null;
   if (loja) {
     const idCard = document.createElement('div');
-    idCard.className = 'card';
-    const row = document.createElement('div');
-    row.className = 'summary-row';
-    row.innerHTML = `
-      <div class="name">Identificação</div>
+    idCard.className = 'card id-summary';
+    idCard.innerHTML = `
+      <div class="id-summary__label">Identificação</div>
+      <div class="id-summary__value">${loginState.setor} · ${loja.nome}</div>
     `;
-    const right = document.createElement('div');
-    right.style.display = 'flex';
-    right.style.alignItems = 'center';
-    right.style.gap = '10px';
-    const count = document.createElement('span');
-    count.className = 'count';
-    count.textContent = `${loginState.setor} · ${loja.nome}`;
     const trocar = document.createElement('button');
-    trocar.className = 'jump';
+    trocar.className = 'link-back';
     trocar.textContent = 'Trocar';
     trocar.addEventListener('click', logout);
-    right.appendChild(count);
-    right.appendChild(trocar);
-    row.appendChild(right);
-    idCard.appendChild(row);
+    idCard.appendChild(trocar);
     container.appendChild(idCard);
   }
 
@@ -740,6 +729,7 @@ function showDoneScreen() {
   `;
   const btn = document.createElement('button');
   btn.className = 'btn btn-primary';
+  btn.style.width = '100%';
   btn.textContent = 'Iniciar nova visita';
   btn.addEventListener('click', () => {
     state = defaultState();
