@@ -1,0 +1,6 @@
+# Planilhas fonte com dados internos (CNPJ, endereços, IDs de loja/promotor).
+# Não devem ir para o repositório público — servem só de referência local.
+*.xlsx
+
+# Config local do Claude Code
+.claude/

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+  <meta name="theme-color" content="#5b5bf6" />
+  <title>Pesquisa de Tempos e Movimentos</title>
+  <meta name="description" content="Coleta de campo para o estudo de tempos e movimentos em loja." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="topbar__row">
+        <div class="topbar__brand">
+          <span class="mark" aria-hidden="true">TM</span>
+          <span class="title">Tempos &amp; Movimentos</span>
+        </div>
+        <span class="topbar__step" id="step-badge">Etapa 1 de 1</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+      <div class="stepper-label" id="stepper-label"></div>
+      <div class="topbar__store" id="topbar-store" style="display:none"></div>
+    </header>
+
+    <main id="main"></main>
+
+    <nav class="bottombar">
+      <button id="btn-back" class="btn btn-secondary">← Voltar</button>
+      <button id="btn-next" class="btn btn-primary">Próximo</button>
+    </nav>
+  </div>
+
+  <script src="assets/js/schema.js"></script>
+  <script src="assets/js/catalogo.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
