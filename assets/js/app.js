@@ -10,7 +10,7 @@ const CONFIG = {
   SUBMISSIONS_KEY: 'tm_survey_submissions_v1',
   LOGIN_KEY: 'tm_login_v1',
   // URL do Web App do Apps Script (termina em /exec). Ver apps-script/README.md.
-  SCRIPT_URL: '',
+  SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbwkmlM59FIGxsfDvHmRriqN66dZ1xGDz-3T5ob8h5pgrJ1_FUUy5YoYM-0V8_-f85ia/exec',
   // Só necessário se REQUIRE_TOKEN estiver true em apps-script/Code.gs.
   SUBMIT_TOKEN: '',
 };
@@ -239,6 +239,7 @@ function renderLogin() {
 
 // Decide qual tela mostrar: login (setor/loja) ou o questionário.
 function boot() {
+  flushPendingSubmissions();
   if (isLoggedIn()) {
     document.querySelector('.topbar').style.display = '';
     document.querySelector('.bottombar').style.display = '';
@@ -691,36 +692,71 @@ function downloadJSON() {
   URL.revokeObjectURL(url);
 }
 
+// Envia um payload ao Apps Script e devolve true só se o servidor confirmou
+// (resposta JSON com ok:true) — sem mode:'no-cors', então dá pra saber de
+// verdade se gravou na planilha, em vez de torcer às cegas.
+async function sendToSheet(payload) {
+  if (!CONFIG.SCRIPT_URL) return false;
+  try {
+    const resp = await fetch(CONFIG.SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(payload),
+    });
+    const result = await resp.json().catch(() => null);
+    if (!result || !result.ok) console.warn('Apps Script respondeu com erro', result);
+    return !!(result && result.ok);
+  } catch (e) {
+    console.warn('Falha ao enviar ao Apps Script (sem internet?)', e);
+    return false;
+  }
+}
+
+// Reenvia, em segundo plano, visitas que ficaram salvas localmente mas não
+// foram confirmadas na planilha (ex: sem internet no momento do envio).
+async function flushPendingSubmissions() {
+  if (!CONFIG.SCRIPT_URL || (navigator.onLine === false)) return;
+  const submissions = JSON.parse(localStorage.getItem(CONFIG.SUBMISSIONS_KEY) || '[]');
+  let changed = false;
+  for (const sub of submissions) {
+    if (!sub.sentOk) {
+      // eslint-disable-next-line no-await-in-loop
+      const ok = await sendToSheet(sub.payload);
+      if (ok) { sub.sentOk = true; changed = true; }
+    }
+  }
+  if (changed) localStorage.setItem(CONFIG.SUBMISSIONS_KEY, JSON.stringify(submissions));
+}
+
 async function submitSurvey() {
   const payload = { ...state, meta: { ...state.meta, submittedAt: new Date().toISOString() } };
   if (CONFIG.SUBMIT_TOKEN) payload.token = CONFIG.SUBMIT_TOKEN;
 
-  if (CONFIG.SCRIPT_URL) {
-    try {
-      await fetch(CONFIG.SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain' },
-        body: JSON.stringify(payload),
-      });
-    } catch (e) {
-      console.warn('Falha ao enviar ao Apps Script, salvando localmente', e);
-    }
-  }
+  const sentOk = await sendToSheet(payload);
 
   const submissions = JSON.parse(localStorage.getItem(CONFIG.SUBMISSIONS_KEY) || '[]');
-  submissions.push(payload);
+  submissions.push({ payload, sentOk });
   localStorage.setItem(CONFIG.SUBMISSIONS_KEY, JSON.stringify(submissions));
   localStorage.removeItem(CONFIG.STORAGE_KEY);
 
-  showDoneScreen();
+  showDoneScreen(sentOk);
 }
 
-function showDoneScreen() {
+function showDoneScreen(sentOk) {
   const main = document.getElementById('main');
   main.innerHTML = '';
   const wrap = document.createElement('div');
   wrap.className = 'done-screen';
+
+  let statusMsg;
+  if (!CONFIG.SCRIPT_URL) {
+    statusMsg = 'Suas respostas foram salvas neste dispositivo.';
+  } else if (sentOk) {
+    statusMsg = 'Suas respostas foram salvas e enviadas para a planilha.';
+  } else {
+    statusMsg = 'Suas respostas foram salvas neste dispositivo. Não foi possível confirmar o envio agora — o app tenta de novo sozinho na próxima vez que abrir com internet.';
+  }
+
   wrap.innerHTML = `
     <div class="done-icon" aria-hidden="true">
       <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -728,7 +764,7 @@ function showDoneScreen() {
       </svg>
     </div>
     <h1>Pesquisa registrada</h1>
-    <p>Suas respostas foram salvas${CONFIG.SCRIPT_URL ? ' e enviadas para a planilha' : ' neste dispositivo'}.</p>
+    <p>${statusMsg}</p>
   `;
   const btn = document.createElement('button');
   btn.className = 'btn btn-primary';
