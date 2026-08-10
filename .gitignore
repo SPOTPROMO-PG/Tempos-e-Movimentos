@@ -10,3 +10,6 @@
 # fora do git; é necessário para publicar futuras atualizações do app
 # com a mesma identidade.
 apk-build*/
+
+# Pacote de lançamento (APK + materiais de apoio) — gerado, fica local.
+lancamento/
