@@ -1,189 +1,176 @@
 /**
- * Catálogo de Setor -> Lojas assignadas
+ * Catálogo Setor -> Promotor -> Lojas assignadas.
  *
- * Amostra TEMPORÁRIA com 20 setores (de ~1.066 no total), escolhidos
- * aleatoriamente. Cobre os promotores que já estão respondendo a pesquisa
- * hoje. Quando o restante dos ~1000 promotores for liberado, gerar este
- * arquivo novamente a partir de:
- *   "CATALOGO ASSIGNACAO REGULAR SPOT - AGOSTO'26.xlsx" (aba ASSIGNACAO REGULAR)
- * agrupando por SETOR PROMOTOR -> lista de lojas (ID LOJA, CANAL, REDE,
- * NOME DA LOJA, CIDADE, ESTADO), removendo duplicidade por loja.
+ * Gerado a partir de dois arquivos (mantidos fora do repositório):
+ *   - "Nomes_Tempos&Movimentos.xlsx"   -> quem responde, setor e canal
+ *   - "CATALOGO ASSIGNACAO REGULAR..." -> as lojas de cada setor
+ *
+ * As lojas são filtradas pelo(s) canal(is) que o promotor cobre: a base de
+ * assignação lista todas as lojas do setor, mas o promotor só atende as do
+ * canal dele. Sem esse filtro apareceriam 230 lojas em vez de 148, com 82
+ * que não são dele.
+ *
+ * `promotor` e `executivo` vêm junto para serem gravados na resposta sem
+ * precisar perguntar nada em tela.
  */
 
 const CATALOGO = [
   {
-    "setor": "PR03",
+    "setor": "PR107",
+    "promotor": "DANIELA RODRIGUES DA CRUZ",
+    "executivo": "DANIELA",
+    "canais": [
+      "GMR"
+    ],
     "lojas": [
       {
-        "id": "0018a00002GR1dWAAT",
-        "canal": "DPP",
-        "rede": "SPACEFARMA DISTRIBUIDORA DE MEDICAMENTOS EIRELI",
-        "nome": "CALLFARMA AVENIDA VICTOR FERREIRA DO AMARAL 2872",
-        "cidade": "CURITIBA",
+        "id": "0014W00002e9JMkQAM",
+        "canal": "GMR",
+        "rede": "CARREFOUR C&C",
+        "nome": "CARREFOUR HIPER LONDRINA",
+        "cidade": "LONDRINA",
         "estado": "PR"
-      },
+      }
+    ]
+  },
+  {
+    "setor": "PR151",
+    "promotor": "LUCIANE APARECIDA VESSELOVITZ",
+    "executivo": "DANIELA",
+    "canais": [
+      "DPP"
+    ],
+    "lojas": [
       {
-        "id": "001Ho00001Vx5WSIAZ",
-        "canal": "DPP",
-        "rede": "SPACEFARMA DISTRIBUIDORA DE MEDICAMENTOS EIRELI",
-        "nome": "CALLFARMA PIRAQUARA",
-        "cidade": "PIRAQUARA",
-        "estado": "PR"
-      },
-      {
-        "id": "0014W00002e9JVSQA2",
-        "canal": "DPP",
-        "rede": "DPSP",
-        "nome": "DP BAIRRO UBERABA",
-        "cidade": "CURITIBA",
-        "estado": "PR"
-      },
-      {
-        "id": "0018a00001x732aAAA",
+        "id": "0018a00001x732ZAAQ",
         "canal": "DPP",
         "rede": "MAEOKA LTDA",
-        "nome": "FARMACIAS DESCONTAO GETULIO VARGAS 657",
-        "cidade": "PIRAQUARA",
+        "nome": "FARMACIAS DESCONTAO QUINZE DE NOVEMBRO 2152",
+        "cidade": "SAO JOSE DOS PINHAIS",
         "estado": "PR"
       },
       {
-        "id": "0018a00002OPtjIAAT",
+        "id": "0014W00002e9KCuQAM",
+        "canal": "DPP",
+        "rede": "MORIFARMA",
+        "nome": "MORIFARMA IZABEL REDENTORA",
+        "cidade": "SAO JOSE DOS PINHAIS",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9LFfQAM",
         "canal": "DPP",
         "rede": "REDE UNIPRECO STRAPASSON",
-        "nome": "FARMACIAS UNIPRECO IRAI,916",
-        "cidade": "PINHAIS",
+        "nome": "UNIPRECO BARAO DO CERRO AZUL 1235",
+        "cidade": "SAO JOSE DOS PINHAIS",
         "estado": "PR"
-      },
+      }
+    ]
+  },
+  {
+    "setor": "PR18",
+    "promotor": "FRANCIELI LUANI GOMES",
+    "executivo": "DANIELA",
+    "canais": [
+      "LASA"
+    ],
+    "lojas": [
       {
-        "id": "0014W00002e9HtrQAE",
-        "canal": "DPP",
-        "rede": "NISSEI",
-        "nome": "NISSEI 194 BAIRRO ALTO",
-        "cidade": "CURITIBA",
+        "id": "0014W00002e9LNmQAM",
+        "canal": "LASA",
+        "rede": "LASA",
+        "nome": "LASA SHC LONDRINA NORTE",
+        "cidade": "LONDRINA",
         "estado": "PR"
-      },
+      }
+    ]
+  },
+  {
+    "setor": "PR208",
+    "promotor": "KAUA HENRIQUE SANTOS MORENO",
+    "executivo": "DANIELA",
+    "canais": [
+      "C&C"
+    ],
+    "lojas": [
       {
-        "id": "0014W00002e9HtcQAE",
-        "canal": "DPP",
-        "rede": "NISSEI",
-        "nome": "NISSEI 215 PINHAIS IV",
-        "cidade": "PINHAIS",
-        "estado": "PR"
-      },
-      {
-        "id": "0014W00002e9HtSQAU",
-        "canal": "DPP",
-        "rede": "NISSEI",
-        "nome": "NISSEI 234 CENTENARIO",
-        "cidade": "CURITIBA",
-        "estado": "PR"
-      },
-      {
-        "id": "0014W00002e9HvPQAU",
-        "canal": "DPP",
-        "rede": "NISSEI",
-        "nome": "NISSEI 285 FAZENDINHA TERMINAL",
-        "cidade": "CURITIBA",
-        "estado": "PR"
-      },
-      {
-        "id": "0018a00001x731UAAQ",
-        "canal": "DPP",
-        "rede": "NISSEI",
-        "nome": "NISSEI COMENDADOR FRANCO 2656",
-        "cidade": "CURITIBA",
-        "estado": "PR"
-      },
-      {
-        "id": "0018a00002OPtogAAD",
-        "canal": "DPP",
-        "rede": "NISSEI",
-        "nome": "NISSEI PROFESSOR NIVALDO BRAGA 912",
-        "cidade": "CURITIBA",
-        "estado": "PR"
-      },
-      {
-        "id": "001Ho00001Z7EnwIAF",
-        "canal": "DPP",
-        "rede": "PANVEL",
-        "nome": "PANVEL PINHAIS IRAI",
-        "cidade": "PINHAIS",
-        "estado": "PR"
-      },
-      {
-        "id": "0014W00002e9IVrQAM",
-        "canal": "DPP",
-        "rede": "RAIASIL",
-        "nome": "RAIA CT CRISTO REI A  (NOBRE P)",
-        "cidade": "CURITIBA",
-        "estado": "PR"
-      },
-      {
-        "id": "0014W00002e9IZaQAM",
-        "canal": "DPP",
-        "rede": "RAIASIL",
-        "nome": "RAIASIL NOSSA SENHORA DE LOURDES",
-        "cidade": "CURITIBA",
-        "estado": "PR"
-      },
-      {
-        "id": "0018a00001x736MAAQ",
-        "canal": "DPP",
-        "rede": "REDE UNIPRECO STRAPASSON",
-        "nome": "REDE UNIPRECO STRAPASSON RUA JOSE DE OLIVEIRA FRANCO",
-        "cidade": "CURITIBA",
-        "estado": "PR"
-      },
-      {
-        "id": "0014W00002e9LFgQAM",
-        "canal": "DPP",
-        "rede": "REDE UNIPRECO STRAPASSON",
-        "nome": "UNIPRECO ABEL 2930",
-        "cidade": "COLOMBO",
-        "estado": "PR"
-      },
-      {
-        "id": "0014W00002e9K6tQAE",
-        "canal": "DPP",
-        "rede": "REDE UNIPRECO STRAPASSON",
-        "nome": "UNIPRECO ALBERICO FLORES BUENO 424",
-        "cidade": "CURITIBA",
-        "estado": "PR"
-      },
-      {
-        "id": "0014W00002e9LFeQAM",
-        "canal": "DPP",
-        "rede": "REDE UNIPRECO STRAPASSON",
-        "nome": "UNIPRECO FAGUNDES VARELA 1487",
+        "id": "0014W00002e9Kk5QAE",
+        "canal": "C&C",
+        "rede": "ASSAI",
+        "nome": "ASSAI CURITIBA JK 195",
         "cidade": "CURITIBA",
         "estado": "PR"
       }
     ]
   },
   {
-    "setor": "PR117",
+    "setor": "PR221",
+    "promotor": "ANGELA CRISTINA BARBOZA LIMA",
+    "executivo": "DANIELA",
+    "canais": [
+      "HFS"
+    ],
     "lojas": [
       {
-        "id": "0014W00002e9Hz9QAE",
-        "canal": "NMR",
-        "rede": "CONDOR",
-        "nome": "CONDOR 21 NILO PECANHA",
-        "cidade": "CURITIBA",
+        "id": "0014W00002e9KNAQA2",
+        "canal": "HFS",
+        "rede": "REDE BOA COMPRA",
+        "nome": "BOA COMPRA AV CASTRO ALVES 2539",
+        "cidade": "ROLANDIA",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9KNpQAM",
+        "canal": "HFS",
+        "rede": "REDE BOA COMPRA",
+        "nome": "BOA COMPRA R REINALDO MASSI",
+        "cidade": "ROLANDIA",
+        "estado": "PR"
+      },
+      {
+        "id": "0018a00002cTPMaAAO",
+        "canal": "HFS",
+        "rede": "REDE BOA COMPRA",
+        "nome": "REDE BOA COMPRA AVENIDA IGUACU 1001",
+        "cidade": "ROLANDIA",
+        "estado": "PR"
+      }
+    ]
+  },
+  {
+    "setor": "PR256",
+    "promotor": "ANDRESSA STEFANI DA SILVA",
+    "executivo": "DANIELA",
+    "canais": [
+      "HFS"
+    ],
+    "lojas": [
+      {
+        "id": "0014W00002e9HxCQAU",
+        "canal": "HFS",
+        "rede": "COML DE SECOS E MOLHADOS CONSALTER LTDA",
+        "nome": "COML DE SECOS E MOLHADOS CONSALTER LTDA AV FELIPE WANDSCHEER 1",
+        "cidade": "FOZ DO IGUACU",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9L0BQAU",
+        "canal": "HFS",
+        "rede": "ITALO SUPERMERCADOS 1",
+        "nome": "ITALO REPULICA ARGENTINA",
+        "cidade": "FOZ DO IGUACU",
         "estado": "PR"
       }
     ]
   },
   {
     "setor": "PR275",
+    "promotor": "KAUANY DANIELLI MAYNARD DE OLIVEIRA",
+    "executivo": "DANIELA",
+    "canais": [
+      "GMR"
+    ],
     "lojas": [
-      {
-        "id": "0018a00002GR1bkAAD",
-        "canal": "C&C",
-        "rede": "ATACADAO",
-        "nome": "ATACADAO CURITIBA BOA VISTA",
-        "cidade": "CURITIBA",
-        "estado": "PR"
-      },
       {
         "id": "0018a00001x734PAAQ",
         "canal": "GMR",
@@ -195,191 +182,975 @@ const CATALOGO = [
     ]
   },
   {
-    "setor": "PR90",
+    "setor": "PR38",
+    "promotor": "GELSON APARECIDO ALVES SANT ANA",
+    "executivo": "DANIELA",
+    "canais": [
+      "LASA"
+    ],
     "lojas": [
       {
-        "id": "0014W00002e9HWdQAM",
-        "canal": "C&C",
-        "rede": "ATACADAO",
-        "nome": "ATACADAO CURITIBA FAZENDINHA",
-        "cidade": "CURITIBA",
+        "id": "001Ho00001gVOgKIAW",
+        "canal": "LASA",
+        "rede": "LASA",
+        "nome": "Lasa Mandacaru",
+        "cidade": "MARINGA",
         "estado": "PR"
-      },
+      }
+    ]
+  },
+  {
+    "setor": "PR49",
+    "promotor": "KEILA DE ANDRADE MARTINS",
+    "executivo": "DANIELA",
+    "canais": [
+      "NMR"
+    ],
+    "lojas": [
       {
-        "id": "0014W00002e9HyXQAU",
+        "id": "0014W00002e9HyeQAE",
         "canal": "NMR",
         "rede": "CONDOR",
-        "nome": "CONDOR 50 SANTA QUITERIA",
+        "nome": "CONDOR 43 ALMIRANTE TAMANDARE",
+        "cidade": "ALMIRANTE TAMANDARE",
+        "estado": "PR"
+      },
+      {
+        "id": "001Ho00001Z6EqbIAF",
+        "canal": "NMR",
+        "rede": "SUPERMERCADO FESTIVAL",
+        "nome": "FESTVAL JUVEVE 45",
+        "cidade": "CURITIBA",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9HwjQAE",
+        "canal": "NMR",
+        "rede": "SUPERMERCADO FESTIVAL",
+        "nome": "FESTVAL MATHEUS LEME",
         "cidade": "CURITIBA",
         "estado": "PR"
       }
     ]
   },
   {
-    "setor": "PROJ-MAIS-PR10",
+    "setor": "PR69",
+    "promotor": "LUCINEIA DE FATIMAS ALVES",
+    "executivo": "DANIELA",
+    "canais": [
+      "DPP"
+    ],
     "lojas": [
       {
-        "id": "0014W00002e9HzPQAU",
-        "canal": "NMR",
-        "rede": "CONDOR",
-        "nome": "CONDOR 3 SANTA FELICIDADE",
-        "cidade": "CURITIBA",
-        "estado": "PR"
-      },
-      {
-        "id": "0014W00002e9HxJQAU",
-        "canal": "NMR",
-        "rede": "MUFFATO VAREJO",
-        "nome": "MUFFATO VAREJO  1096  SANTA FELICIDADE",
-        "cidade": "CURITIBA",
-        "estado": "PR"
-      }
-    ]
-  },
-  {
-    "setor": "PROJ-MAIS-SC19",
-    "lojas": [
-      {
-        "id": "0018a00002GR1bHAAT",
-        "canal": "C&C",
-        "rede": "BRASIL ATACADISTA",
-        "nome": "BRASIL ATACADISTA PALHOCA ROD BR 101",
-        "cidade": "PALHOCA",
-        "estado": "SC"
-      },
-      {
-        "id": "001Ho00001QiwkuIAB",
-        "canal": "NMR",
-        "rede": "PRADO SUPERMERCADO LTDA",
-        "nome": "PRADO PAGANI",
-        "cidade": "PALHOCA",
-        "estado": "SC"
-      }
-    ]
-  },
-  {
-    "setor": "PROJ-MAIS-SPI44",
-    "lojas": [
-      {
-        "id": "0014W00002e9HWSQA2",
-        "canal": "C&C",
-        "rede": "ATACADAO",
-        "nome": "ATACADAO ITU",
-        "cidade": "ITU",
-        "estado": "SPI"
-      },
-      {
-        "id": "0014W00002e9LMMQA2",
-        "canal": "C&C",
-        "rede": "TENDA",
-        "nome": "TENDA ITU",
-        "cidade": "ITU",
-        "estado": "SPI"
-      }
-    ]
-  },
-  {
-    "setor": "SC105",
-    "lojas": [
-      {
-        "id": "0014W00002e9HyZQAU",
-        "canal": "NMR",
-        "rede": "CONDOR",
-        "nome": "CONDOR 48 JOINVILLE SC",
-        "cidade": "JOINVILLE",
-        "estado": "SC"
-      },
-      {
-        "id": "0018a00001x735AAAQ",
-        "canal": "C&C",
-        "rede": "HIPER MAIS",
-        "nome": "HIPERMAIS FATIMA",
-        "cidade": "JOINVILLE",
-        "estado": "SC"
-      }
-    ]
-  },
-  {
-    "setor": "SC146",
-    "lojas": [
-      {
-        "id": "0018a00002cTPNiAAO",
-        "canal": "NMR",
-        "rede": "BADOTTI E CIA LTDA",
-        "nome": "BADOTTI E CIA LTDA AVENIDA BRASIL 295",
-        "cidade": "XANXERE",
-        "estado": "SC"
-      },
-      {
-        "id": "0018a00001x735WAAQ",
-        "canal": "NMR",
-        "rede": "BRASAO OESTE LTDA",
-        "nome": "BRASAO SUPERMERCADOS SA R ANTONIO V GIORDANI 164",
-        "cidade": "XANXERE",
-        "estado": "SC"
-      },
-      {
-        "id": "0018a00001x730pAAA",
-        "canal": "DPP",
-        "rede": "PANVEL",
-        "nome": "PANVEL FILIAL 799 XAN/1",
-        "cidade": "XANXERE",
-        "estado": "SC"
-      },
-      {
-        "id": "0018a00002MhIdWAAV",
+        "id": "0018a00002cSe4cAAC",
         "canal": "DPP",
         "rede": "RAIASIL",
-        "nome": "RAIA XANXERE A (VICTOR KONDER)  (HIBRIDO P)",
-        "cidade": "XANXERE",
+        "nome": "DROGA RAIA SALGADO FILHO",
+        "cidade": "CASCAVEL",
+        "estado": "PR"
+      },
+      {
+        "id": "001Ho00001Z3pGYIAZ",
+        "canal": "DPP",
+        "rede": "DROGARIA SAO JOAO",
+        "nome": "DROGARIA SAO JOAO  AVENIDA TANCREDO NEVES 2119  PIONEIROS CATARINENSES",
+        "cidade": "CASCAVEL",
+        "estado": "PR"
+      },
+      {
+        "id": "001Ho00001Z3pGGIAZ",
+        "canal": "DPP",
+        "rede": "DROGARIA SAO JOAO",
+        "nome": "DROGARIA SAO JOAO  RUA SANTOS DUMONT 2309  CENTRO",
+        "cidade": "TOLEDO",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9KGsQAM",
+        "canal": "DPP",
+        "rede": "M A BORGES COMERCIO DE MEDICAMENTOS LTDA",
+        "nome": "FARMA ESTRELA AV BRASIL 7538",
+        "cidade": "CASCAVEL",
+        "estado": "PR"
+      },
+      {
+        "id": "0018a00001x7lRaAAI",
+        "canal": "DPP",
+        "rede": "M A BORGES COMERCIO DE MEDICAMENTOS LTDA",
+        "nome": "FARMACIA ESTRELA CASCAVEL",
+        "cidade": "CASCAVEL",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9KGwQAM",
+        "canal": "DPP",
+        "rede": "M A BORGES COMERCIO DE MEDICAMENTOS LTDA",
+        "nome": "FARMACIA ESTRELA RUA PARANA 2881",
+        "cidade": "CASCAVEL",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9KGxQAM",
+        "canal": "DPP",
+        "rede": "M A BORGES COMERCIO DE MEDICAMENTOS LTDA",
+        "nome": "FARMACIA ESTRELA RUA PRESIDENTE JUSCELINO KUBITSCHEK 833",
+        "cidade": "CASCAVEL",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9HuRQAU",
+        "canal": "DPP",
+        "rede": "NISSEI",
+        "nome": "NISSEI 138 CASCAVEL CENTRO 24 HRS",
+        "cidade": "CASCAVEL",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9HuOQAU",
+        "canal": "DPP",
+        "rede": "NISSEI",
+        "nome": "NISSEI 142 TOLEDO CENTRO MATRIZ",
+        "cidade": "TOLEDO",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9HujQAE",
+        "canal": "DPP",
+        "rede": "NISSEI",
+        "nome": "NISSEI 296 TOLEDO",
+        "cidade": "TOLEDO",
+        "estado": "PR"
+      },
+      {
+        "id": "001Ho00001Z7Eo0IAF",
+        "canal": "DPP",
+        "rede": "PANVEL",
+        "nome": "PANVEL CASCAVEL MINAS GERAIS",
+        "cidade": "CASCAVEL",
+        "estado": "PR"
+      },
+      {
+        "id": "0018a00001x730nAAA",
+        "canal": "DPP",
+        "rede": "PANVEL",
+        "nome": "PANVEL FILIAL 581 TLD/2",
+        "cidade": "TOLEDO",
+        "estado": "PR"
+      },
+      {
+        "id": "0018a00002cTPaNAAW",
+        "canal": "DPP",
+        "rede": "PANVEL",
+        "nome": "PANVEL RUA BARAO DO RIO BRANCO 1540",
+        "cidade": "TOLEDO",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9HZGQA2",
+        "canal": "DPP",
+        "rede": "PANVEL",
+        "nome": "PANVEL RUA PARANA",
+        "cidade": "CASCAVEL",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9IY7QAM",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "RAIA CASCAVEL A  (HIBRIDO M)",
+        "cidade": "CASCAVEL",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9IWVQA2",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "RAIA CASCAVEL B  (NOBRE M)",
+        "cidade": "CASCAVEL",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9IPPQA2",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "RAIA CASCAVEL C  (NOBRE G)",
+        "cidade": "CASCAVEL",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9IPDQA2",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "RAIA CASCAVEL D  (NOBRE M)",
+        "cidade": "CASCAVEL",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9IJGQA2",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "RAIA CASCAVEL E  (NOBRE P)",
+        "cidade": "CASCAVEL",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9IP1QAM",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "RAIA TOLEDO B  (NOBRE M)",
+        "cidade": "TOLEDO",
+        "estado": "PR"
+      }
+    ]
+  },
+  {
+    "setor": "RS12",
+    "promotor": "KATIA EUFRASE SILVA",
+    "executivo": "ANNY",
+    "canais": [
+      "HFS"
+    ],
+    "lojas": [
+      {
+        "id": "0014W00002e9Hf1QAE",
+        "canal": "HFS",
+        "rede": "COOPERATIVA SANTA CLARA LTDA",
+        "nome": "SANTA CLARA CARLOS BARBOSA",
+        "cidade": "CARLOS BARBOSA",
+        "estado": "RS"
+      },
+      {
+        "id": "0014W00002e9Hf0QAE",
+        "canal": "HFS",
+        "rede": "COOPERATIVA SANTA CLARA LTDA",
+        "nome": "SANTA CLARA PONTE SECA",
+        "cidade": "CARLOS BARBOSA",
+        "estado": "RS"
+      }
+    ]
+  },
+  {
+    "setor": "RS137",
+    "promotor": "JULIA EDUARDA MARTINS",
+    "executivo": "ANNY",
+    "canais": [
+      "HFS"
+    ],
+    "lojas": [
+      {
+        "id": "0014W00002e9HeeQAE",
+        "canal": "HFS",
+        "rede": "COOP AGRIC CAIRU LTDA",
+        "nome": "CAIRU GARIBALDI",
+        "cidade": "GARIBALDI",
+        "estado": "RS"
+      }
+    ]
+  },
+  {
+    "setor": "RS148",
+    "promotor": "ARIEL WEBER",
+    "executivo": "ANNY",
+    "canais": [
+      "DPP"
+    ],
+    "lojas": [
+      {
+        "id": "0018a00002cTPSPAA4",
+        "canal": "DPP",
+        "rede": "DROGARIA SAO JOAO",
+        "nome": "DROGARIA SAO JOAO RUA SANTANA 1340",
+        "cidade": "PORTO ALEGRE",
+        "estado": "RS"
+      },
+      {
+        "id": "0014W00002e9KcAQAU",
+        "canal": "DPP",
+        "rede": "DROGARIA PAGUE MENOS",
+        "nome": "PAGUE MENOS 357 POA MENINO DEUS",
+        "cidade": "PORTO ALEGRE",
+        "estado": "RS"
+      },
+      {
+        "id": "0014W00002e9KUCQA2",
+        "canal": "DPP",
+        "rede": "DROGARIA PAGUE MENOS",
+        "nome": "PAGUE MENOS POA BAGE",
+        "cidade": "PORTO ALEGRE",
+        "estado": "RS"
+      },
+      {
+        "id": "0014W00002e9HagQAE",
+        "canal": "DPP",
+        "rede": "PANVEL",
+        "nome": "PANVEL 308 POA",
+        "cidade": "PORTO ALEGRE",
+        "estado": "RS"
+      },
+      {
+        "id": "0014W00002e9HaEQAU",
+        "canal": "DPP",
+        "rede": "PANVEL",
+        "nome": "PANVEL 330 POA",
+        "cidade": "PORTO ALEGRE",
+        "estado": "RS"
+      },
+      {
+        "id": "0014W00002e9HZRQA2",
+        "canal": "DPP",
+        "rede": "PANVEL",
+        "nome": "PANVEL 378 POA",
+        "cidade": "PORTO ALEGRE",
+        "estado": "RS"
+      },
+      {
+        "id": "0014W00002e9HYxQAM",
+        "canal": "DPP",
+        "rede": "PANVEL",
+        "nome": "PANVEL 733 PORTO ALEGRE",
+        "cidade": "PORTO ALEGRE",
+        "estado": "RS"
+      },
+      {
+        "id": "0014W00002e9HcTQAU",
+        "canal": "DPP",
+        "rede": "PANVEL",
+        "nome": "PANVEL FILIAL 139 POA",
+        "cidade": "PORTO ALEGRE",
+        "estado": "RS"
+      },
+      {
+        "id": "0014W00002e9HaLQAU",
+        "canal": "DPP",
+        "rede": "PANVEL",
+        "nome": "PANVEL FILIAL 322 POA",
+        "cidade": "PORTO ALEGRE",
+        "estado": "RS"
+      },
+      {
+        "id": "0014W00002e9HZxQAM",
+        "canal": "DPP",
+        "rede": "PANVEL",
+        "nome": "PANVEL FILIAL 343 POA",
+        "cidade": "PORTO ALEGRE",
+        "estado": "RS"
+      },
+      {
+        "id": "0018a00001x731lAAA",
+        "canal": "DPP",
+        "rede": "PANVEL",
+        "nome": "PANVEL FILIAL 783 POA",
+        "cidade": "PORTO ALEGRE",
+        "estado": "RS"
+      },
+      {
+        "id": "0014W00002e9HdbQAE",
+        "canal": "DPP",
+        "rede": "PANVEL",
+        "nome": "PANVEL FILIAL 9 POA",
+        "cidade": "PORTO ALEGRE",
+        "estado": "RS"
+      },
+      {
+        "id": "0018a00002aaTBGAA2",
+        "canal": "DPP",
+        "rede": "DROGARIA SAO JOAO",
+        "nome": "SAO JOAO 102 PORTO ALEGRE",
+        "cidade": "PORTO ALEGRE",
+        "estado": "RS"
+      },
+      {
+        "id": "0018a00002aaTBVAA2",
+        "canal": "DPP",
+        "rede": "DROGARIA SAO JOAO",
+        "nome": "SAO JOAO 103 PORTO ALEGRE",
+        "cidade": "PORTO ALEGRE",
+        "estado": "RS"
+      },
+      {
+        "id": "0018a00002aaTBUAA2",
+        "canal": "DPP",
+        "rede": "DROGARIA SAO JOAO",
+        "nome": "SAO JOAO 107 PORTO ALEGRE",
+        "cidade": "PORTO ALEGRE",
+        "estado": "RS"
+      },
+      {
+        "id": "001Ho00001XTqzVIAT",
+        "canal": "DPP",
+        "rede": "DROGARIA SAO JOAO",
+        "nome": "SAO JOAO POA 1200",
+        "cidade": "PORTO ALEGRE",
+        "estado": "RS"
+      },
+      {
+        "id": "0014W00002e9HfnQAE",
+        "canal": "DPP",
+        "rede": "DROGARIA SAO JOAO",
+        "nome": "SAO JOAO PORTO ALEGRE 33",
+        "cidade": "PORTO ALEGRE",
+        "estado": "RS"
+      },
+      {
+        "id": "0018a00001x731zAAA",
+        "canal": "DPP",
+        "rede": "DROGARIA SAO JOAO",
+        "nome": "SAO JOAO PORTO ALEGRE 91",
+        "cidade": "PORTO ALEGRE",
+        "estado": "RS"
+      }
+    ]
+  },
+  {
+    "setor": "RS150",
+    "promotor": "BRUNA JUVENCIO",
+    "executivo": "ANNY",
+    "canais": [
+      "NMR"
+    ],
+    "lojas": [
+      {
+        "id": "0014W00002e9HYaQAM",
+        "canal": "NMR",
+        "rede": "CIA ZAFFARI BRASIL",
+        "nome": "ZAFFARI 22",
+        "cidade": "PORTO ALEGRE",
+        "estado": "RS"
+      }
+    ]
+  },
+  {
+    "setor": "RS177",
+    "promotor": "NESTOR JORGE",
+    "executivo": "ANNY",
+    "canais": [
+      "GMR"
+    ],
+    "lojas": [
+      {
+        "id": "0018a00002HwkoIAAR",
+        "canal": "GMR",
+        "rede": "CARREFOUR C&C",
+        "nome": "CARREFOUR POA CRISTAL",
+        "cidade": "PORTO ALEGRE",
+        "estado": "RS"
+      }
+    ]
+  },
+  {
+    "setor": "RS185",
+    "promotor": "ANTÔNIO DOS SANTOS",
+    "executivo": "ANNY",
+    "canais": [
+      "C&C"
+    ],
+    "lojas": [
+      {
+        "id": "0018a00002cQD2MAAW",
+        "canal": "C&C",
+        "rede": "COMERCIAL ZAFFARI",
+        "nome": "STOK CENTER TORRES",
+        "cidade": "TORRES",
+        "estado": "RS"
+      }
+    ]
+  },
+  {
+    "setor": "RS196",
+    "promotor": "MURIELE ONGARATTO KINGESK",
+    "executivo": "ANNY",
+    "canais": [
+      "GMR"
+    ],
+    "lojas": [
+      {
+        "id": "0018a00002HwkoOAAR",
+        "canal": "GMR",
+        "rede": "CARREFOUR C&C",
+        "nome": "CARREFOUR PELOTAS",
+        "cidade": "PELOTAS",
+        "estado": "RS"
+      }
+    ]
+  },
+  {
+    "setor": "RS258",
+    "promotor": "ISADORA BARBOSA",
+    "executivo": "ANNY",
+    "canais": [
+      "NMR"
+    ],
+    "lojas": [
+      {
+        "id": "0018a00002GR1aAAAT",
+        "canal": "NMR",
+        "rede": "UNIDASUL VAREJO",
+        "nome": "UNIDASUL RODOVIA RS 407 2575",
+        "cidade": "XANGRI-LA",
+        "estado": "RS"
+      }
+    ]
+  },
+  {
+    "setor": "RS60",
+    "promotor": "JOSSANE DE FREITAS MELO",
+    "executivo": "ANNY",
+    "canais": [
+      "C&C",
+      "DPP"
+    ],
+    "lojas": [
+      {
+        "id": "0014W00002e9HWaQAM",
+        "canal": "C&C",
+        "rede": "ATACADAO",
+        "nome": "ATACADAO BAGE",
+        "cidade": "BAGE",
+        "estado": "RS"
+      },
+      {
+        "id": "0018a00002cTPaSAAW",
+        "canal": "DPP",
+        "rede": "PANVEL",
+        "nome": "PANVEL AVENIDA TUPY SILVEIRA 2399",
+        "cidade": "BAGE",
+        "estado": "RS"
+      },
+      {
+        "id": "0014W00002e9Ha3QAE",
+        "canal": "DPP",
+        "rede": "PANVEL",
+        "nome": "PANVEL FILIAL 346 BG/4",
+        "cidade": "BAGE",
+        "estado": "RS"
+      },
+      {
+        "id": "0014W00002e9Hb0QAE",
+        "canal": "DPP",
+        "rede": "PANVEL",
+        "nome": "PANVEL FILIAL 488 BG/3",
+        "cidade": "BAGE",
+        "estado": "RS"
+      },
+      {
+        "id": "0014W00002e9HdpQAE",
+        "canal": "DPP",
+        "rede": "PANVEL",
+        "nome": "PANVEL FILIAL 51 BG/1",
+        "cidade": "BAGE",
+        "estado": "RS"
+      },
+      {
+        "id": "0014W00002e9HiRQAU",
+        "canal": "DPP",
+        "rede": "DROGARIA SAO JOAO",
+        "nome": "SAO JOAO BAGE 2",
+        "cidade": "BAGE",
+        "estado": "RS"
+      },
+      {
+        "id": "0014W00002e9HgsQAE",
+        "canal": "DPP",
+        "rede": "DROGARIA SAO JOAO",
+        "nome": "SAO JOAO BAGE 3",
+        "cidade": "BAGE",
+        "estado": "RS"
+      },
+      {
+        "id": "0014W00002e9HgpQAE",
+        "canal": "DPP",
+        "rede": "DROGARIA SAO JOAO",
+        "nome": "SAO JOAO BAGE 4",
+        "cidade": "BAGE",
+        "estado": "RS"
+      },
+      {
+        "id": "0014W00002e9HgoQAE",
+        "canal": "DPP",
+        "rede": "DROGARIA SAO JOAO",
+        "nome": "SAO JOAO BAGE 5",
+        "cidade": "BAGE",
+        "estado": "RS"
+      }
+    ]
+  },
+  {
+    "setor": "SC113",
+    "promotor": "SUZANA GOMES DE ASSIS SOUZA",
+    "executivo": "ANNY",
+    "canais": [
+      "C&C"
+    ],
+    "lojas": [
+      {
+        "id": "0014W00002e9HrfQAE",
+        "canal": "C&C",
+        "rede": "BRASIL ATACADISTA",
+        "nome": "BRASIL ATACADISTA INGLESES",
+        "cidade": "FLORIANOPOLIS",
         "estado": "SC"
       }
     ]
   },
   {
-    "setor": "SC180",
+    "setor": "SC167",
+    "promotor": "LUIS CLAUDIO SANTOS DOS SANTOS",
+    "executivo": "ANNY",
+    "canais": [
+      "DPP"
+    ],
     "lojas": [
       {
-        "id": "001Ho00001Z3pH5IAJ",
+        "id": "0014W00002e9HbYQAU",
         "canal": "DPP",
-        "rede": "DROGARIA SAO JOAO",
-        "nome": "DROGARIA SAO JOAO  RUA DONA FRANCISCA 3125  SAGUACU",
-        "cidade": "JOINVILLE",
+        "rede": "PANVEL",
+        "nome": "PANVEL FILIAL 449 MPR",
+        "cidade": "ITAPEMA",
         "estado": "SC"
       },
       {
-        "id": "0018a00001s6N7RAAU",
-        "canal": "C&C",
-        "rede": "KOCH",
-        "nome": "KOMPRAO 45 JOINVILLE",
-        "cidade": "JOINVILLE",
+        "id": "0018a00002cTPamAAG",
+        "canal": "DPP",
+        "rede": "PANVEL",
+        "nome": "PANVEL RUA 278 526",
+        "cidade": "ITAPEMA",
         "estado": "SC"
       },
       {
-        "id": "0018a00002eHdBzAAK",
+        "id": "0014W00002e9IMQQA2",
         "canal": "DPP",
-        "rede": "DROGARIA SAO JOAO",
-        "nome": "SAO JOAO FARMACIAS RUA OLAVO BILAC 368",
-        "cidade": "JOINVILLE",
+        "rede": "RAIASIL",
+        "nome": "RAIA ITAPEMA D  4886 (NOBRE P)",
+        "cidade": "ITAPEMA",
         "estado": "SC"
       }
     ]
   },
   {
-    "setor": "SC281",
+    "setor": "SC209",
+    "promotor": "LUIS VINICIUS SILVA COSTA",
+    "executivo": "DANIELA",
+    "canais": [
+      "CLUB"
+    ],
     "lojas": [
       {
-        "id": "001Ho00001Z6S5WIAV",
+        "id": "0014W00002e9LYyQAM",
+        "canal": "CLUB",
+        "rede": "SAMS CLUB",
+        "nome": "SAMS CLUB BLUMENAU",
+        "cidade": "BLUMENAU",
+        "estado": "SC"
+      }
+    ]
+  },
+  {
+    "setor": "SC21",
+    "promotor": "ANA KAROLYNE PEDROSO GELBARI",
+    "executivo": "ANNY",
+    "canais": [
+      "GMR"
+    ],
+    "lojas": [
+      {
+        "id": "0014W00002e9HXFQA2",
+        "canal": "GMR",
+        "rede": "CARREFOUR C&C",
+        "nome": "CARREFOUR CAMBORIU",
+        "cidade": "BALNEARIO CAMBORIU",
+        "estado": "SC"
+      }
+    ]
+  },
+  {
+    "setor": "SC223",
+    "promotor": "JOÃO VIOTOR DA SILVA CARDOSO",
+    "executivo": "ANNY",
+    "canais": [
+      "C&C"
+    ],
+    "lojas": [
+      {
+        "id": "0018a00002eFgnEAAS",
         "canal": "C&C",
         "rede": "KOCH",
-        "nome": "KOMPRAO 90 SAO JOSE FORQUILHAS",
+        "nome": "KOMPRAO 79 PALHOCA",
+        "cidade": "PALHOCA",
+        "estado": "SC"
+      }
+    ]
+  },
+  {
+    "setor": "SC241",
+    "promotor": "ARIANA SILVA",
+    "executivo": "ANNY",
+    "canais": [
+      "HFS"
+    ],
+    "lojas": [
+      {
+        "id": "0018a00002eFgmuAAC",
+        "canal": "HFS",
+        "rede": "PRADO SUPERMERCADO LTDA",
+        "nome": "PRADO PEDRO DEMORO",
+        "cidade": "ESTREITO",
+        "estado": "SC"
+      }
+    ]
+  },
+  {
+    "setor": "SC29",
+    "promotor": "SAMANTA SILVA NUNES",
+    "executivo": "ANNY",
+    "canais": [
+      "HFS"
+    ],
+    "lojas": [
+      {
+        "id": "0018a00002aaTBAAA2",
+        "canal": "HFS",
+        "rede": "HIPER SELECT SUPERMERCADOS LTDA",
+        "nome": "HIPER BOM MORRO DAS PEDRAS",
+        "cidade": "FLORIANOPOLIS",
+        "estado": "SC"
+      },
+      {
+        "id": "0018a00002eFgmpAAC",
+        "canal": "HFS",
+        "rede": "HIPER SELECT SUPERMERCADOS LTDA",
+        "nome": "HIPER SELECT GONZAGA",
+        "cidade": "FLORIANOPOLIS",
+        "estado": "SC"
+      },
+      {
+        "id": "0014W00002e9L6NQAU",
+        "canal": "HFS",
+        "rede": "HIPER SELECT SUPERMERCADOS LTDA",
+        "nome": "MERCADO FELIPE ROYER PEQUENO PRINCIPE",
+        "cidade": "FLORIANOPOLIS",
+        "estado": "SC"
+      }
+    ]
+  },
+  {
+    "setor": "SC31",
+    "promotor": "ADRIANA RRODRIGUES",
+    "executivo": "ANNY",
+    "canais": [
+      "NMR"
+    ],
+    "lojas": [
+      {
+        "id": "0014W00002e9HpuQAE",
+        "canal": "NMR",
+        "rede": "GIASSI",
+        "nome": "GIASSI 12 SAO JOSE AREIAS",
         "cidade": "SAO JOSE",
         "estado": "SC"
       }
     ]
   },
   {
+    "setor": "SC33",
+    "promotor": "FRANCIELA RITA COSTA",
+    "executivo": "DANIELA",
+    "canais": [
+      "NMR"
+    ],
+    "lojas": [
+      {
+        "id": "0014W00002e9HqQQAU",
+        "canal": "NMR",
+        "rede": "ANGELONI",
+        "nome": "ANGELONI 21 JOINVILLE JOAO COLIN",
+        "cidade": "JOINVILLE",
+        "estado": "SC"
+      },
+      {
+        "id": "0014W00002e9HyWQAU",
+        "canal": "NMR",
+        "rede": "CONDOR",
+        "nome": "CONDOR 51 JOINVILLE AMERICA",
+        "cidade": "JOINVILLE",
+        "estado": "SC"
+      }
+    ]
+  },
+  {
+    "setor": "SC34",
+    "promotor": "YASMIM MANGER MARQUES",
+    "executivo": "ANNY",
+    "canais": [
+      "NMR"
+    ],
+    "lojas": [
+      {
+        "id": "0014W00002e9HpwQAE",
+        "canal": "NMR",
+        "rede": "GIASSI",
+        "nome": "GIASSI 10 PALHOCA",
+        "cidade": "PALHOCA",
+        "estado": "SC"
+      }
+    ]
+  },
+  {
+    "setor": "SC63",
+    "promotor": "CAMIOLA PEREIRA DA SILVA",
+    "executivo": "ANNY",
+    "canais": [
+      "DPP"
+    ],
+    "lojas": [
+      {
+        "id": "0014W00002e9IcJQAU",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "RAIA CRICIUMA A  (HIBRIDO M)",
+        "cidade": "CRICIUMA",
+        "estado": "SC"
+      }
+    ]
+  },
+  {
+    "setor": "SC71",
+    "promotor": "AYLLA GABRIEL HISSI",
+    "executivo": "DANIELA",
+    "canais": [
+      "CLUB"
+    ],
+    "lojas": [
+      {
+        "id": "0014W00002e9LYxQAM",
+        "canal": "CLUB",
+        "rede": "SAMS CLUB",
+        "nome": "SAMS CLUB JOINVILLE",
+        "cidade": "JOINVILLE",
+        "estado": "SC"
+      }
+    ]
+  },
+  {
+    "setor": "SPI02",
+    "promotor": "ELAINE",
+    "executivo": "KARINA",
+    "canais": [
+      "DPP"
+    ],
+    "lojas": [
+      {
+        "id": "0014W00002e9J6bQAE",
+        "canal": "DPP",
+        "rede": "DROGAL",
+        "nome": "DROGAL CAMPINAS AV BADEN POWELL",
+        "cidade": "CAMPINAS",
+        "estado": "SPI"
+      },
+      {
+        "id": "0014W00002e9IifQAE",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "DROGASIL CP BARAO GERALDO 1  (NOBRE P)",
+        "cidade": "CAMPINAS",
+        "estado": "SPI"
+      },
+      {
+        "id": "0014W00002e9IKdQAM",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "DROGASIL CP BARAO GERALDO 2  (NOBRE M)",
+        "cidade": "CAMPINAS",
+        "estado": "SPI"
+      },
+      {
+        "id": "0014W00002e9IM0QAM",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "DROGASIL CP JARDIM PROENCA 1  (NOBRE G)",
+        "cidade": "CAMPINAS",
+        "estado": "SPI"
+      },
+      {
+        "id": "0014W00002e9IGUQA2",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "DROGASIL CP JD MADALENA 1  (NOBRE M)",
+        "cidade": "CAMPINAS",
+        "estado": "SPI"
+      },
+      {
+        "id": "0014W00002e9IE1QAM",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "DROGASIL CP JD NOVA EUROPA 1  (NOBRE M)",
+        "cidade": "CAMPINAS",
+        "estado": "SPI"
+      },
+      {
+        "id": "0014W00002e9Ii5QAE",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "DROGASIL CP JD OLIVEIRAS 1  (HIBRIDO M)",
+        "cidade": "CAMPINAS",
+        "estado": "SPI"
+      },
+      {
+        "id": "0014W00002e9IgeQAE",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "DROGASIL CP PONTE PRETA 1  (HIBRIDO M)",
+        "cidade": "CAMPINAS",
+        "estado": "SPI"
+      },
+      {
+        "id": "0014W00002e9IV1QAM",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "DROGASIL CP SWIFT 1  (HIBRIDO G)",
+        "cidade": "CAMPINAS",
+        "estado": "SPI"
+      },
+      {
+        "id": "0018a00001x738XAAQ",
+        "canal": "DPP",
+        "rede": "DPSP",
+        "nome": "DSP VILA JOAQUIM INACIO",
+        "cidade": "CAMPINAS",
+        "estado": "SPI"
+      },
+      {
+        "id": "0014W00002e9KTuQAM",
+        "canal": "DPP",
+        "rede": "DROGARIA PAGUE MENOS",
+        "nome": "FARMACIAS PAGUE MENOS VILA MARIETA",
+        "cidade": "CAMPINAS",
+        "estado": "SPI"
+      },
+      {
+        "id": "0014W00002e9IYwQAM",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "RAIA CP BARAO GERALDO A  (NOBRE G)",
+        "cidade": "CAMPINAS",
+        "estado": "SPI"
+      },
+      {
+        "id": "0014W00002e9IMjQAM",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "RAIA CP JD NOVA EUROPA A  (NOBRE G)",
+        "cidade": "CAMPINAS",
+        "estado": "SPI"
+      }
+    ]
+  },
+  {
     "setor": "SPI11",
+    "promotor": "EVERTON",
+    "executivo": "KARINA",
+    "canais": [
+      "DPP"
+    ],
     "lojas": [
       {
         "id": "0018a00001x739EAAQ",
@@ -486,251 +1257,429 @@ const CATALOGO = [
         "estado": "SPI"
       },
       {
-        "id": "0018a00001jxkMsAAI",
-        "canal": "GMR",
-        "rede": "GPA",
-        "nome": "EX ITAPETININGA  LOJA 2080",
-        "cidade": "ITAPETININGA",
-        "estado": "SPI"
-      },
-      {
         "id": "0014W00002e9IcOQAU",
         "canal": "DPP",
         "rede": "RAIASIL",
         "nome": "RAIA PORTO FELIZ A  (NOBRE PP)",
         "cidade": "PORTO FELIZ",
         "estado": "SPI"
-      },
+      }
+    ]
+  },
+  {
+    "setor": "SPI187",
+    "promotor": "AMANDA",
+    "executivo": "KARINA",
+    "canais": [
+      "NMR"
+    ],
+    "lojas": [
       {
-        "id": "0018a000026L7CqAAK",
+        "id": "0014W00002e9Iz5QAE",
         "canal": "NMR",
-        "rede": "REDE SAO ROQUE",
-        "nome": "SAO ROQUE TATUI",
-        "cidade": "TATUI",
+        "rede": "REDE COVABRA",
+        "nome": "COVABRA DUNLOP L2",
+        "cidade": "CAMPINAS",
         "estado": "SPI"
       },
       {
-        "id": "0018a00001jxkAaAAI",
-        "canal": "C&C",
-        "rede": "SPANI",
-        "nome": "SPANI ITAPETININGA",
-        "cidade": "ITAPETININGA",
+        "id": "0014W00002e9JQ8QAM",
+        "canal": "NMR",
+        "rede": "SAVEGNAGO",
+        "nome": "SAVEGNAGO CAMPINAS BOTAFOGO LJ44",
+        "cidade": "CAMPINAS",
+        "estado": "SPI"
+      },
+      {
+        "id": "0014W00002e9JTFQA2",
+        "canal": "NMR",
+        "rede": "SAVEGNAGO",
+        "nome": "SAVEGNAGO CAMPINAS CENTRO LJ43",
+        "cidade": "CAMPINAS",
         "estado": "SPI"
       }
     ]
   },
   {
-    "setor": "SPI127",
+    "setor": "SPI193",
+    "promotor": "LAIZ DE SOUZA LIMA",
+    "executivo": "GILSON",
+    "canais": [
+      "GMR"
+    ],
     "lojas": [
       {
-        "id": "0018a00001x7mJVAAY",
-        "canal": "C&C",
-        "rede": "ASSAI",
-        "nome": "ASSAI SOROCABA CAMPOLIM 263",
-        "cidade": "SOROCABA",
-        "estado": "SPI"
-      },
-      {
-        "id": "0014W00002e9LOYQA2",
-        "canal": "LASA",
-        "rede": "LASA",
-        "nome": "LASA SOROCABA SHOPPING IGUATEMI",
-        "cidade": "VOTORANTIM",
-        "estado": "SPI"
-      }
-    ]
-  },
-  {
-    "setor": "SPI439",
-    "lojas": [
-      {
-        "id": "0014W00002e9JetQAE",
+        "id": "0014W00002e9JMNQA2",
         "canal": "GMR",
-        "rede": "GPA",
-        "nome": "EX OLIMPIA  LOJA 5740",
-        "cidade": "OLIMPIA",
-        "estado": "SPI"
-      },
-      {
-        "id": "0014W00002e9LJIQA2",
-        "canal": "NMR",
-        "rede": "SUPERMERCADO IQUEGAMI",
-        "nome": "IQUEGAMI OLIMPIA LOJA 04",
-        "cidade": "OLIMPIA",
-        "estado": "SPI"
-      },
-      {
-        "id": "0014W00002e9LJGQA2",
-        "canal": "NMR",
-        "rede": "SUPERMERCADO IQUEGAMI",
-        "nome": "IQUEGAMI OLIMPIA LOJA 08",
-        "cidade": "OLIMPIA",
-        "estado": "SPI"
-      },
-      {
-        "id": "0018a000026L7CbAAK",
-        "canal": "NMR",
-        "rede": "SUPERMERCADO IQUEGAMI",
-        "nome": "IQUEGAMI OLIMPIA LOJA 15",
-        "cidade": "OLIMPIA",
+        "rede": "CARREFOUR C&C",
+        "nome": "CARREFOUR HIPER SJRP SHOPPING",
+        "cidade": "SAO JOSE DO RIO PRETO",
         "estado": "SPI"
       }
     ]
   },
   {
-    "setor": "SPI491",
+    "setor": "SPI203",
+    "promotor": "ROUSIANE FERREIRA NUNES",
+    "executivo": "GILSON",
+    "canais": [
+      "CLUB",
+      "NMR"
+    ],
     "lojas": [
       {
-        "id": "0014W00002e9IH9QAM",
-        "canal": "DPP",
-        "rede": "RAIASIL",
-        "nome": "DROGASIL CAJAMAR 1  (HIBRIDO M)",
-        "cidade": "CAJAMAR",
-        "estado": "SPI"
-      },
-      {
-        "id": "0014W00002e9IqwQAE",
-        "canal": "DPP",
-        "rede": "DPSP",
-        "nome": "DSP CAJAMAR",
-        "cidade": "CAJAMAR",
-        "estado": "SPI"
-      },
-      {
-        "id": "0014W00002e9LHPQA2",
-        "canal": "NMR",
-        "rede": "SONDA",
-        "nome": "SONDA CAJAMAR",
-        "cidade": "CAJAMAR",
-        "estado": "SPI"
-      },
-      {
-        "id": "0018a00001x73AcAAI",
-        "canal": "C&C",
-        "rede": "SPANI",
-        "nome": "SPANI CAJAMAR",
-        "cidade": "CAJAMAR",
-        "estado": "SPI"
-      }
-    ]
-  },
-  {
-    "setor": "SPI511",
-    "lojas": [
-      {
-        "id": "0014W00002e9J8GQAU",
-        "canal": "DPP",
-        "rede": "DROGAL",
-        "nome": "DROGAL COSMOPOLIS",
-        "cidade": "COSMOPOLIS",
-        "estado": "SPI"
-      },
-      {
-        "id": "0014W00002e9IzcQAE",
+        "id": "0018a00001x73B8AAI",
         "canal": "NMR",
         "rede": "SUPER PAGUE MENOS",
-        "nome": "PAGUE MENOS ARTUR NOGUEIRA L21",
-        "cidade": "ARTUR NOGUEIRA",
+        "nome": "PAGUE MENOS AV DONA FRANCISCA 300",
+        "cidade": "PIRACICABA",
         "estado": "SPI"
       },
       {
-        "id": "0014W00002e9JOTQA2",
+        "id": "0014W00002e9LZlQAM",
+        "canal": "CLUB",
+        "rede": "SAMS CLUB",
+        "nome": "SAMS CLUB PIRACICABA",
+        "cidade": "PIRACICABA",
+        "estado": "SPI"
+      },
+      {
+        "id": "0018a00001s6N72AAE",
         "canal": "NMR",
-        "rede": "SAO VICENTE",
-        "nome": "SAO VICENTE LOJA 10",
-        "cidade": "COSMOPOLIS",
+        "rede": "SAVEGNAGO",
+        "nome": "SAVEGNAGO LJ 51 PIRACICABA INDEPENDENCIA",
+        "cidade": "PIRACICABA",
         "estado": "SPI"
       }
     ]
   },
   {
-    "setor": "SPI595",
+    "setor": "SPI234",
+    "promotor": "MARIA",
+    "executivo": "KARINA",
+    "canais": [
+      "NMR"
+    ],
     "lojas": [
       {
-        "id": "0018a000022TUVxAAO",
+        "id": "0018a00002cTPXTAA4",
         "canal": "NMR",
-        "rede": "REDE SUPERMERCADO ASP",
-        "nome": "ENXUTO JD AURELIA",
+        "rede": "SAVEGNAGO",
+        "nome": "SAVEGNAGO AV JORGE TIBIRICA 139",
         "cidade": "CAMPINAS",
         "estado": "SPI"
       },
       {
-        "id": "0018a00002eGpXYAA0",
-        "canal": "C&C",
-        "rede": "SPANI",
-        "nome": "SPANI OSWALDO OSCAR  CAMPINAS",
+        "id": "0018a00002cTPQdAAO",
+        "canal": "NMR",
+        "rede": "SAVEGNAGO",
+        "nome": "SAVEGNAGO AV PADRE ALMEIDA GARRET 1112",
         "cidade": "CAMPINAS",
         "estado": "SPI"
       }
     ]
   },
   {
-    "setor": "SPI596",
+    "setor": "SPI263",
+    "promotor": "VANESSA",
+    "executivo": "KARINA",
+    "canais": [
+      "PERFUMARIA"
+    ],
     "lojas": [
       {
-        "id": "0014W00002e9I2oQAE",
-        "canal": "C&C",
-        "rede": "ATACADAO",
-        "nome": "ATACADAO CARAPICUIBA",
-        "cidade": "CARAPICUIBA",
+        "id": "0018a00002TnB3wAAF",
+        "canal": "PERFUMARIA",
+        "rede": "GEO COSMETICOS",
+        "nome": "GEOCOSMETICOS  ITAPEVI",
+        "cidade": "ITAPEVI",
         "estado": "SPI"
       }
     ]
   },
   {
-    "setor": "SPI620",
+    "setor": "SPI273",
+    "promotor": "B RUNA LEME SILVA",
+    "executivo": "GILSON",
+    "canais": [
+      "NMR"
+    ],
     "lojas": [
       {
-        "id": "0014W00002e9J9GQAU",
+        "id": "0014W00002e9J9SQAU",
         "canal": "NMR",
         "rede": "CONFIANCA",
-        "nome": "CONFIANCA NACOES",
+        "nome": "CONFIANCA MAX",
         "cidade": "BAURU",
         "estado": "SPI"
       }
     ]
   },
   {
-    "setor": "SPI68",
+    "setor": "SPI282",
+    "promotor": "LUIS HENRIQUE FERNANDES DE OLIVEIRA",
+    "executivo": "GILSON",
+    "canais": [
+      "LASA",
+      "NMR"
+    ],
     "lojas": [
       {
-        "id": "0018a000026L7D2AAK",
+        "id": "0014W00002e9JNoQAM",
+        "canal": "NMR",
+        "rede": "CASA AVENIDA",
+        "nome": "CASA AVENIDA LOJA 18",
+        "cidade": "PRESIDENTE PRUDENTE",
+        "estado": "SPI"
+      },
+      {
+        "id": "0014W00002e9LRRQA2",
+        "canal": "LASA",
+        "rede": "LASA",
+        "nome": "LASA SHC AMERICANAS PRE PRUDENTE",
+        "cidade": "PRESIDENTE PRUDENTE",
+        "estado": "SPI"
+      },
+      {
+        "id": "0014W00002e9Hy5QAE",
+        "canal": "NMR",
+        "rede": "MUFFATO VAREJO",
+        "nome": "MUFFATO VAREJO  1036  PRESIDENTE PRUDENTE (PARQUE SHOPPING)",
+        "cidade": "PRESIDENTE PRUDENTE",
+        "estado": "SPI"
+      }
+    ]
+  },
+  {
+    "setor": "SPI288",
+    "promotor": "SUELEN",
+    "executivo": "KARINA",
+    "canais": [
+      "C&C"
+    ],
+    "lojas": [
+      {
+        "id": "0014W00002e9KjsQAE",
+        "canal": "C&C",
+        "rede": "ASSAI",
+        "nome": "ASSAI FRANCO DA ROCHA 127",
+        "cidade": "FRANCO DA ROCHA",
+        "estado": "SPI"
+      }
+    ]
+  },
+  {
+    "setor": "SPI315",
+    "promotor": "CLAUDIA CRISTINA DE OLIVEIRA TARCITANO",
+    "executivo": "GILSON",
+    "canais": [
+      "C&C"
+    ],
+    "lojas": [
+      {
+        "id": "0014W00002e9LMIQA2",
+        "canal": "C&C",
+        "rede": "TENDA",
+        "nome": "TENDA BAURU",
+        "cidade": "BAURU",
+        "estado": "SPI"
+      }
+    ]
+  },
+  {
+    "setor": "SPI369",
+    "promotor": "KATIA REGINA SANCHES",
+    "executivo": "GILSON",
+    "canais": [
+      "C&C",
+      "DPP",
+      "GMR"
+    ],
+    "lojas": [
+      {
+        "id": "001Ho00001XTqzXIAT",
         "canal": "DPP",
-        "rede": "DROGAL",
-        "nome": "DROGAL OLIMPIA",
-        "cidade": "OLIMPIA",
+        "rede": "RAIASIL",
+        "nome": "DROGA RAIA",
+        "cidade": "SAO CARLOS",
         "estado": "SPI"
       },
       {
-        "id": "0014W00002e9LJKQA2",
-        "canal": "NMR",
-        "rede": "SUPERMERCADO IQUEGAMI",
-        "nome": "IQUEGAMI OLIMPIA LOJA 01",
-        "cidade": "OLIMPIA",
+        "id": "0014W00002e9J1yQAE",
+        "canal": "DPP",
+        "rede": "DROGAO SUPER",
+        "nome": "DROGAO SUPER SAO CARLOS BOTELHO",
+        "cidade": "SAO CARLOS",
         "estado": "SPI"
       },
       {
-        "id": "0018a000026L7CdAAK",
-        "canal": "NMR",
-        "rede": "SUPERMERCADO IQUEGAMI",
-        "nome": "IQUEGAMI OLIMPIA LOJA 16",
-        "cidade": "OLIMPIA",
+        "id": "0014W00002e9HvAQAU",
+        "canal": "DPP",
+        "rede": "NISSEI",
+        "nome": "DROGARIA NISSEI CENTRO",
+        "cidade": "SAO CARLOS",
         "estado": "SPI"
       },
       {
-        "id": "0014W00002e9LJJQA2",
-        "canal": "NMR",
-        "rede": "SUPERMERCADO IQUEGAMI",
-        "nome": "IQUEGAMI SEVERINIA LOJA 06",
-        "cidade": "SEVERINIA",
+        "id": "0014W00002e9Iv9QAE",
+        "canal": "DPP",
+        "rede": "DPSP",
+        "nome": "DSP SAO CARLOS",
+        "cidade": "SAO CARLOS",
         "estado": "SPI"
       },
       {
-        "id": "0018a000022TUVrAAO",
-        "canal": "NMR",
-        "rede": "LOPES",
-        "nome": "LOPES OLIMPIA",
-        "cidade": "OLIMPIA",
+        "id": "0014W00002e9Ir8QAE",
+        "canal": "DPP",
+        "rede": "DPSP",
+        "nome": "DSP SAO CARLOS II",
+        "cidade": "SAO CARLOS",
+        "estado": "SPI"
+      },
+      {
+        "id": "0014W00002e9JevQAE",
+        "canal": "GMR",
+        "rede": "GPA",
+        "nome": "EX SAO CARLOS  LOJA 5736",
+        "cidade": "SAO CARLOS",
+        "estado": "SPI"
+      },
+      {
+        "id": "0014W00002e9IYiQAM",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "RAIA SAO CARLOS B  (HIBRIDO M)",
+        "cidade": "SAO CARLOS",
+        "estado": "SPI"
+      },
+      {
+        "id": "0014W00002e9IfwQAE",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "RAIA SAO CARLOS E  (NOBRE P)",
+        "cidade": "SAO CARLOS",
+        "estado": "SPI"
+      },
+      {
+        "id": "0018a00001jxkEGAAY",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "RAIA SAO CARLOS F  (HIBRIDO M)",
+        "cidade": "SAO CARLOS",
+        "estado": "SPI"
+      },
+      {
+        "id": "0018a00001x738UAAQ",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "RAIA SAO CARLOS G  (NOBRE M)",
+        "cidade": "SAO CARLOS",
+        "estado": "SPI"
+      },
+      {
+        "id": "0014W00002e9IexQAE",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "RAIA SAO CARLOS H  (HIBRIDO M)",
+        "cidade": "SUMARE",
+        "estado": "SPI"
+      },
+      {
+        "id": "0014W00002e9JlnQAE",
+        "canal": "C&C",
+        "rede": "TONIN",
+        "nome": "TONIN LOJA 12",
+        "cidade": "SAO CARLOS",
+        "estado": "SPI"
+      }
+    ]
+  },
+  {
+    "setor": "SPI426",
+    "promotor": "MARIANA",
+    "executivo": "KARINA",
+    "canais": [
+      "C&C"
+    ],
+    "lojas": [
+      {
+        "id": "0014W00002e9I0cQAE",
+        "canal": "C&C",
+        "rede": "ATACADAO",
+        "nome": "ATACADAO ITAPECERICA DA SERRA",
+        "cidade": "ITAPECERICA DA SERRA",
+        "estado": "SPI"
+      }
+    ]
+  },
+  {
+    "setor": "SPI454",
+    "promotor": "LEONARDO",
+    "executivo": "KARINA",
+    "canais": [
+      "PERFUMARIA"
+    ],
+    "lojas": [
+      {
+        "id": "0014W00002e9K1JQAU",
+        "canal": "PERFUMARIA",
+        "rede": "REDE AKAI EMERSON",
+        "nome": "AKAI CAMPINAS",
+        "cidade": "CAMPINAS",
+        "estado": "SPI"
+      }
+    ]
+  },
+  {
+    "setor": "SPI475",
+    "promotor": "ISAAC",
+    "executivo": "KARINA",
+    "canais": [
+      "CLUB"
+    ],
+    "lojas": [
+      {
+        "id": "0018a00002PKRBzAAP",
+        "canal": "CLUB",
+        "rede": "SAMS CLUB",
+        "nome": "SAMS CLUB  INDAIATUBA",
+        "cidade": "INDAIATUBA",
+        "estado": "SPI"
+      }
+    ]
+  },
+  {
+    "setor": "SPI524",
+    "promotor": "VANUSA",
+    "executivo": "KARINA",
+    "canais": [
+      "CLUB"
+    ],
+    "lojas": [
+      {
+        "id": "0014W00002e9LaJQAU",
+        "canal": "CLUB",
+        "rede": "SAMS CLUB",
+        "nome": "SAMS CLUB OSASCO",
+        "cidade": "OSASCO",
+        "estado": "SPI"
+      }
+    ]
+  },
+  {
+    "setor": "SPI57",
+    "promotor": "NATIELE APARECIDA BARBOSA",
+    "executivo": "GILSON",
+    "canais": [
+      "C&C"
+    ],
+    "lojas": [
+      {
+        "id": "0014W00002e9KkjQAE",
+        "canal": "C&C",
+        "rede": "ASSAI",
+        "nome": "ASSAI PIRACICABA CENTRO 167",
+        "cidade": "PIRACICABA",
         "estado": "SPI"
       }
     ]

@@ -94,10 +94,16 @@ function getLojaObj(setor, lojaId) {
 function applyLoginToState() {
   const loja = getLojaObj(loginState.setor, loginState.lojaId);
   if (!loja) return;
+  const setorObj = getSetorObj(loginState.setor) || {};
   state.cadastro.setor = loginState.setor;
+  // Promotor e executivo vêm do catálogo — cada setor tem um só, então não
+  // faz sentido perguntar em tela.
+  state.cadastro.promotor = setorObj.promotor;
+  state.cadastro.executivo = setorObj.executivo;
   state.cadastro.lojaId = loja.id;
   state.cadastro.loja = loja.nome;
   state.cadastro.canal = loja.canal;
+  state.cadastro.rede = loja.rede;
   state.cadastro.cidade = loja.cidade;
   state.cadastro.estado = loja.estado;
   saveState();
@@ -138,7 +144,7 @@ function renderLogin() {
   const searchInput = document.createElement('input');
   searchInput.type = 'text';
   searchInput.className = 'login-search';
-  searchInput.placeholder = 'Digite o código do setor';
+  searchInput.placeholder = 'Buscar por nome ou setor';
   searchInput.autocomplete = 'off';
   setorSection.appendChild(searchInput);
   const setorList = document.createElement('div');
@@ -195,9 +201,12 @@ function renderLogin() {
     const item = document.createElement('button');
     item.type = 'button';
     item.className = 'pick-item';
-    item.dataset.setor = s.setor.toUpperCase();
+    // A busca casa por código do setor OU nome do promotor — ele costuma
+    // lembrar do próprio nome mais rápido do que do código.
+    item.dataset.setor = `${s.setor} ${s.promotor || ''}`.toUpperCase();
     const n = s.lojas.length;
-    item.innerHTML = `<span class="pick-item__title">${s.setor}</span><span class="pick-item__meta">${n} loja${n > 1 ? 's' : ''} assignada${n > 1 ? 's' : ''}</span>`;
+    const lojasTxt = `${n} loja${n > 1 ? 's' : ''}`;
+    item.innerHTML = `<span class="pick-item__title">${s.setor}${s.promotor ? ' · ' + s.promotor : ''}</span><span class="pick-item__meta">${lojasTxt}${s.canais ? ' · ' + s.canais.join(', ') : ''}</span>`;
     item.addEventListener('click', () => {
       selectedSetor = s.setor;
       selectedLoja = null;
@@ -627,9 +636,11 @@ function renderReview(container) {
   if (loja) {
     const idCard = document.createElement('div');
     idCard.className = 'card id-summary';
+    const setorObj = getSetorObj(loginState.setor) || {};
     idCard.innerHTML = `
       <div class="id-summary__label">Identificação</div>
-      <div class="id-summary__value">${loginState.setor} · ${loja.nome}</div>
+      <div class="id-summary__value">${setorObj.promotor ? setorObj.promotor + ' · ' : ''}${loginState.setor}</div>
+      <div class="id-summary__value" style="font-weight:400">${loja.nome}</div>
     `;
     const trocar = document.createElement('button');
     trocar.className = 'link-back';
@@ -724,9 +735,12 @@ function buildReadablePayload() {
     if (value !== undefined && value !== null && value !== '') out[label] = value;
   };
 
+  set('Promotor', state.cadastro.promotor);
   set('Setor', state.cadastro.setor);
+  set('Executivo', state.cadastro.executivo);
   set('Loja', state.cadastro.loja);
   set('ID Loja', state.cadastro.lojaId);
+  set('Rede', state.cadastro.rede);
   set('Canal', state.cadastro.canal);
   set('Cidade', state.cadastro.cidade);
   set('Estado', state.cadastro.estado);
