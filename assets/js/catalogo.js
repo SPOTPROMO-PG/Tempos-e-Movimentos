@@ -16,6 +16,176 @@
 
 const CATALOGO = [
   {
+    "setor": "PR10",
+    "promotor": "FERNANDO JOSE COELHO MARTIM",
+    "executivo": "DANIELA",
+    "canais": [
+      "DPP"
+    ],
+    "lojas": [
+      {
+        "id": "0014W00002e9KYgQAM",
+        "canal": "DPP",
+        "rede": "DROGARIA PAGUE MENOS",
+        "nome": "DROG PAGUE MENOS FILIAL 624 CBA08MOSSUNGUEPR",
+        "cidade": "CURITIBA",
+        "estado": "PR"
+      },
+      {
+        "id": "0018a00001x732XAAQ",
+        "canal": "DPP",
+        "rede": "MAEOKA LTDA",
+        "nome": "FARMACIAS DESCONTAO PEDRO IVO 53",
+        "cidade": "CURITIBA",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9KD9QAM",
+        "canal": "DPP",
+        "rede": "MORIFARMA",
+        "nome": "MORIFARMA AVENIDA MANOEL RIBAS 6575",
+        "cidade": "CURITIBA",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9KDEQA2",
+        "canal": "DPP",
+        "rede": "MORIFARMA",
+        "nome": "MORIFARMA AVENIDA VEREADOR TOALDO T",
+        "cidade": "CURITIBA",
+        "estado": "PR"
+      },
+      {
+        "id": "0018a00002eGG1eAAG",
+        "canal": "DPP",
+        "rede": "MORIFARMA",
+        "nome": "MORIFARMA EDUARDO PINTO DA ROCHA 2877 OSTERNACK",
+        "cidade": "CURITIBA",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9KCwQAM",
+        "canal": "DPP",
+        "rede": "MORIFARMA",
+        "nome": "MORIFARMA FRANCISCO DALLALIBERA",
+        "cidade": "CURITIBA",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9KDHQA2",
+        "canal": "DPP",
+        "rede": "MORIFARMA",
+        "nome": "MORIFARMA RUA VEREADOR TOALDO TULIO",
+        "cidade": "CURITIBA",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9KCxQAM",
+        "canal": "DPP",
+        "rede": "MORIFARMA",
+        "nome": "MORIFARMA SANTA CATARINA",
+        "cidade": "CURITIBA",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9HuQQAU",
+        "canal": "DPP",
+        "rede": "NISSEI",
+        "nome": "NISSEI AVENIDA MANOEL RIBAS 6664",
+        "cidade": "CURITIBA",
+        "estado": "PR"
+      },
+      {
+        "id": "0018a00002OPtmLAAT",
+        "canal": "DPP",
+        "rede": "NISSEI",
+        "nome": "NISSEI EUCLIDES DA CUNHA 1613",
+        "cidade": "CURITIBA",
+        "estado": "PR"
+      },
+      {
+        "id": "0018a00002OPtqQAAT",
+        "canal": "DPP",
+        "rede": "NISSEI",
+        "nome": "NISSEI PROFESSOR PEDRO VIRIATO PARIGOT DE SOUZA 2380",
+        "cidade": "CURITIBA",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9HaTQAU",
+        "canal": "DPP",
+        "rede": "PANVEL",
+        "nome": "PANVEL FILIAL 517 CTB/18",
+        "cidade": "CURITIBA",
+        "estado": "PR"
+      },
+      {
+        "id": "0018a00002OPtjNAAT",
+        "canal": "DPP",
+        "rede": "PANVEL",
+        "nome": "PANVEL PROFESSOR PEDRO VIRIATO PARIGOT DE SOUZA 600",
+        "cidade": "CURITIBA",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9IZhQAM",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "RAIA CT BARIGUI A  (NOBRE M)",
+        "cidade": "CURITIBA",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9IT0QAM",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "RAIA CT BATEL C  (NOBRE P)",
+        "cidade": "CURITIBA",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9IOHQA2",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "RAIA CT MERCES B  (NOBRE MI)",
+        "cidade": "CURITIBA",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9IZbQAM",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "RAIA CT PORTAO A  (NOBRE G)",
+        "cidade": "CURITIBA",
+        "estado": "PR"
+      },
+      {
+        "id": "0014W00002e9IWtQAM",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "RAIA CT S BRAZ A  (HIBRIDO M)",
+        "cidade": "CURITIBA",
+        "estado": "PR"
+      },
+      {
+        "id": "0018a00001x731pAAA",
+        "canal": "DPP",
+        "rede": "RAIASIL",
+        "nome": "RAIA CT STA FELICIDADE A  (NOBRE P)",
+        "cidade": "CURITIBA",
+        "estado": "PR"
+      },
+      {
+        "id": "0018a00002GR1dMAAT",
+        "canal": "DPP",
+        "rede": "REDE UNIPRECO STRAPASSON",
+        "nome": "UNIPRECO RODOVIA BR116 17518",
+        "cidade": "CURITIBA",
+        "estado": "PR"
+      }
+    ]
+  },
+  {
     "setor": "PR107",
     "promotor": "DANIELA RODRIGUES DA CRUZ",
     "executivo": "DANIELA",
@@ -229,176 +399,6 @@ const CATALOGO = [
         "rede": "SUPERMERCADO FESTIVAL",
         "nome": "FESTVAL MATHEUS LEME",
         "cidade": "CURITIBA",
-        "estado": "PR"
-      }
-    ]
-  },
-  {
-    "setor": "PR69",
-    "promotor": "LUCINEIA DE FATIMAS ALVES",
-    "executivo": "DANIELA",
-    "canais": [
-      "DPP"
-    ],
-    "lojas": [
-      {
-        "id": "0018a00002cSe4cAAC",
-        "canal": "DPP",
-        "rede": "RAIASIL",
-        "nome": "DROGA RAIA SALGADO FILHO",
-        "cidade": "CASCAVEL",
-        "estado": "PR"
-      },
-      {
-        "id": "001Ho00001Z3pGYIAZ",
-        "canal": "DPP",
-        "rede": "DROGARIA SAO JOAO",
-        "nome": "DROGARIA SAO JOAO  AVENIDA TANCREDO NEVES 2119  PIONEIROS CATARINENSES",
-        "cidade": "CASCAVEL",
-        "estado": "PR"
-      },
-      {
-        "id": "001Ho00001Z3pGGIAZ",
-        "canal": "DPP",
-        "rede": "DROGARIA SAO JOAO",
-        "nome": "DROGARIA SAO JOAO  RUA SANTOS DUMONT 2309  CENTRO",
-        "cidade": "TOLEDO",
-        "estado": "PR"
-      },
-      {
-        "id": "0014W00002e9KGsQAM",
-        "canal": "DPP",
-        "rede": "M A BORGES COMERCIO DE MEDICAMENTOS LTDA",
-        "nome": "FARMA ESTRELA AV BRASIL 7538",
-        "cidade": "CASCAVEL",
-        "estado": "PR"
-      },
-      {
-        "id": "0018a00001x7lRaAAI",
-        "canal": "DPP",
-        "rede": "M A BORGES COMERCIO DE MEDICAMENTOS LTDA",
-        "nome": "FARMACIA ESTRELA CASCAVEL",
-        "cidade": "CASCAVEL",
-        "estado": "PR"
-      },
-      {
-        "id": "0014W00002e9KGwQAM",
-        "canal": "DPP",
-        "rede": "M A BORGES COMERCIO DE MEDICAMENTOS LTDA",
-        "nome": "FARMACIA ESTRELA RUA PARANA 2881",
-        "cidade": "CASCAVEL",
-        "estado": "PR"
-      },
-      {
-        "id": "0014W00002e9KGxQAM",
-        "canal": "DPP",
-        "rede": "M A BORGES COMERCIO DE MEDICAMENTOS LTDA",
-        "nome": "FARMACIA ESTRELA RUA PRESIDENTE JUSCELINO KUBITSCHEK 833",
-        "cidade": "CASCAVEL",
-        "estado": "PR"
-      },
-      {
-        "id": "0014W00002e9HuRQAU",
-        "canal": "DPP",
-        "rede": "NISSEI",
-        "nome": "NISSEI 138 CASCAVEL CENTRO 24 HRS",
-        "cidade": "CASCAVEL",
-        "estado": "PR"
-      },
-      {
-        "id": "0014W00002e9HuOQAU",
-        "canal": "DPP",
-        "rede": "NISSEI",
-        "nome": "NISSEI 142 TOLEDO CENTRO MATRIZ",
-        "cidade": "TOLEDO",
-        "estado": "PR"
-      },
-      {
-        "id": "0014W00002e9HujQAE",
-        "canal": "DPP",
-        "rede": "NISSEI",
-        "nome": "NISSEI 296 TOLEDO",
-        "cidade": "TOLEDO",
-        "estado": "PR"
-      },
-      {
-        "id": "001Ho00001Z7Eo0IAF",
-        "canal": "DPP",
-        "rede": "PANVEL",
-        "nome": "PANVEL CASCAVEL MINAS GERAIS",
-        "cidade": "CASCAVEL",
-        "estado": "PR"
-      },
-      {
-        "id": "0018a00001x730nAAA",
-        "canal": "DPP",
-        "rede": "PANVEL",
-        "nome": "PANVEL FILIAL 581 TLD/2",
-        "cidade": "TOLEDO",
-        "estado": "PR"
-      },
-      {
-        "id": "0018a00002cTPaNAAW",
-        "canal": "DPP",
-        "rede": "PANVEL",
-        "nome": "PANVEL RUA BARAO DO RIO BRANCO 1540",
-        "cidade": "TOLEDO",
-        "estado": "PR"
-      },
-      {
-        "id": "0014W00002e9HZGQA2",
-        "canal": "DPP",
-        "rede": "PANVEL",
-        "nome": "PANVEL RUA PARANA",
-        "cidade": "CASCAVEL",
-        "estado": "PR"
-      },
-      {
-        "id": "0014W00002e9IY7QAM",
-        "canal": "DPP",
-        "rede": "RAIASIL",
-        "nome": "RAIA CASCAVEL A  (HIBRIDO M)",
-        "cidade": "CASCAVEL",
-        "estado": "PR"
-      },
-      {
-        "id": "0014W00002e9IWVQA2",
-        "canal": "DPP",
-        "rede": "RAIASIL",
-        "nome": "RAIA CASCAVEL B  (NOBRE M)",
-        "cidade": "CASCAVEL",
-        "estado": "PR"
-      },
-      {
-        "id": "0014W00002e9IPPQA2",
-        "canal": "DPP",
-        "rede": "RAIASIL",
-        "nome": "RAIA CASCAVEL C  (NOBRE G)",
-        "cidade": "CASCAVEL",
-        "estado": "PR"
-      },
-      {
-        "id": "0014W00002e9IPDQA2",
-        "canal": "DPP",
-        "rede": "RAIASIL",
-        "nome": "RAIA CASCAVEL D  (NOBRE M)",
-        "cidade": "CASCAVEL",
-        "estado": "PR"
-      },
-      {
-        "id": "0014W00002e9IJGQA2",
-        "canal": "DPP",
-        "rede": "RAIASIL",
-        "nome": "RAIA CASCAVEL E  (NOBRE P)",
-        "cidade": "CASCAVEL",
-        "estado": "PR"
-      },
-      {
-        "id": "0014W00002e9IP1QAM",
-        "canal": "DPP",
-        "rede": "RAIASIL",
-        "nome": "RAIA TOLEDO B  (NOBRE M)",
-        "cidade": "TOLEDO",
         "estado": "PR"
       }
     ]
