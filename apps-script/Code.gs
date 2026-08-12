@@ -235,3 +235,132 @@ function fazerLimpeza() {
     a.linhasTeste.length, a.colunasOrfas.length);
   Logger.log('Restaram %s resposta(s).', a.linhasReais.length);
 }
+
+
+/* ==========================================================================
+ * ACOMPANHAMENTO - rodar a mao no editor do Apps Script.
+ *
+ * Rode `verResumo()` e leia o resultado em "Registro de execucao".
+ * So le a planilha; nao altera nada.
+ * ========================================================================== */
+
+// Quem e esperado responder. Gerado a partir de assets/js/catalogo.js -
+// se o catalogo do app mudar, atualize esta lista tambem.
+const ESPERADOS = [
+  ['PR10', 'FERNANDO JOSE COELHO MARTIM'],
+  ['PR107', 'DANIELA RODRIGUES DA CRUZ'],
+  ['PR151', 'LUCIANE APARECIDA VESSELOVITZ'],
+  ['PR18', 'FRANCIELI LUANI GOMES'],
+  ['PR208', 'KAUA HENRIQUE SANTOS MORENO'],
+  ['PR221', 'ANGELA CRISTINA BARBOZA LIMA'],
+  ['PR256', 'ANDRESSA STEFANI DA SILVA'],
+  ['PR275', 'KAUANY DANIELLI MAYNARD DE OLIVEIRA'],
+  ['PR38', 'GELSON APARECIDO ALVES SANT ANA'],
+  ['PR49', 'KEILA DE ANDRADE MARTINS'],
+  ['RS12', 'KATIA EUFRASE SILVA'],
+  ['RS137', 'JULIA EDUARDA MARTINS'],
+  ['RS148', 'ARIEL WEBER'],
+  ['RS150', 'BRUNA JUVENCIO'],
+  ['RS177', 'NESTOR JORGE'],
+  ['RS185', 'ANTÔNIO DOS SANTOS'],
+  ['RS196', 'MURIELE ONGARATTO KINGESK'],
+  ['RS258', 'ISADORA BARBOSA'],
+  ['RS60', 'JOSSANE DE FREITAS MELO'],
+  ['SC113', 'SUZANA GOMES DE ASSIS SOUZA'],
+  ['SC167', 'LUIS CLAUDIO SANTOS DOS SANTOS'],
+  ['SC209', 'LUIS VINICIUS SILVA COSTA'],
+  ['SC21', 'ANA KAROLYNE PEDROSO GELBARI'],
+  ['SC223', 'JOÃO VIOTOR DA SILVA CARDOSO'],
+  ['SC241', 'ARIANA SILVA'],
+  ['SC29', 'SAMANTA SILVA NUNES'],
+  ['SC31', 'ADRIANA RRODRIGUES'],
+  ['SC33', 'FRANCIELA RITA COSTA'],
+  ['SC34', 'YASMIM MANGER MARQUES'],
+  ['SC63', 'CAMIOLA PEREIRA DA SILVA'],
+  ['SC71', 'AYLLA GABRIEL HISSI'],
+  ['SPI02', 'ELAINE'],
+  ['SPI11', 'EVERTON'],
+  ['SPI187', 'AMANDA'],
+  ['SPI193', 'LAIZ DE SOUZA LIMA'],
+  ['SPI203', 'ROUSIANE FERREIRA NUNES'],
+  ['SPI234', 'MARIA'],
+  ['SPI263', 'VANESSA'],
+  ['SPI273', 'B RUNA LEME SILVA'],
+  ['SPI282', 'LUIS HENRIQUE FERNANDES DE OLIVEIRA'],
+  ['SPI288', 'SUELEN'],
+  ['SPI315', 'CLAUDIA CRISTINA DE OLIVEIRA TARCITANO'],
+  ['SPI369', 'KATIA REGINA SANCHES'],
+  ['SPI426', 'MARIANA'],
+  ['SPI454', 'LEONARDO'],
+  ['SPI475', 'ISAAC'],
+  ['SPI524', 'VANUSA'],
+  ['SPI57', 'NATIELE APARECIDA BARBOSA'],
+];
+
+function verResumo() {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
+  if (!sheet) { Logger.log('A aba nao existe ainda - nenhuma resposta chegou.'); return; }
+
+  const lastRow = sheet.getLastRow();
+  const lastCol = sheet.getLastColumn();
+  if (lastRow < 2) { Logger.log('Nenhuma resposta registrada ainda.'); return; }
+
+  const headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
+  const dados = sheet.getRange(2, 1, lastRow - 1, lastCol).getValues();
+  const iSetor = headers.indexOf('Setor');
+  const iLoja = headers.indexOf('Loja');
+  const iData = headers.indexOf('servidor_timestamp');
+  const iObs = headers.indexOf('Observacoes gerais do dia');
+
+  const porSetor = {};
+  const porDia = {};
+  let testes = 0;
+  let ultima = null;
+
+  dados.forEach(function (row) {
+    const setor = iSetor === -1 ? '' : String(row[iSetor] || '');
+    const obs = iObs === -1 ? '' : String(row[iObs] || '');
+    const loja = iLoja === -1 ? '' : String(row[iLoja] || '');
+    if ((setor + ' ' + loja + ' ' + obs).toUpperCase().indexOf('TESTE') !== -1) { testes++; return; }
+
+    porSetor[setor] = (porSetor[setor] || 0) + 1;
+
+    if (iData !== -1 && row[iData] instanceof Date) {
+      const d = Utilities.formatDate(row[iData], Session.getScriptTimeZone(), 'dd/MM');
+      porDia[d] = (porDia[d] || 0) + 1;
+      if (!ultima || row[iData] > ultima) ultima = row[iData];
+    }
+  });
+
+  const responderam = Object.keys(porSetor);
+  const faltando = ESPERADOS.filter(function (e) { return responderam.indexOf(e[0]) === -1; });
+
+  Logger.log('===== RESUMO DA COLETA =====');
+  Logger.log('Respostas validas: ' + (dados.length - testes));
+  if (testes) Logger.log('(linhas de teste ignoradas: ' + testes + ')');
+  Logger.log('Promotores que responderam: ' + responderam.length + ' de ' + ESPERADOS.length);
+  if (ultima) Logger.log('Ultima resposta: ' + Utilities.formatDate(ultima, Session.getScriptTimeZone(), 'dd/MM/yyyy HH:mm'));
+  Logger.log('');
+
+  Logger.log('--- Respostas por dia ---');
+  Object.keys(porDia).sort().forEach(function (d) { Logger.log('  ' + d + ' : ' + porDia[d]); });
+  Logger.log('');
+
+  Logger.log('--- Ja responderam (' + responderam.length + ') ---');
+  ESPERADOS.forEach(function (e) {
+    if (porSetor[e[0]]) Logger.log('  ' + e[0] + '  ' + e[1] + '  (' + porSetor[e[0]] + ')');
+  });
+  Logger.log('');
+
+  Logger.log('--- AINDA NAO RESPONDERAM (' + faltando.length + ') ---');
+  faltando.forEach(function (e) { Logger.log('  ' + e[0] + '  ' + e[1]); });
+
+  const extras = responderam.filter(function (s) {
+    return s && !ESPERADOS.some(function (e) { return e[0] === s; });
+  });
+  if (extras.length) {
+    Logger.log('');
+    Logger.log('--- Setores fora da lista esperada ---');
+    extras.forEach(function (s) { Logger.log('  ' + s + '  (' + porSetor[s] + ')'); });
+  }
+}
