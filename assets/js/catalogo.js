@@ -783,11 +783,11 @@ const CATALOGO = [
     ],
     "lojas": [
       {
-        "id": "0014W00002e9HrfQAE",
+        "id": "001Ho00001VxI9TIAV",
         "canal": "C&C",
-        "rede": "BRASIL ATACADISTA",
-        "nome": "BRASIL ATACADISTA INGLESES",
-        "cidade": "FLORIANOPOLIS",
+        "rede": "KOCH",
+        "nome": "KOMPRAO PALHOCA",
+        "cidade": "PALHOCA",
         "estado": "SC"
       }
     ]
