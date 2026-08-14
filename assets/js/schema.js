@@ -10,6 +10,21 @@
 // data fica a cargo do timestamp gravado pelo Apps Script no envio.
 
 const BLOCKS = [
+  // Sem este bloco a jornada não fecha: mede-se o tempo dentro das lojas,
+  // mas não o trajeto entre elas — e aí 4 visitas de 2h já estouram as 8h
+  // antes de somar qualquer deslocamento. É deliberadamente curto (uma
+  // atividade), porque a versão anterior tinha 5 e foi cortada por ser longa
+  // demais para o campo.
+  {
+    key: 'deslocamento', title: 'Deslocamento',
+    subtitle: 'O trajeto até esta loja',
+    activities: [
+      { id: 1, nome: 'Deslocamento até esta loja', obs: [
+        { key: 'origem', label: 'De onde veio', type: 'select',
+          options: ['Casa / base', 'Loja anterior'] },
+      ]},
+    ],
+  },
   {
     key: 'entrada', title: 'Entrada',
     subtitle: 'Chegada e liberação de acesso à loja',
