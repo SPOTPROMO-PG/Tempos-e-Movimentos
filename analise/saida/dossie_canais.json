@@ -1,368 +1,368 @@
 [
  {
   "canal": "DPP",
-  "n": 16,
-  "promotores": 5,
-  "visita_min": 118,
-  "dp": 46,
+  "n": 19,
+  "promotores": 7,
+  "visita_min": 126,
+  "dp": 51,
   "lojas_dia": 4.0,
-  "cabe_em_8h": 4.1,
+  "cabe_em_8h": 3.8,
   "blocos": {
-   "Entrada": 30,
-   "Abertura": 11,
-   "Estoque": 6,
-   "Check Out": 4,
-   "Ponto Natural": 26,
-   "Ponto Extra": 1,
-   "Outras Atividades": 37,
+   "Entrada": 28,
+   "Abertura": 13,
+   "Estoque": 7,
+   "Check Out": 8,
+   "Ponto Natural": 31,
+   "Ponto Extra": 4,
+   "Outras Atividades": 33,
    "Saída": 3
+  },
+  "blocos_8h": {
+   "Entrada": 106,
+   "Abertura": 49,
+   "Estoque": 25,
+   "Check Out": 29,
+   "Ponto Natural": 119,
+   "Ponto Extra": 15,
+   "Outras Atividades": 126,
+   "Saída": 11
   },
   "top": [
    {
     "mov": "Deslocamento interno dentro da loja",
     "bloco": "Outras Atividades",
-    "min": 19.3,
-    "pct": 16.4,
-    "min_8h": 79
+    "min": 16.7,
+    "pct": 13.2,
+    "min_8h": 63
+   },
+   {
+    "mov": "Abastecimento e organização (Layout/KBDs etc)",
+    "bloco": "Ponto Natural",
+    "min": 16.6,
+    "pct": 13.1,
+    "min_8h": 63
    },
    {
     "mov": "Leitura de loja (checklist / auditoria)",
     "bloco": "Outras Atividades",
-    "min": 16.0,
-    "pct": 13.6,
-    "min_8h": 65
+    "min": 13.5,
+    "pct": 10.7,
+    "min_8h": 51
    },
    {
     "mov": "Chegada à loja (portaria/entrada)",
     "bloco": "Entrada",
-    "min": 14.9,
-    "pct": 12.6,
-    "min_8h": 61
-   },
-   {
-    "mov": "Abastecimento e organização (Layout/KBDs etc)",
-    "bloco": "Ponto Natural",
-    "min": 14.6,
-    "pct": 12.4,
-    "min_8h": 59
-   },
-   {
-    "mov": "Registro de entrada (app / sistema do cliente)",
-    "bloco": "Entrada",
-    "min": 5.5,
-    "pct": 4.7,
-    "min_8h": 22
+    "min": 12.7,
+    "pct": 10.1,
+    "min_8h": 48
    },
    {
     "mov": "Passar por todas as categorias puxando frentes",
     "bloco": "Abertura",
-    "min": 4.1,
-    "pct": 3.5,
-    "min_8h": 17
-   }
-  ],
-  "blocos_8h": {
-   "Entrada": 122,
-   "Abertura": 45,
-   "Estoque": 24,
-   "Check Out": 16,
-   "Ponto Natural": 106,
-   "Ponto Extra": 4,
-   "Outras Atividades": 151,
-   "Saída": 12
-  }
- },
- {
-  "canal": "C&C",
-  "n": 9,
-  "promotores": 9,
-  "visita_min": 367,
-  "dp": 138,
-  "lojas_dia": 1.0,
-  "cabe_em_8h": 1.3,
-  "blocos": {
-   "Entrada": 9,
-   "Abertura": 50,
-   "Estoque": 33,
-   "Check Out": 36,
-   "Ponto Natural": 171,
-   "Ponto Extra": 27,
-   "Outras Atividades": 34,
-   "Saída": 8
-  },
-  "top": [
-   {
-    "mov": "Abastecimento e organização (Layout/KBDs etc)",
-    "bloco": "Ponto Natural",
-    "min": 55.3,
-    "pct": 15.1,
-    "min_8h": 72
-   },
-   {
-    "mov": "Buscar itens faltantes no estoque",
-    "bloco": "Ponto Natural",
-    "min": 51.2,
-    "pct": 13.9,
-    "min_8h": 67
+    "min": 5.2,
+    "pct": 4.1,
+    "min_8h": 20
    },
    {
     "mov": "Precificar todos os itens",
     "bloco": "Ponto Natural",
-    "min": 26.8,
-    "pct": 7.3,
-    "min_8h": 35
+    "min": 5.0,
+    "pct": 4.0,
+    "min_8h": 19
+   }
+  ]
+ },
+ {
+  "canal": "C&C",
+  "n": 10,
+  "promotores": 9,
+  "visita_min": 342,
+  "dp": 152,
+  "lojas_dia": 1.0,
+  "cabe_em_8h": 1.4,
+  "blocos": {
+   "Entrada": 9,
+   "Abertura": 49,
+   "Estoque": 31,
+   "Check Out": 32,
+   "Ponto Natural": 160,
+   "Ponto Extra": 24,
+   "Outras Atividades": 30,
+   "Saída": 7
+  },
+  "blocos_8h": {
+   "Entrada": 12,
+   "Abertura": 69,
+   "Estoque": 44,
+   "Check Out": 45,
+   "Ponto Natural": 224,
+   "Ponto Extra": 34,
+   "Outras Atividades": 42,
+   "Saída": 10
+  },
+  "top": [
+   {
+    "mov": "Buscar itens faltantes no estoque",
+    "bloco": "Ponto Natural",
+    "min": 51.9,
+    "pct": 15.2,
+    "min_8h": 73
+   },
+   {
+    "mov": "Abastecimento e organização (Layout/KBDs etc)",
+    "bloco": "Ponto Natural",
+    "min": 49.8,
+    "pct": 14.6,
+    "min_8h": 70
+   },
+   {
+    "mov": "Precificar todos os itens",
+    "bloco": "Ponto Natural",
+    "min": 24.1,
+    "pct": 7.0,
+    "min_8h": 34
    },
    {
     "mov": "Limpeza antes do abastecimento",
     "bloco": "Ponto Natural",
-    "min": 22.0,
-    "pct": 6.0,
-    "min_8h": 29
+    "min": 19.9,
+    "pct": 5.8,
+    "min_8h": 28
    },
    {
     "mov": "Leitura de loja (checklist / auditoria)",
     "bloco": "Outras Atividades",
-    "min": 22.0,
-    "pct": 6.0,
-    "min_8h": 29
+    "min": 19.8,
+    "pct": 5.8,
+    "min_8h": 28
    },
    {
-    "mov": "Identificar pontos de atenção / rupturas",
+    "mov": "Passar por todas as categorias puxando frentes",
     "bloco": "Abertura",
-    "min": 17.3,
+    "min": 15.9,
     "pct": 4.7,
-    "min_8h": 23
+    "min_8h": 22
    }
-  ],
-  "blocos_8h": {
-   "Entrada": 12,
-   "Abertura": 65,
-   "Estoque": 43,
-   "Check Out": 47,
-   "Ponto Natural": 224,
-   "Ponto Extra": 35,
-   "Outras Atividades": 44,
-   "Saída": 10
-  }
+  ]
  },
  {
   "canal": "HFS",
-  "n": 8,
-  "promotores": 5,
-  "visita_min": 221,
-  "dp": 92,
+  "n": 9,
+  "promotores": 6,
+  "visita_min": 216,
+  "dp": 87,
   "lojas_dia": 2.0,
   "cabe_em_8h": 2.2,
   "blocos": {
-   "Entrada": 37,
-   "Abertura": 43,
+   "Entrada": 34,
+   "Abertura": 42,
    "Estoque": 13,
-   "Check Out": 23,
-   "Ponto Natural": 69,
+   "Check Out": 27,
+   "Ponto Natural": 68,
    "Ponto Extra": 3,
-   "Outras Atividades": 28,
-   "Saída": 4
+   "Outras Atividades": 25,
+   "Saída": 3
+  },
+  "blocos_8h": {
+   "Entrada": 75,
+   "Abertura": 93,
+   "Estoque": 30,
+   "Check Out": 61,
+   "Ponto Natural": 152,
+   "Ponto Extra": 6,
+   "Outras Atividades": 56,
+   "Saída": 7
   },
   "top": [
    {
     "mov": "Abastecimento e organização (Layout/KBDs etc)",
     "bloco": "Ponto Natural",
-    "min": 23.3,
+    "min": 22.8,
     "pct": 10.6,
     "min_8h": 51
    },
    {
     "mov": "Precificar todos os itens",
     "bloco": "Ponto Natural",
-    "min": 21.1,
-    "pct": 9.6,
-    "min_8h": 46
-   },
-   {
-    "mov": "Chegada à loja (portaria/entrada)",
-    "bloco": "Entrada",
-    "min": 21.1,
-    "pct": 9.5,
-    "min_8h": 46
-   },
-   {
-    "mov": "Limpeza antes do abastecimento",
-    "bloco": "Ponto Natural",
-    "min": 13.3,
-    "pct": 6.0,
-    "min_8h": 29
-   },
-   {
-    "mov": "Deslocamento interno dentro da loja",
-    "bloco": "Outras Atividades",
-    "min": 12.2,
-    "pct": 5.5,
-    "min_8h": 26
-   },
-   {
-    "mov": "Passar por todas as categorias puxando frentes",
-    "bloco": "Abertura",
-    "min": 11.4,
-    "pct": 5.2,
-    "min_8h": 25
-   }
-  ],
-  "blocos_8h": {
-   "Entrada": 80,
-   "Abertura": 93,
-   "Estoque": 28,
-   "Check Out": 50,
-   "Ponto Natural": 150,
-   "Ponto Extra": 7,
-   "Outras Atividades": 61,
-   "Saída": 9
-  }
- },
- {
-  "canal": "GMR",
-  "n": 6,
-  "promotores": 6,
-  "visita_min": 318,
-  "dp": 164,
-  "lojas_dia": 2.0,
-  "cabe_em_8h": 1.5,
-  "blocos": {
-   "Entrada": 48,
-   "Abertura": 53,
-   "Estoque": 43,
-   "Check Out": 23,
-   "Ponto Natural": 111,
-   "Ponto Extra": 20,
-   "Outras Atividades": 8,
-   "Saída": 12
-  },
-  "top": [
-   {
-    "mov": "Abastecimento e organização (Layout/KBDs etc)",
-    "bloco": "Ponto Natural",
-    "min": 40.5,
-    "pct": 12.7,
-    "min_8h": 61
-   },
-   {
-    "mov": "Buscar itens faltantes no estoque",
-    "bloco": "Ponto Natural",
-    "min": 23.5,
-    "pct": 7.4,
-    "min_8h": 35
-   },
-   {
-    "mov": "Passar por todas as categorias puxando frentes",
-    "bloco": "Abertura",
-    "min": 19.8,
-    "pct": 6.2,
-    "min_8h": 30
+    "min": 20.1,
+    "pct": 9.3,
+    "min_8h": 45
    },
    {
     "mov": "Chegada à loja (portaria/entrada)",
     "bloco": "Entrada",
     "min": 18.8,
+    "pct": 8.7,
+    "min_8h": 42
+   },
+   {
+    "mov": "Limpeza antes do abastecimento",
+    "bloco": "Ponto Natural",
+    "min": 12.7,
     "pct": 5.9,
     "min_8h": 28
    },
    {
-    "mov": "Precificar todos os itens",
-    "bloco": "Ponto Natural",
-    "min": 18.5,
-    "pct": 5.8,
-    "min_8h": 28
+    "mov": "Passar por todas as categorias puxando frentes",
+    "bloco": "Abertura",
+    "min": 11.8,
+    "pct": 5.5,
+    "min_8h": 26
    },
    {
-    "mov": "Organização / arrumação do estoque",
-    "bloco": "Estoque",
-    "min": 17.2,
-    "pct": 5.4,
-    "min_8h": 26
+    "mov": "Buscar itens faltantes no estoque",
+    "bloco": "Ponto Natural",
+    "min": 11.1,
+    "pct": 5.1,
+    "min_8h": 25
    }
-  ],
-  "blocos_8h": {
-   "Entrada": 72,
-   "Abertura": 80,
-   "Estoque": 65,
-   "Check Out": 35,
-   "Ponto Natural": 168,
-   "Ponto Extra": 30,
-   "Outras Atividades": 12,
-   "Saída": 18
-  }
+  ]
  },
  {
-  "canal": "NMR",
-  "n": 6,
-  "promotores": 5,
-  "visita_min": 450,
-  "dp": 110,
-  "lojas_dia": 1.0,
-  "cabe_em_8h": 1.1,
+  "canal": "GMR",
+  "n": 8,
+  "promotores": 7,
+  "visita_min": 325,
+  "dp": 150,
+  "lojas_dia": 1.5,
+  "cabe_em_8h": 1.5,
   "blocos": {
-   "Entrada": 8,
-   "Abertura": 38,
-   "Estoque": 47,
-   "Check Out": 35,
-   "Ponto Natural": 202,
-   "Ponto Extra": 65,
-   "Outras Atividades": 46,
-   "Saída": 9
+   "Entrada": 39,
+   "Abertura": 47,
+   "Estoque": 37,
+   "Check Out": 21,
+   "Ponto Natural": 108,
+   "Ponto Extra": 19,
+   "Outras Atividades": 43,
+   "Saída": 11
+  },
+  "blocos_8h": {
+   "Entrada": 57,
+   "Abertura": 70,
+   "Estoque": 55,
+   "Check Out": 31,
+   "Ponto Natural": 160,
+   "Ponto Extra": 28,
+   "Outras Atividades": 64,
+   "Saída": 16
   },
   "top": [
    {
     "mov": "Abastecimento e organização (Layout/KBDs etc)",
     "bloco": "Ponto Natural",
-    "min": 62.5,
-    "pct": 13.9,
-    "min_8h": 67
+    "min": 36.6,
+    "pct": 11.3,
+    "min_8h": 54
    },
    {
     "mov": "Buscar itens faltantes no estoque",
     "bloco": "Ponto Natural",
-    "min": 42.2,
-    "pct": 9.4,
-    "min_8h": 45
+    "min": 23.3,
+    "pct": 7.2,
+    "min_8h": 34
+   },
+   {
+    "mov": "Deslocamento interno dentro da loja",
+    "bloco": "Outras Atividades",
+    "min": 20.7,
+    "pct": 6.4,
+    "min_8h": 31
    },
    {
     "mov": "Precificar todos os itens",
     "bloco": "Ponto Natural",
-    "min": 33.6,
-    "pct": 7.5,
-    "min_8h": 36
+    "min": 18.5,
+    "pct": 5.7,
+    "min_8h": 27
+   },
+   {
+    "mov": "Passar por todas as categorias puxando frentes",
+    "bloco": "Abertura",
+    "min": 17.7,
+    "pct": 5.5,
+    "min_8h": 26
+   },
+   {
+    "mov": "Leitura de loja (checklist / auditoria)",
+    "bloco": "Outras Atividades",
+    "min": 16.5,
+    "pct": 5.1,
+    "min_8h": 24
+   }
+  ]
+ },
+ {
+  "canal": "NMR",
+  "n": 7,
+  "promotores": 5,
+  "visita_min": 462,
+  "dp": 105,
+  "lojas_dia": 1.0,
+  "cabe_em_8h": 1.0,
+  "blocos": {
+   "Entrada": 9,
+   "Abertura": 36,
+   "Estoque": 44,
+   "Check Out": 36,
+   "Ponto Natural": 216,
+   "Ponto Extra": 66,
+   "Outras Atividades": 43,
+   "Saída": 11
+  },
+  "blocos_8h": {
+   "Entrada": 9,
+   "Abertura": 37,
+   "Estoque": 46,
+   "Check Out": 37,
+   "Ponto Natural": 224,
+   "Ponto Extra": 69,
+   "Outras Atividades": 45,
+   "Saída": 11
+  },
+  "top": [
+   {
+    "mov": "Abastecimento e organização (Layout/KBDs etc)",
+    "bloco": "Ponto Natural",
+    "min": 69.8,
+    "pct": 15.1,
+    "min_8h": 73
+   },
+   {
+    "mov": "Buscar itens faltantes no estoque",
+    "bloco": "Ponto Natural",
+    "min": 45.4,
+    "pct": 9.8,
+    "min_8h": 47
+   },
+   {
+    "mov": "Precificar todos os itens",
+    "bloco": "Ponto Natural",
+    "min": 35.1,
+    "pct": 7.6,
+    "min_8h": 37
    },
    {
     "mov": "Validar estoque virtual",
     "bloco": "Ponto Natural",
-    "min": 31.8,
-    "pct": 7.1,
+    "min": 33.1,
+    "pct": 7.2,
     "min_8h": 34
    },
    {
     "mov": "Limpeza antes do abastecimento",
     "bloco": "Ponto Natural",
-    "min": 31.5,
+    "min": 32.5,
     "pct": 7.0,
     "min_8h": 34
    },
    {
-    "mov": "Leitura de loja (checklist / auditoria)",
-    "bloco": "Outras Atividades",
-    "min": 26.6,
-    "pct": 5.9,
-    "min_8h": 28
+    "mov": "Abastecer seguindo guia de execução + KBD's",
+    "bloco": "Ponto Extra",
+    "min": 25.2,
+    "pct": 5.5,
+    "min_8h": 26
    }
-  ],
-  "blocos_8h": {
-   "Entrada": 9,
-   "Abertura": 41,
-   "Estoque": 50,
-   "Check Out": 37,
-   "Ponto Natural": 215,
-   "Ponto Extra": 69,
-   "Outras Atividades": 49,
-   "Saída": 10
-  }
+  ]
  },
  {
   "canal": "CLUB",
@@ -381,6 +381,16 @@
    "Ponto Extra": 16,
    "Outras Atividades": 34,
    "Saída": 1
+  },
+  "blocos_8h": {
+   "Entrada": 55,
+   "Abertura": 61,
+   "Estoque": 31,
+   "Check Out": 51,
+   "Ponto Natural": 197,
+   "Ponto Extra": 27,
+   "Outras Atividades": 57,
+   "Saída": 2
   },
   "top": [
    {
@@ -425,162 +435,152 @@
     "pct": 4.6,
     "min_8h": 22
    }
-  ],
-  "blocos_8h": {
-   "Entrada": 55,
-   "Abertura": 61,
-   "Estoque": 32,
-   "Check Out": 51,
-   "Ponto Natural": 198,
-   "Ponto Extra": 27,
-   "Outras Atividades": 56,
-   "Saída": 2
-  }
+  ]
  },
  {
   "canal": "LASA",
-  "n": 2,
+  "n": 3,
   "promotores": 2,
-  "visita_min": 188,
-  "dp": 74,
+  "visita_min": 200,
+  "dp": 57,
   "lojas_dia": 2.0,
-  "cabe_em_8h": 2.6,
+  "cabe_em_8h": 2.4,
   "blocos": {
-   "Entrada": 42,
-   "Abertura": 21,
-   "Estoque": 36,
-   "Check Out": 7,
-   "Ponto Natural": 29,
-   "Ponto Extra": 4,
-   "Outras Atividades": 48,
+   "Entrada": 28,
+   "Abertura": 66,
+   "Estoque": 24,
+   "Check Out": 5,
+   "Ponto Natural": 19,
+   "Ponto Extra": 3,
+   "Outras Atividades": 56,
    "Saída": 0
   },
-  "top": [
-   {
-    "mov": "Deslocamento interno dentro da loja",
-    "bloco": "Outras Atividades",
-    "min": 48.0,
-    "pct": 25.6,
-    "min_8h": 123
-   },
-   {
-    "mov": "Chegada à loja (portaria/entrada)",
-    "bloco": "Entrada",
-    "min": 38.5,
-    "pct": 20.6,
-    "min_8h": 98
-   },
-   {
-    "mov": "Buscar itens faltantes no estoque",
-    "bloco": "Ponto Natural",
-    "min": 21.4,
-    "pct": 11.4,
-    "min_8h": 55
-   },
-   {
-    "mov": "Retorno ao setor com os produtos",
-    "bloco": "Estoque",
-    "min": 14.3,
-    "pct": 7.6,
-    "min_8h": 37
-   },
-   {
-    "mov": "Identificar pontos de atenção / rupturas",
-    "bloco": "Abertura",
-    "min": 10.5,
-    "pct": 5.6,
-    "min_8h": 27
-   },
-   {
-    "mov": "Separação de itens para abastecimento",
-    "bloco": "Estoque",
-    "min": 8.8,
-    "pct": 4.7,
-    "min_8h": 22
-   }
-  ],
   "blocos_8h": {
-   "Entrada": 107,
-   "Abertura": 54,
-   "Estoque": 92,
-   "Check Out": 18,
-   "Ponto Natural": 74,
-   "Ponto Extra": 10,
-   "Outras Atividades": 123,
-   "Saída": 0
-  }
- },
- {
-  "canal": "PERFUMARIA",
-  "n": 1,
-  "promotores": 1,
-  "visita_min": 311,
-  "dp": null,
-  "lojas_dia": 5.0,
-  "cabe_em_8h": 1.5,
-  "blocos": {
-   "Entrada": 2,
-   "Abertura": 65,
-   "Estoque": 22,
-   "Check Out": 6,
-   "Ponto Natural": 74,
-   "Ponto Extra": 71,
-   "Outras Atividades": 70,
+   "Entrada": 67,
+   "Abertura": 157,
+   "Estoque": 57,
+   "Check Out": 11,
+   "Ponto Natural": 46,
+   "Ponto Extra": 7,
+   "Outras Atividades": 134,
    "Saída": 1
   },
   "top": [
    {
-    "mov": "Passar por todas as categorias puxando frentes",
+    "mov": "Conferir encarte, Guia de PDV e MOP",
     "bloco": "Abertura",
-    "min": 53.0,
-    "pct": 17.0,
-    "min_8h": 82
+    "min": 47.2,
+    "pct": 23.5,
+    "min_8h": 113
+   },
+   {
+    "mov": "Deslocamento interno dentro da loja",
+    "bloco": "Outras Atividades",
+    "min": 32.0,
+    "pct": 16.0,
+    "min_8h": 77
+   },
+   {
+    "mov": "Chegada à loja (portaria/entrada)",
+    "bloco": "Entrada",
+    "min": 25.7,
+    "pct": 12.8,
+    "min_8h": 62
    },
    {
     "mov": "Leitura de loja (checklist / auditoria)",
     "bloco": "Outras Atividades",
-    "min": 23.6,
-    "pct": 7.6,
-    "min_8h": 36
+    "min": 23.8,
+    "pct": 11.9,
+    "min_8h": 57
    },
    {
-    "mov": "Abastecer seguindo guia de execução + KBD's",
-    "bloco": "Ponto Extra",
-    "min": 23.6,
-    "pct": 7.6,
-    "min_8h": 36
+    "mov": "Buscar itens faltantes no estoque",
+    "bloco": "Ponto Natural",
+    "min": 14.3,
+    "pct": 7.1,
+    "min_8h": 34
    },
    {
-    "mov": "Limpeza do móvel / display",
-    "bloco": "Ponto Extra",
-    "min": 23.6,
-    "pct": 7.6,
-    "min_8h": 36
-   },
-   {
-    "mov": "Precificar todos os itens",
-    "bloco": "Ponto Extra",
-    "min": 23.6,
-    "pct": 7.6,
-    "min_8h": 36
-   },
-   {
-    "mov": "Negociação com encarregado / gerente",
-    "bloco": "Outras Atividades",
-    "min": 23.4,
-    "pct": 7.5,
-    "min_8h": 36
+    "mov": "Retorno ao setor com os produtos",
+    "bloco": "Estoque",
+    "min": 9.6,
+    "pct": 4.8,
+    "min_8h": 23
    }
-  ],
+  ]
+ },
+ {
+  "canal": "PERFUMARIA",
+  "n": 2,
+  "promotores": 2,
+  "visita_min": 384,
+  "dp": 102,
+  "lojas_dia": 5.0,
+  "cabe_em_8h": 1.3,
+  "blocos": {
+   "Entrada": 45,
+   "Abertura": 38,
+   "Estoque": 33,
+   "Check Out": 34,
+   "Ponto Natural": 47,
+   "Ponto Extra": 55,
+   "Outras Atividades": 117,
+   "Saída": 14
+  },
   "blocos_8h": {
-   "Entrada": 3,
-   "Abertura": 100,
-   "Estoque": 34,
-   "Check Out": 9,
-   "Ponto Natural": 114,
-   "Ponto Extra": 110,
-   "Outras Atividades": 108,
-   "Saída": 2
-  }
+   "Entrada": 57,
+   "Abertura": 47,
+   "Estoque": 41,
+   "Check Out": 42,
+   "Ponto Natural": 59,
+   "Ponto Extra": 69,
+   "Outras Atividades": 147,
+   "Saída": 18
+  },
+  "top": [
+   {
+    "mov": "Tratamento de divergências (estoque/preço/validade)",
+    "bloco": "Outras Atividades",
+    "min": 75.2,
+    "pct": 19.6,
+    "min_8h": 94
+   },
+   {
+    "mov": "Passar por todas as categorias puxando frentes",
+    "bloco": "Abertura",
+    "min": 28.5,
+    "pct": 7.4,
+    "min_8h": 36
+   },
+   {
+    "mov": "Localizar o setor / estoque / responsável",
+    "bloco": "Entrada",
+    "min": 25.3,
+    "pct": 6.6,
+    "min_8h": 32
+   },
+   {
+    "mov": "Leitura de loja (checklist / auditoria)",
+    "bloco": "Outras Atividades",
+    "min": 22.0,
+    "pct": 5.7,
+    "min_8h": 28
+   },
+   {
+    "mov": "Organização / arrumação do estoque",
+    "bloco": "Estoque",
+    "min": 20.0,
+    "pct": 5.2,
+    "min_8h": 25
+   },
+   {
+    "mov": "Guardar pertences / retirar equipamentos / EPIs",
+    "bloco": "Entrada",
+    "min": 18.3,
+    "pct": 4.8,
+    "min_8h": 23
+   }
+  ]
  }
 ]
