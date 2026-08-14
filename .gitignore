@@ -13,3 +13,7 @@ apk-build*/
 
 # Pacote de lançamento (APK + materiais de apoio) — gerado, fica local.
 lancamento/
+
+# artefatos de análise (dados exportados e cache do Python)
+analise/__pycache__/
+analise/eventos.csv

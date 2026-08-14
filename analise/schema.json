@@ -1,0 +1,106 @@
+{
+  "_comentario": "Extraído executando o JS real do app (BLOCKS/CATEGORIAS de schema.js). Não editar à mão: regerar com analise/extrair_schema.js se o formulário mudar.",
+  "categorias": [
+    "Lâminas Masculinas", "Lâminas Femininas", "Escovas", "Antissépticos",
+    "Fios Dentais", "Cremes Dentais", "Desodorantes Masculinos", "Desodorantes Femininos",
+    "Pantene / Head & Shoulders", "Absorventes / Protetores / Internos",
+    "Fraldas / Lenços Umedecidos", "Amaciantes Downy", "Detergente Líquido Ariel"
+  ],
+  "blocos": [
+    {
+      "chave": "entrada", "titulo": "Entrada", "por_categoria": false, "categorias": null,
+      "itens": [
+        { "label": "Chegada à loja (portaria/entrada)", "obs": [] },
+        { "label": "Espera para autorização / cadastro / liberação", "obs": ["Motivo"] },
+        { "label": "Registro de entrada (app / sistema do cliente)", "obs": [] },
+        { "label": "Guardar pertences / retirar equipamentos / EPIs", "obs": [] },
+        { "label": "Localizar o setor / estoque / responsável", "obs": [] }
+      ]
+    },
+    {
+      "chave": "abertura", "titulo": "Abertura", "por_categoria": false, "categorias": null,
+      "itens": [
+        { "label": "Conferir encarte, Guia de PDV e MOP", "obs": [] },
+        { "label": "Cumprimentar gerente / encarregado", "obs": [] },
+        { "label": "Passar por todas as categorias puxando frentes", "obs": [] },
+        { "label": "Identificar pontos de atenção / rupturas", "obs": [] },
+        { "label": "Pegar relatório de estoque para conferência", "obs": [] }
+      ]
+    },
+    {
+      "chave": "estoque", "titulo": "Estoque", "por_categoria": false, "categorias": null,
+      "itens": [
+        { "label": "Deslocamento até o estoque", "obs": [] },
+        { "label": "Localizar produtos no estoque", "obs": ["Dificuldade"] },
+        { "label": "Organização / arrumação do estoque", "obs": [] },
+        { "label": "Separação de itens para abastecimento", "obs": [] },
+        { "label": "Retorno ao setor com os produtos", "obs": [] }
+      ]
+    },
+    {
+      "chave": "checkout", "titulo": "Check Out", "por_categoria": true,
+      "categorias": ["Lâminas Masculinas", "Lâminas Femininas", "Escovas"],
+      "itens": [
+        { "label": "Limpeza dos móveis antes do abastecimento", "obs": [] },
+        { "label": "Abastecer seguindo o guia de execução", "obs": [] },
+        { "label": "Conferir KBD's (Direcionamentos Chaves)", "obs": [] },
+        { "label": "Precificar todos os itens", "obs": [] }
+      ]
+    },
+    {
+      "chave": "ponto_natural", "titulo": "Ponto Natural", "por_categoria": true,
+      "categorias": [
+        "Lâminas Masculinas", "Lâminas Femininas", "Escovas", "Antissépticos",
+        "Fios Dentais", "Cremes Dentais", "Desodorantes Masculinos", "Desodorantes Femininos",
+        "Pantene / Head & Shoulders", "Absorventes / Protetores / Internos",
+        "Fraldas / Lenços Umedecidos", "Amaciantes Downy", "Detergente Líquido Ariel"
+      ],
+      "itens": [
+        { "label": "Buscar itens faltantes no estoque", "obs": [] },
+        { "label": "Validar estoque virtual", "obs": ["Qtd. divergente"] },
+        { "label": "Limpeza antes do abastecimento", "obs": [] },
+        { "label": "Abastecimento e organização (Layout/KBDs etc)", "obs": [] },
+        { "label": "Precificar todos os itens", "obs": [] }
+      ]
+    },
+    {
+      "chave": "ponto_extra", "titulo": "Ponto Extra", "por_categoria": true,
+      "categorias": [
+        "Lâminas Masculinas", "Lâminas Femininas", "Escovas", "Antissépticos",
+        "Fios Dentais", "Cremes Dentais", "Desodorantes Masculinos", "Desodorantes Femininos",
+        "Pantene / Head & Shoulders", "Absorventes / Protetores / Internos",
+        "Fraldas / Lenços Umedecidos", "Amaciantes Downy", "Detergente Líquido Ariel"
+      ],
+      "itens": [
+        { "label": "Montagem do display / ponto extra", "obs": ["Tipo"] },
+        { "label": "Limpeza do móvel / display", "obs": [] },
+        { "label": "Abastecer seguindo guia de execução + KBD's", "obs": [] },
+        { "label": "Precificar todos os itens", "obs": [] }
+      ]
+    },
+    {
+      "chave": "outras", "titulo": "Outras Atividades", "por_categoria": false, "categorias": null,
+      "itens": [
+        { "label": "Leitura de loja (checklist / auditoria)", "obs": [] },
+        { "label": "Negociação com encarregado / gerente", "obs": ["Assunto"] },
+        { "label": "Tratamento de divergências (estoque/preço/validade)", "obs": [] },
+        { "label": "Busca de produtos ou materiais em outros setores", "obs": [] },
+        { "label": "Deslocamento interno dentro da loja", "obs": [] }
+      ]
+    },
+    {
+      "chave": "saida", "titulo": "Saída", "por_categoria": false, "categorias": null,
+      "itens": [
+        { "label": "Guardar equipamentos / materiais", "obs": [] },
+        { "label": "Deixar o setor / estoque", "obs": [] },
+        { "label": "Deslocamento até a saída da loja", "obs": [] },
+        { "label": "Saída da loja (portaria/catraca)", "obs": [] }
+      ]
+    }
+  ],
+  "fechamento": [
+    "Horário de saída da última loja", "Horário de chegada em casa / base",
+    "Nº total de lojas visitadas no dia", "Quilometragem total percorrida",
+    "Total de horas trabalhadas no dia", "Observações gerais do dia"
+  ]
+}

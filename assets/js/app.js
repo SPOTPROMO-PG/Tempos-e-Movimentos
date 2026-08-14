@@ -17,6 +17,15 @@ const CONFIG = {
 
 /* ---------------- State ---------------- */
 
+// Identificador único da visita, criado quando o rascunho nasce. Vai junto
+// no envio e serve de chave de idempotência: se a mesma visita for enviada
+// duas vezes (toque repetido, reenvio automático), o Apps Script reconhece
+// e ignora a repetição em vez de gravar outra linha.
+function novoIdVisita() {
+  if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+  return 'v-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10);
+}
+
 function defaultState() {
   return {
     cadastro: {},
@@ -24,7 +33,11 @@ function defaultState() {
     // blocos por categoria (.categorias) — ver schema.js
     blocks: {},
     fechamento: {},
-    meta: { currentStep: 0, startedAt: new Date().toISOString() },
+    meta: {
+      currentStep: 0,
+      startedAt: new Date().toISOString(),
+      visitaId: novoIdVisita(),
+    },
   };
 }
 
@@ -696,7 +709,7 @@ function renderReview(container) {
   submitBtn.className = 'btn btn-success';
   submitBtn.style.width = '100%';
   submitBtn.textContent = 'Finalizar e enviar';
-  submitBtn.addEventListener('click', submitSurvey);
+  submitBtn.addEventListener('click', () => submitSurvey(submitBtn));
   btnRow.appendChild(submitBtn);
   submitCard.appendChild(btnRow);
 
@@ -782,6 +795,10 @@ function buildReadablePayload() {
     set(def.label, getPath(state, ['fechamento', def.key]));
   });
 
+  // Rascunhos criados antes desta versão não têm visitaId; gera um agora
+  // para que nenhum envio fique sem chave de idempotência.
+  if (!state.meta.visitaId) state.meta.visitaId = novoIdVisita();
+  set('ID Visita', state.meta.visitaId);
   set('Iniciado em', state.meta.startedAt);
   set('Enviado em (app)', new Date().toISOString());
 
@@ -829,17 +846,38 @@ async function flushPendingSubmissions() {
   if (changed) localStorage.setItem(CONFIG.SUBMISSIONS_KEY, JSON.stringify(submissions));
 }
 
-async function submitSurvey() {
-  const payload = buildReadablePayload();
+// Trava contra envio duplicado: o envio leva alguns segundos e, sem retorno
+// visual, o promotor toca de novo achando que não funcionou — cada toque
+// gravava uma linha a mais na planilha.
+let enviando = false;
 
-  const sentOk = await sendToSheet(payload);
+async function submitSurvey(botao) {
+  if (enviando) return;
+  enviando = true;
 
-  const submissions = JSON.parse(localStorage.getItem(CONFIG.SUBMISSIONS_KEY) || '[]');
-  submissions.push({ payload, sentOk });
-  localStorage.setItem(CONFIG.SUBMISSIONS_KEY, JSON.stringify(submissions));
-  localStorage.removeItem(CONFIG.STORAGE_KEY);
+  const textoOriginal = botao ? botao.textContent : null;
+  if (botao) {
+    botao.disabled = true;
+    botao.textContent = 'Enviando…';
+  }
 
-  showDoneScreen(sentOk);
+  try {
+    const payload = buildReadablePayload();
+    const sentOk = await sendToSheet(payload);
+
+    const submissions = JSON.parse(localStorage.getItem(CONFIG.SUBMISSIONS_KEY) || '[]');
+    submissions.push({ payload, sentOk });
+    localStorage.setItem(CONFIG.SUBMISSIONS_KEY, JSON.stringify(submissions));
+    localStorage.removeItem(CONFIG.STORAGE_KEY);
+
+    showDoneScreen(sentOk);
+  } catch (e) {
+    console.warn('Falha inesperada no envio', e);
+    if (botao) { botao.disabled = false; botao.textContent = textoOriginal; }
+    toast('Não foi possível enviar. Tente de novo.');
+  } finally {
+    enviando = false;
+  }
 }
 
 function showDoneScreen(sentOk) {

@@ -46,6 +46,16 @@ function doPost(e) {
     delete payload.token;
 
     const sheet = getOrCreateSheet();
+
+    // Idempotência: cada visita carrega um "ID Visita" gerado no celular.
+    // Se a mesma visita chegar de novo (toque repetido no botão, reenvio
+    // automático, retentativa de rede), respondemos ok sem gravar outra
+    // linha — senão a planilha enche de cópias da mesma visita.
+    const idVisita = payload['ID Visita'];
+    if (idVisita && jaRegistrada(sheet, idVisita)) {
+      return jsonResponse({ ok: true, duplicada: true });
+    }
+
     const flat = flatten(payload); // já vem achatado; flatten() aqui é só uma rede de segurança
     flat['servidor_timestamp'] = new Date();
     flat['payload_json'] = rawBackup || JSON.stringify(payload);
@@ -63,6 +73,24 @@ function doPost(e) {
 // GET só para conferir que o deploy está no ar (abra a URL /exec no navegador).
 function doGet() {
   return jsonResponse({ ok: true, message: 'Tempos & Movimentos — endpoint ativo.' });
+}
+
+// Procura o ID da visita na coluna "ID Visita". Lê só essa coluna, e não a
+// planilha inteira, para continuar rápido conforme as respostas crescem.
+function jaRegistrada(sheet, idVisita) {
+  const lastRow = sheet.getLastRow();
+  const lastCol = sheet.getLastColumn();
+  if (lastRow < 2 || lastCol < 1) return false;
+
+  const headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
+  const col = headers.indexOf('ID Visita');
+  if (col === -1) return false; // coluna ainda não existe: nada a comparar
+
+  const valores = sheet.getRange(2, col + 1, lastRow - 1, 1).getValues();
+  for (let i = 0; i < valores.length; i++) {
+    if (String(valores[i][0]) === String(idVisita)) return true;
+  }
+  return false;
 }
 
 function getOrCreateSheet() {
