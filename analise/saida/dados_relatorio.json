@@ -1,0 +1,331 @@
+{
+ "visitas": 51,
+ "promotores": 34,
+ "tempo_loja_mediana": 239.0,
+ "blocos": [
+  {
+   "nome": "Ponto Natural",
+   "pct": 37.1,
+   "min": 178
+  },
+  {
+   "nome": "Abertura",
+   "pct": 13.2,
+   "min": 64
+  },
+  {
+   "nome": "Outras Atividades",
+   "pct": 13.1,
+   "min": 63
+  },
+  {
+   "nome": "Entrada",
+   "pct": 10.5,
+   "min": 51
+  },
+  {
+   "nome": "Estoque",
+   "pct": 9.1,
+   "min": 44
+  },
+  {
+   "nome": "Check Out",
+   "pct": 7.8,
+   "min": 38
+  },
+  {
+   "nome": "Ponto Extra",
+   "pct": 7.0,
+   "min": 34
+  },
+  {
+   "nome": "Saída",
+   "pct": 2.1,
+   "min": 10
+  }
+ ],
+ "top": [
+  {
+   "bloco": "Ponto Natural",
+   "mov": "Abastecimento e organização (Layout/KBDs etc)",
+   "pct": 13.4,
+   "min": 64
+  },
+  {
+   "bloco": "Ponto Natural",
+   "mov": "Buscar itens faltantes no estoque",
+   "pct": 8.4,
+   "min": 40
+  },
+  {
+   "bloco": "Ponto Natural",
+   "mov": "Precificar todos os itens",
+   "pct": 6.5,
+   "min": 31
+  },
+  {
+   "bloco": "Outras Atividades",
+   "mov": "Leitura de loja (checklist / auditoria)",
+   "pct": 5.9,
+   "min": 28
+  },
+  {
+   "bloco": "Ponto Natural",
+   "mov": "Limpeza antes do abastecimento",
+   "pct": 5.2,
+   "min": 25
+  },
+  {
+   "bloco": "Entrada",
+   "mov": "Chegada à loja (portaria/entrada)",
+   "pct": 5.0,
+   "min": 24
+  },
+  {
+   "bloco": "Outras Atividades",
+   "mov": "Deslocamento interno dentro da loja",
+   "pct": 4.8,
+   "min": 23
+  },
+  {
+   "bloco": "Abertura",
+   "mov": "Passar por todas as categorias puxando frentes",
+   "pct": 4.6,
+   "min": 22
+  },
+  {
+   "bloco": "Ponto Natural",
+   "mov": "Validar estoque virtual",
+   "pct": 3.6,
+   "min": 17
+  },
+  {
+   "bloco": "Abertura",
+   "mov": "Identificar pontos de atenção / rupturas",
+   "pct": 3.3,
+   "min": 16
+  },
+  {
+   "bloco": "Abertura",
+   "mov": "Pegar relatório de estoque para conferência",
+   "pct": 2.9,
+   "min": 14
+  },
+  {
+   "bloco": "Check Out",
+   "mov": "Abastecer seguindo o guia de execução",
+   "pct": 2.5,
+   "min": 12
+  }
+ ],
+ "canais": [
+  {
+   "canal": "DPP",
+   "n": 16,
+   "prom": 5,
+   "visita_min": 118,
+   "abs": {
+    "Abertura": 11,
+    "Check Out": 4,
+    "Entrada": 30,
+    "Estoque": 6,
+    "Outras Atividades": 37,
+    "Ponto Extra": 1,
+    "Ponto Natural": 26,
+    "Saída": 3
+   },
+   "pct": {
+    "Abertura": 9.3,
+    "Check Out": 3.0,
+    "Entrada": 25.5,
+    "Estoque": 5.1,
+    "Outras Atividades": 31.7,
+    "Ponto Extra": 1.0,
+    "Ponto Natural": 21.9,
+    "Saída": 2.5
+   }
+  },
+  {
+   "canal": "C&C",
+   "n": 9,
+   "prom": 9,
+   "visita_min": 368,
+   "abs": {
+    "Abertura": 50,
+    "Check Out": 36,
+    "Entrada": 9,
+    "Estoque": 33,
+    "Outras Atividades": 34,
+    "Ponto Extra": 27,
+    "Ponto Natural": 171,
+    "Saída": 8
+   },
+   "pct": {
+    "Abertura": 13.5,
+    "Check Out": 9.8,
+    "Entrada": 2.6,
+    "Estoque": 9.1,
+    "Outras Atividades": 9.2,
+    "Ponto Extra": 7.3,
+    "Ponto Natural": 46.4,
+    "Saída": 2.1
+   }
+  },
+  {
+   "canal": "HFS",
+   "n": 8,
+   "prom": 5,
+   "visita_min": 220,
+   "abs": {
+    "Abertura": 43,
+    "Check Out": 23,
+    "Entrada": 37,
+    "Estoque": 13,
+    "Outras Atividades": 28,
+    "Ponto Extra": 3,
+    "Ponto Natural": 69,
+    "Saída": 4
+   },
+   "pct": {
+    "Abertura": 19.6,
+    "Check Out": 10.4,
+    "Entrada": 16.7,
+    "Estoque": 6.1,
+    "Outras Atividades": 12.9,
+    "Ponto Extra": 1.5,
+    "Ponto Natural": 31.2,
+    "Saída": 1.6
+   }
+  },
+  {
+   "canal": "GMR",
+   "n": 6,
+   "prom": 6,
+   "visita_min": 318,
+   "abs": {
+    "Abertura": 53,
+    "Check Out": 23,
+    "Entrada": 48,
+    "Estoque": 43,
+    "Outras Atividades": 8,
+    "Ponto Extra": 20,
+    "Ponto Natural": 111,
+    "Saída": 12
+   },
+   "pct": {
+    "Abertura": 16.7,
+    "Check Out": 7.4,
+    "Entrada": 15.1,
+    "Estoque": 13.4,
+    "Outras Atividades": 2.4,
+    "Ponto Extra": 6.3,
+    "Ponto Natural": 35.0,
+    "Saída": 3.7
+   }
+  },
+  {
+   "canal": "NMR",
+   "n": 6,
+   "prom": 5,
+   "visita_min": 450,
+   "abs": {
+    "Abertura": 38,
+    "Check Out": 35,
+    "Entrada": 8,
+    "Estoque": 47,
+    "Outras Atividades": 46,
+    "Ponto Extra": 65,
+    "Ponto Natural": 202,
+    "Saída": 9
+   },
+   "pct": {
+    "Abertura": 8.5,
+    "Check Out": 7.9,
+    "Entrada": 1.8,
+    "Estoque": 10.4,
+    "Outras Atividades": 10.3,
+    "Ponto Extra": 14.3,
+    "Ponto Natural": 44.8,
+    "Saída": 2.1
+   }
+  },
+  {
+   "canal": "CLUB",
+   "n": 3,
+   "prom": 3,
+   "visita_min": 290,
+   "abs": {
+    "Abertura": 37,
+    "Check Out": 31,
+    "Entrada": 33,
+    "Estoque": 19,
+    "Outras Atividades": 34,
+    "Ponto Extra": 16,
+    "Ponto Natural": 119,
+    "Saída": 1
+   },
+   "pct": {
+    "Abertura": 12.7,
+    "Check Out": 10.6,
+    "Entrada": 11.4,
+    "Estoque": 6.4,
+    "Outras Atividades": 11.9,
+    "Ponto Extra": 5.5,
+    "Ponto Natural": 41.0,
+    "Saída": 0.5
+   }
+  },
+  {
+   "canal": "LASA",
+   "n": 2,
+   "prom": 2,
+   "visita_min": 187,
+   "abs": {
+    "Abertura": 21,
+    "Check Out": 7,
+    "Entrada": 42,
+    "Estoque": 36,
+    "Outras Atividades": 48,
+    "Ponto Extra": 4,
+    "Ponto Natural": 29,
+    "Saída": 0
+   },
+   "pct": {
+    "Abertura": 11.4,
+    "Check Out": 3.8,
+    "Entrada": 22.3,
+    "Estoque": 19.1,
+    "Outras Atividades": 25.6,
+    "Ponto Extra": 2.3,
+    "Ponto Natural": 15.2,
+    "Saída": 0.3
+   }
+  },
+  {
+   "canal": "PERFUMARIA",
+   "n": 1,
+   "prom": 1,
+   "visita_min": 311,
+   "abs": {
+    "Abertura": 65,
+    "Check Out": 6,
+    "Entrada": 2,
+    "Estoque": 22,
+    "Outras Atividades": 70,
+    "Ponto Extra": 71,
+    "Ponto Natural": 74,
+    "Saída": 1
+   },
+   "pct": {
+    "Abertura": 20.9,
+    "Check Out": 1.9,
+    "Entrada": 0.6,
+    "Estoque": 7.1,
+    "Outras Atividades": 22.6,
+    "Ponto Extra": 22.8,
+    "Ponto Natural": 23.7,
+    "Saída": 0.3
+   }
+  }
+ ]
+}
