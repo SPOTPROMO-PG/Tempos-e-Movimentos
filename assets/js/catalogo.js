@@ -204,6 +204,24 @@ const CATALOGO = [
     ]
   },
   {
+    "setor": "PR117",
+    "promotor": "",
+    "executivo": "DANIELA",
+    "canais": [
+      "NMR"
+    ],
+    "lojas": [
+      {
+        "id": "0014W00002e9Hz9QAE",
+        "canal": "NMR",
+        "rede": "CONDOR",
+        "nome": "CONDOR 21 NILO PECANHA",
+        "cidade": "CURITIBA",
+        "estado": "PR"
+      }
+    ]
+  },
+  {
     "setor": "PR151",
     "promotor": "LUCIANE APARECIDA VESSELOVITZ",
     "executivo": "DANIELA",
@@ -365,40 +383,6 @@ const CATALOGO = [
         "rede": "LASA",
         "nome": "Lasa Mandacaru",
         "cidade": "MARINGA",
-        "estado": "PR"
-      }
-    ]
-  },
-  {
-    "setor": "PR49",
-    "promotor": "KEILA DE ANDRADE MARTINS",
-    "executivo": "DANIELA",
-    "canais": [
-      "NMR"
-    ],
-    "lojas": [
-      {
-        "id": "0014W00002e9HyeQAE",
-        "canal": "NMR",
-        "rede": "CONDOR",
-        "nome": "CONDOR 43 ALMIRANTE TAMANDARE",
-        "cidade": "ALMIRANTE TAMANDARE",
-        "estado": "PR"
-      },
-      {
-        "id": "001Ho00001Z6EqbIAF",
-        "canal": "NMR",
-        "rede": "SUPERMERCADO FESTIVAL",
-        "nome": "FESTVAL JUVEVE 45",
-        "cidade": "CURITIBA",
-        "estado": "PR"
-      },
-      {
-        "id": "0014W00002e9HwjQAE",
-        "canal": "NMR",
-        "rede": "SUPERMERCADO FESTIVAL",
-        "nome": "FESTVAL MATHEUS LEME",
-        "cidade": "CURITIBA",
         "estado": "PR"
       }
     ]
