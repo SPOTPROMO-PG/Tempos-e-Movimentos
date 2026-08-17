@@ -10,7 +10,7 @@
  * resolve sozinha).
  */
 
-const CACHE_VERSION = 'v10';
+const CACHE_VERSION = 'v11';
 const CACHE_NAME = `tm-shell-${CACHE_VERSION}`;
 
 const SHELL_FILES = [

@@ -1303,41 +1303,6 @@ const CATALOGO = [
     ]
   },
   {
-    "setor": "SPI203",
-    "promotor": "ROUSIANE FERREIRA NUNES",
-    "executivo": "GILSON",
-    "canais": [
-      "CLUB",
-      "NMR"
-    ],
-    "lojas": [
-      {
-        "id": "0018a00001x73B8AAI",
-        "canal": "NMR",
-        "rede": "SUPER PAGUE MENOS",
-        "nome": "PAGUE MENOS AV DONA FRANCISCA 300",
-        "cidade": "PIRACICABA",
-        "estado": "SPI"
-      },
-      {
-        "id": "0014W00002e9LZlQAM",
-        "canal": "CLUB",
-        "rede": "SAMS CLUB",
-        "nome": "SAMS CLUB PIRACICABA",
-        "cidade": "PIRACICABA",
-        "estado": "SPI"
-      },
-      {
-        "id": "0018a00001s6N72AAE",
-        "canal": "NMR",
-        "rede": "SAVEGNAGO",
-        "nome": "SAVEGNAGO LJ 51 PIRACICABA INDEPENDENCIA",
-        "cidade": "PIRACICABA",
-        "estado": "SPI"
-      }
-    ]
-  },
-  {
     "setor": "SPI234",
     "promotor": "MARIA",
     "executivo": "KARINA",
@@ -1395,41 +1360,6 @@ const CATALOGO = [
         "rede": "CONFIANCA",
         "nome": "CONFIANCA MAX",
         "cidade": "BAURU",
-        "estado": "SPI"
-      }
-    ]
-  },
-  {
-    "setor": "SPI282",
-    "promotor": "LUIS HENRIQUE FERNANDES DE OLIVEIRA",
-    "executivo": "GILSON",
-    "canais": [
-      "LASA",
-      "NMR"
-    ],
-    "lojas": [
-      {
-        "id": "0014W00002e9JNoQAM",
-        "canal": "NMR",
-        "rede": "CASA AVENIDA",
-        "nome": "CASA AVENIDA LOJA 18",
-        "cidade": "PRESIDENTE PRUDENTE",
-        "estado": "SPI"
-      },
-      {
-        "id": "0014W00002e9LRRQA2",
-        "canal": "LASA",
-        "rede": "LASA",
-        "nome": "LASA SHC AMERICANAS PRE PRUDENTE",
-        "cidade": "PRESIDENTE PRUDENTE",
-        "estado": "SPI"
-      },
-      {
-        "id": "0014W00002e9Hy5QAE",
-        "canal": "NMR",
-        "rede": "MUFFATO VAREJO",
-        "nome": "MUFFATO VAREJO  1036  PRESIDENTE PRUDENTE (PARQUE SHOPPING)",
-        "cidade": "PRESIDENTE PRUDENTE",
         "estado": "SPI"
       }
     ]
@@ -1651,6 +1581,33 @@ const CATALOGO = [
     ]
   },
   {
+    "setor": "SPI550",
+    "promotor": "TALITA MAIARA ANDRADE OLIVEIRA SILVA",
+    "executivo": "GILSON",
+    "canais": [
+      "CLUB",
+      "NMR"
+    ],
+    "lojas": [
+      {
+        "id": "0014W00002e9J9OQAU",
+        "canal": "NMR",
+        "rede": "CONFIANCA",
+        "nome": "CONFIANCA RODOVIARIA",
+        "cidade": "BAURU",
+        "estado": "SPI"
+      },
+      {
+        "id": "0014W00002e9LaGQAU",
+        "canal": "CLUB",
+        "rede": "SAMS CLUB",
+        "nome": "SAMS CLUB BAURU",
+        "cidade": "BAURU",
+        "estado": "SPI"
+      }
+    ]
+  },
+  {
     "setor": "SPI57",
     "promotor": "NATIELE APARECIDA BARBOSA",
     "executivo": "GILSON",
@@ -1664,6 +1621,32 @@ const CATALOGO = [
         "rede": "ASSAI",
         "nome": "ASSAI PIRACICABA CENTRO 167",
         "cidade": "PIRACICABA",
+        "estado": "SPI"
+      }
+    ]
+  },
+  {
+    "setor": "SPI621",
+    "promotor": "KAISY CRISTINA LIMA RODRIGUES",
+    "executivo": "GILSON",
+    "canais": [
+      "LASA"
+    ],
+    "lojas": [
+      {
+        "id": "0014W00002e9LSUQA2",
+        "canal": "LASA",
+        "rede": "LASA",
+        "nome": "LASA BAURU",
+        "cidade": "BAURU",
+        "estado": "SPI"
+      },
+      {
+        "id": "0014W00002e9LRgQAM",
+        "canal": "LASA",
+        "rede": "LASA",
+        "nome": "LASA SHOP BAURU",
+        "cidade": "BAURU",
         "estado": "SPI"
       }
     ]
