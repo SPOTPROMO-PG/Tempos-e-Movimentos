@@ -8,6 +8,7 @@
 const CONFIG = {
   STORAGE_KEY: 'tm_survey_state_v1',
   SUBMISSIONS_KEY: 'tm_survey_submissions_v1',
+  SEND_TIMEOUT_MS: 15000,
   LOGIN_KEY: 'tm_login_v1',
   // URL do Web App do Apps Script (termina em /exec). Ver apps-script/README.md.
   SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbwkmlM59FIGxsfDvHmRriqN66dZ1xGDz-3T5ob8h5pgrJ1_FUUy5YoYM-0V8_-f85ia/exec',
@@ -813,27 +814,56 @@ function buildReadablePayload() {
 // Envia um payload ao Apps Script e devolve true só se o servidor confirmou
 // (resposta JSON com ok:true) — sem mode:'no-cors', então dá pra saber de
 // verdade se gravou na planilha, em vez de torcer às cegas.
-async function sendToSheet(payload) {
+//
+// Tenta mais de uma vez porque o caminho até a planilha é longo: o Apps
+// Script responde com um redirect para script.googleusercontent.com, ou seja
+// são dois saltos e vários segundos. Em sinal fraco de loja, a primeira
+// tentativa cai com frequência e a segunda passa. Reenviar é seguro: o
+// servidor reconhece o ID Visita já gravado e devolve ok:true sem duplicar.
+//
+// O timeout é explícito porque um fetch travado numa rede que aceita a
+// conexão mas não entrega nada ficaria pendurado para sempre, e o promotor
+// ficaria olhando "Enviando…" sem fim.
+async function sendToSheet(payload, tentativas) {
   if (!CONFIG.SCRIPT_URL) return false;
-  try {
-    const resp = await fetch(CONFIG.SCRIPT_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify(payload),
-    });
-    const result = await resp.json().catch(() => null);
-    if (!result || !result.ok) console.warn('Apps Script respondeu com erro', result);
-    return !!(result && result.ok);
-  } catch (e) {
-    console.warn('Falha ao enviar ao Apps Script (sem internet?)', e);
-    return false;
+  const total = tentativas || 2;
+  for (let i = 0; i < total; i += 1) {
+    const ctrl = new AbortController();
+    const alarme = setTimeout(() => ctrl.abort(), CONFIG.SEND_TIMEOUT_MS);
+    try {
+      const resp = await fetch(CONFIG.SCRIPT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify(payload),
+        signal: ctrl.signal,
+      });
+      const result = await resp.json().catch(() => null);
+      if (result && result.ok) return true;
+      console.warn('Apps Script respondeu com erro', result);
+    } catch (e) {
+      console.warn('Falha ao enviar (tentativa ' + (i + 1) + ' de ' + total + ')', e);
+    } finally {
+      clearTimeout(alarme);
+    }
+    if (i < total - 1) {
+      await new Promise((r) => setTimeout(r, 1500 * (i + 1)));
+    }
   }
+  return false;
+}
+
+// Quantas visitas estão guardadas no aparelho sem confirmação da planilha.
+function pendentes() {
+  try {
+    const subs = JSON.parse(localStorage.getItem(CONFIG.SUBMISSIONS_KEY) || '[]');
+    return subs.filter((s) => !s.sentOk).length;
+  } catch (e) { return 0; }
 }
 
 // Reenvia, em segundo plano, visitas que ficaram salvas localmente mas não
 // foram confirmadas na planilha (ex: sem internet no momento do envio).
 async function flushPendingSubmissions() {
-  if (!CONFIG.SCRIPT_URL || (navigator.onLine === false)) return;
+  if (!CONFIG.SCRIPT_URL || (navigator.onLine === false)) return pendentes();
   const submissions = JSON.parse(localStorage.getItem(CONFIG.SUBMISSIONS_KEY) || '[]');
   let changed = false;
   for (const sub of submissions) {
@@ -844,6 +874,7 @@ async function flushPendingSubmissions() {
     }
   }
   if (changed) localStorage.setItem(CONFIG.SUBMISSIONS_KEY, JSON.stringify(submissions));
+  return submissions.filter((s) => !s.sentOk).length;
 }
 
 // Trava contra envio duplicado: o envio leva alguns segundos e, sem retorno
@@ -904,8 +935,37 @@ function showDoneScreen(sentOk) {
     <h1>Pesquisa registrada</h1>
     <p>${statusMsg}</p>
   `;
+  // Sem confirmação, o promotor precisa de uma forma de agir na hora — antes
+  // ele só podia fechar o app e torcer. O reenvio é o mesmo do automático.
+  if (CONFIG.SCRIPT_URL && !sentOk) {
+    const retry = document.createElement('button');
+    retry.className = 'btn btn-primary';
+    retry.style.width = '100%';
+    retry.style.marginBottom = '10px';
+    retry.textContent = 'Tentar enviar agora';
+    retry.addEventListener('click', async () => {
+      retry.disabled = true;
+      retry.textContent = 'Enviando…';
+      const restam = await flushPendingSubmissions();
+      const p = wrap.querySelector('p');
+      if (restam === 0) {
+        retry.remove();
+        if (p) p.textContent = 'Suas respostas foram salvas e enviadas para a planilha.';
+      } else {
+        retry.disabled = false;
+        retry.textContent = 'Tentar enviar agora';
+        if (p) {
+          p.textContent = 'Ainda não foi possível enviar (' + restam + ' visita(s) na fila).'
+            + ' As respostas continuam salvas neste aparelho. Procure um lugar com sinal'
+            + ' melhor e toque de novo, ou apenas reabra o app mais tarde.';
+        }
+      }
+    });
+    wrap.appendChild(retry);
+  }
+
   const btn = document.createElement('button');
-  btn.className = 'btn btn-primary';
+  btn.className = sentOk ? 'btn btn-primary' : 'btn btn-secondary';
   btn.style.width = '100%';
   btn.textContent = 'Iniciar nova visita';
   btn.addEventListener('click', () => {
@@ -1003,6 +1063,14 @@ function init() {
   document.getElementById('btn-next').addEventListener('click', () => {
     if (currentStep < STEPS.length - 1) goToStep(currentStep + 1);
   });
+  // O reenvio automático só acontecia ao abrir o app. Se a conexão voltasse
+  // com o app já aberto — o caso comum: sinal ruim no corredor da loja, bom
+  // na saída — nada acontecia até o promotor fechar e abrir de novo.
+  window.addEventListener('online', () => { flushPendingSubmissions(); });
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) flushPendingSubmissions();
+  });
+
   boot();
 }
 
