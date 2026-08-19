@@ -62,6 +62,14 @@ function doPost(e) {
 
     writeRow(sheet, flat);
 
+    // Sem isto, a gravação fica em buffer e só é comitada depois que o
+    // finally solta a trava — então a próxima execução lê a planilha sem
+    // enxergar esta linha, jaRegistrada() devolve false e a mesma visita
+    // entra de novo. Foi exatamente o que aconteceu com 2 visitas que
+    // chegaram por reenvio: 13 linhas para 2 IDs. O flush força o commit
+    // ainda dentro da trava.
+    SpreadsheetApp.flush();
+
     return jsonResponse({ ok: true });
   } catch (err) {
     return jsonResponse({ ok: false, error: String(err) });

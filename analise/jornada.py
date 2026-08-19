@@ -75,13 +75,33 @@ def main(caminho_xlsx):
     os.makedirs(f'{RAIZ}/analise/saida', exist_ok=True)
     df = pd.read_excel(caminho_xlsx, sheet_name='Respostas')
 
-    # dedup (ver preparar.py: bug de envio duplicado até 14/08)
-    cols_h = [c for c in df.columns if str(c).endswith(('- Início', '- Término'))]
-    chave = (df['Promotor'].astype(str) + '|' + df['Loja'].astype(str) + '|'
-             + df[cols_h].astype(str).agg(lambda r: '|'.join(map(str, r)), axis=1))
+    # dedup (ver preparar.py: bug de envio duplicado até 14/08).
+    #
+    # As linhas antigas não têm 'ID Visita', então precisam de uma chave
+    # derivada. A primeira versão usava a assinatura das 570 colunas de
+    # horário, e isso se mostrou INSTÁVEL: a mesma visita rendia assinaturas
+    # diferentes em exportações diferentes da planilha, e a contagem oscilava
+    # (95 visitas onde havia 86). Promotor + loja + dia do envio é estável
+    # entre exportações e ainda separa revisita legítima (mesma loja em outro
+    # dia) da rajada de duplicatas, que chegava toda no mesmo minuto.
+    ts = pd.to_datetime(df[df.columns[0]], errors='coerce').dt.date
+    chave = (df['Promotor'].astype(str).str.upper().str.strip() + '||'
+             + df['Loja'].astype(str).str.upper().str.strip() + '||'
+             + ts.astype(str))
     if 'ID Visita' in df.columns:
-        chave = df['ID Visita'].fillna(chave)
-    df = df.loc[~chave.duplicated(keep='first')].reset_index(drop=True)
+        chave = df['ID Visita'].where(df['ID Visita'].notna(), chave)
+
+    # Entre as cópias de uma mesma visita fica a MAIS COMPLETA, não a
+    # primeira. As duplicatas não são idênticas: o promotor reenviava
+    # conforme avançava no formulário, então a última cópia tem mais
+    # horários preenchidos que a primeira. Guardar a primeira descartava
+    # justamente a versão cheia — foi assim que o bloco Deslocamento
+    # apareceu em 6 visitas quando estava preenchido em 14.
+    cols_h = [c for c in df.columns if str(c).endswith(('- Início', '- Término'))]
+    completude = df[cols_h].notna().sum(axis=1)
+    ordem = completude.sort_values(ascending=False, kind='mergesort').index
+    manter = chave.loc[ordem].drop_duplicates(keep='first').index
+    df = df.loc[sorted(manter)].reset_index(drop=True)
 
     with io.open(f'{RAIZ}/analise/schema.json', encoding='utf-8') as f:
         sch = json.load(f)

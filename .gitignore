@@ -17,3 +17,4 @@ lancamento/
 # artefatos de análise (dados exportados e cache do Python)
 analise/__pycache__/
 analise/eventos.csv
+analise/saida/_fig/
