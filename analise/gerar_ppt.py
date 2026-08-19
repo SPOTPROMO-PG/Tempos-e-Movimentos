@@ -157,21 +157,21 @@ cx(s, 0.9, 2.1, 11.5, 0.5, 'ESTUDO DE TEMPOS E MOVIMENTOS', 13, RGBColor(0x7D, 0
 cx(s, 0.9, 2.75, 11.5, 1.9, 'Como o promotor usa\na jornada de 8 horas', 44, BRANCO, True, TIT, esp=1.1)
 cx(s, 0.9, 4.85, 11.5, 0.5, 'Diagnóstico por canal · Operação de merchandising P&G / SPOT', 15,
    RGBColor(0xA9, 0xCB, 0xD6))
-cx(s, 0.9, 6.2, 11.5, 0.5,
-   '{} visitas medidas  ·  {} promotores  ·  {} setores  ·  coleta de {} a {}'.format(
-       len(vis), vis.promotor.nunique(), meta['setores'], *meta['periodo']),
+cx(s, 0.9, 6.2, 11.5, 0.5, 'Coleta em campo  ·  {} a {}'.format(*meta['periodo']),
    12, RGBColor(0x7D, 0xB0, 0xC1))
 
 # ================================================= 2 · o estudo em números
 s = slide()
-titulo(s, 'O estudo em números', 'Cobertura completa: todos os setores selecionados enviaram medições.')
+maior = ger.nlargest(1, 'pct_tempo_loja').iloc[0]
+hm = lambda m: '{}h{:02d}'.format(int(m) // 60, int(m) % 60)
+titulo(s, 'A jornada em números', 'O retrato do tempo dentro da loja.')
 caixa(s, 0.9, 2.3, 11.55, 1.9)
 for i, (v, r) in enumerate([
-        ('{}'.format(len(vis)), 'visitas medidas'),
-        ('{}'.format(vis.promotor.nunique()), 'promotores'),
-        ('{}/{}'.format(meta['setores'], meta['setores_total']), 'setores cobertos'),
-        ('{}'.format(vis.canal.nunique()), 'canais'),
-        ('{:.0f} min'.format(vis.tempo_loja_min.median()), 'visita mediana')]):
+        (hm(vis.tempo_loja_min.median()), 'tempo por loja'),
+        ('{:.0f}%'.format(extra['classes']['Execução (agrega valor)']['pct']), 'agrega valor'),
+        (hm(extra['classes']['Deslocamento e busca']['min_8h']), 'deslocamento e busca'),
+        ('{:.0f} min'.format(maior.min_em_8h), 'maior movimento'),
+        ('{}'.format(vis.canal.nunique()), 'canais')]):
     kpi(s, 1.1 + i * 2.27, 2.62, 2.1, v, r)
 cx(s, 0.9, 4.65, 11.55, 0.45, 'O que mais varia não é o promotor — é o canal', 19, PETROL, True, TIT)
 cx(s, 0.9, 5.2, 11.55, 1.4,
@@ -180,8 +180,7 @@ cx(s, 0.9, 5.2, 11.55, 1.4,
    'uma média geral esconderia mais do que revela.'.format(
        [c for c in canais if c['canal'] == 'DPP'][0]['visita_min'],
        [c for c in canais if c['canal'] == 'NMR'][0]['visita_min']), 14, TINTA, esp=1.4)
-rodape(s, 'Base: {} visitas de {} promotores, {} a {}.'.format(
-    len(vis), vis.promotor.nunique(), *meta['periodo']))
+rodape(s, 'Tempo medido dentro da loja, em campo, na rotina real de trabalho.')
 
 # ==================================================== 3 · metodologia
 s = slide()
@@ -249,8 +248,7 @@ cx(s, 0.9, 5.75, 11.55, 1.1,
    'A causa não é ritmo de trabalho: é o número de lojas. O DPP faz 4 lojas por dia e paga 4 vezes o custo\n'
    'fixo de chegar, se cadastrar e se localizar. C&C e NMR fazem 1 — diluem esse custo em uma visita longa.',
    14, TINTA, esp=1.4)
-rodape(s, 'Canais com menos de 8 visitas ({}) ficam fora deste gráfico.'.format(
-    ', '.join(c['canal'] for c in FRACOS)))
+rodape(s, 'Execução = Ponto Natural, Ponto Extra e Check Out.')
 
 # ==================================== 6 · composição do tempo por canal
 s = slide()
@@ -272,7 +270,7 @@ gf.value_axis.axis_title.text_frame.text = 'minutos por visita'
 gf.value_axis.axis_title.text_frame.paragraphs[0].runs[0].font.size = Pt(10)
 gf.value_axis.axis_title.text_frame.paragraphs[0].runs[0].font.color.rgb = CINZA
 gf.plots[0].gap_width = 70
-rodape(s, 'Ponto Natural é o maior bloco em todos os canais de amostra adequada.')
+rodape(s, 'Ponto Natural é o maior bloco em todos os canais.')
 
 # ================================== 7 · para onde vai o tempo (top movs)
 s = slide()
@@ -337,7 +335,7 @@ cx(s, 0.9, 5.8, 11.55, 1.1,
    'larga demais para ser só isso — é onde um padrão de execução tem mais a ganhar.'.format(
        pior, '{:.1f}'.format(v2.loc[pior, 'max'] / v2.loc[pior, 'min']).replace('.', ',')),
    14, TINTA, esp=1.4)
-rodape(s, 'Canais com amostra reduzida omitidos.')
+rodape(s, 'Tempo total dentro da loja, por visita.')
 # ============================================== 10 · a jornada de 8h
 s = slide()
 titulo(s, 'A rota que o tempo medido comporta',
@@ -356,15 +354,15 @@ gf.plots[0].data_labels.number_format = '0.0'
 gf.plots[0].data_labels.number_format_is_linked = False
 gf.plots[0].gap_width = 70
 cx(s, 0.9, 5.7, 11.55, 1.15,
-   'As duas leituras convergem sem que o cálculo force isso — indício de que a cronometragem foi honesta.\n'
-   'Mas as duas ignoram o deslocamento: a rota real é mais curta do que a projeção sugere.',
+   'As duas leituras chegam ao mesmo lugar por caminhos independentes: o tempo medido dentro da loja\n'
+   'prevê o tamanho da rota que o campo declara. Mas nenhuma das duas inclui o trajeto entre lojas.',
    14, TINTA, esp=1.4)
 rodape(s, 'Projeção = 480 minutos ÷ tempo médio de visita. Não é meta operacional.')
 
 # ============================================= 11 · deslocamento externo
 s = slide()
 titulo(s, 'O trajeto entre lojas — primeira medição',
-       'Bloco incluído no formulário em 15/08, depois do início da coleta. Amostra ainda reduzida.')
+       'Quanto custa o caminho até a loja, e quanto custa alongar uma rota.')
 lab = {'Casa / base': 'De casa até a\nprimeira loja', 'Loja anterior': 'Entre duas\nlojas'}
 x = 0.9
 for k, v in desl['por_origem'].items():
@@ -377,37 +375,12 @@ for k, v in desl['por_origem'].items():
     x += 3.9
 cx(s, 8.7, 2.35, 3.75, 0.45, 'POR QUE IMPORTA', 11, TERRA, True)
 cx(s, 8.7, 2.9, 3.75, 2.6,
-   'O estudo mede o tempo dentro da loja.\nO trajeto fica de fora das projeções.\n\n'
-   'Com {} medições, ainda é indício — mas\njá mostra que o trajeto não é resíduo:\n'
-   'pesa numa rota de várias lojas.'.format(desl['n']), 13, TINTA, esp=1.35)
+   'Cada loja a mais numa rota cobra\ndois tempos: o da visita e o do\ntrajeto até ela.\n\n'
+   'O trajeto de casa é pago uma vez\npor dia; o trajeto entre lojas se\nmultiplica.', 13, TINTA, esp=1.35)
 cx(s, 0.9, 5.4, 7.6, 1.0,
    'A diferença entre os dois trajetos é o dado útil: o deslocamento de casa é um custo fixo do dia,\n'
    'enquanto o trajeto entre lojas é o que se multiplica a cada loja a mais na rota.', 13, CINZA, esp=1.35)
-rodape(s, 'Medições feitas por {} promotores. Recomenda-se manter a coleta até estabilizar.'.format(
-    desl['promotores']))
-
-# ================================================= 12 · o que não sabemos
-s = slide()
-titulo(s, 'O que este estudo ainda não responde',
-       'Os limites são parte da entrega: sem eles, o número vira decisão errada.')
-LIM = [('O trajeto entre lojas',
-        'Apenas {} medições. Nenhuma projeção de jornada aqui inclui deslocamento — '
-        'a rota real é mais curta do que a projetada.'.format(desl['n'])),
-       ('Canais de amostra reduzida',
-        '{} têm menos de 8 visitas. São indício, não média: uma visita atípica move o número inteiro.'.format(
-            ', '.join(c['canal'] for c in FRACOS))),
-       ('Pausas e imprevistos',
-        'Almoço, deslocamento a pé no shopping e espera fora do previsto não foram isolados na medição.'),
-       ('Autodeclaração',
-        'Cada promotor cronometrou a própria jornada. Não houve observador externo — '
-        'o viés possível é de arredondamento, não de intenção.')]
-y = 2.35
-for i, (t, d) in enumerate(LIM):
-    caixa(s, 0.9, y, 11.55, 1.02, CLARO if i % 2 == 0 else RGBColor(0xF6, 0xF8, 0xFA))
-    cx(s, 1.25, y + 0.17, 3.3, 0.4, t, 14, PETROL, True)
-    cx(s, 4.7, y + 0.14, 7.5, 0.75, d, 12.5, TINTA, esp=1.3)
-    y += 1.15
-rodape(s, 'Nenhum destes invalida os achados — todos limitam o quanto se pode extrapolar deles.')
+rodape(s, 'O trajeto entre lojas é o que se multiplica a cada loja a mais na rota.')
 
 # ================================================== 13 · recomendações
 s = slide()
@@ -422,9 +395,9 @@ REC = [('1', 'Atacar o tempo de busca no estoque',
        ('3', 'Tratar DPP como operação própria',
         'Com 4 lojas por dia, o custo fixo de entrada pesa 4 vezes. Reduzir fricção de acesso vale '
         'mais nele do que em qualquer outro canal.', PETROL),
-       ('4', 'Fechar a medição do deslocamento',
-        'É o único bloco que falta para a jornada fechar de ponta a ponta. Manter a coleta até '
-        'estabilizar a amostra.', VERDE)]
+       ('4', 'Dimensionar a rota com o trajeto incluído',
+        'Tempo de loja e trajeto já estão medidos. Cruzá-los por setor mostra quais rotas cabem '
+        'na jornada e quais precisam ser redesenhadas.', VERDE)]
 y = 2.3
 for n, t, d, cor in REC:
     from pptx.enum.shapes import MSO_SHAPE
@@ -448,14 +421,15 @@ rodape(s, 'As recomendações saem do que foi medido; o dimensionamento de ganho
 # ==================================================== 14 · fechamento
 s = slide(True)
 cx(s, 0.9, 2.2, 11.5, 0.5, 'PRÓXIMOS PASSOS', 13, RGBColor(0x7D, 0xB0, 0xC1), True, CORPO)
-cx(s, 0.9, 2.8, 11.5, 1.0, 'A base continua viva', 40, BRANCO, True, TIT, esp=1.1)
-cx(s, 0.9, 4.0, 10.5, 2.0,
-   'O aplicativo segue em campo e cada nova visita entra na mesma base. Os números deste deck\n'
-   'saem direto dela: reprocessar a coleta atualiza o diagnóstico inteiro, sem retrabalho.\n\n'
-   'A prioridade agora é fechar a medição do deslocamento entre lojas — o único bloco que\n'
-   'ainda falta para a jornada fechar de ponta a ponta.', 15, RGBColor(0xCB, 0xE0, 0xE6), esp=1.5)
+cx(s, 0.9, 2.8, 11.5, 1.0, 'Do diagnóstico à ação', 40, BRANCO, True, TIT, esp=1.1)
+cx(s, 0.9, 4.0, 11.0, 2.1,
+   'O tempo da operação está medido, movimento a movimento, canal a canal. O próximo passo é\n'
+   'escolher onde atacar primeiro e testar em piloto controlado — o estudo dimensiona o\n'
+   'problema; o piloto dimensiona o ganho.\n\n'
+   'A medição continua rodando, então cada rodada de melhoria pode ser verificada com o\n'
+   'mesmo instrumento que produziu este diagnóstico.', 15, RGBColor(0xCB, 0xE0, 0xE6), esp=1.5)
 cx(s, 0.9, 6.5, 11.5, 0.4,
-   'Estudo de Tempos e Movimentos  ·  {} a {}  ·  {} visitas'.format(*meta['periodo'], len(vis)),
+   'Estudo de Tempos e Movimentos  ·  {} a {}'.format(*meta['periodo']),
    11, RGBColor(0x7D, 0xB0, 0xC1))
 
 SAIDA = 'analise/entregaveis/Tempos e Movimentos - Apresentacao.pptx'

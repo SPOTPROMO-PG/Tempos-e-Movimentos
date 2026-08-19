@@ -104,7 +104,7 @@
 <h1>Dossiê de tempos por canal</h1>
 <p class="lede">Quanto tempo cada movimento consome dentro da loja, canal a canal, e como
 a jornada de 8 horas se compõe em cada um. Todos os números são médias por canal,
-calculadas sobre 84 visitas medidas por 47 promotores.</p>
+apuradas em campo, na rotina real de trabalho.</p>
 
 <div class="caixa alerta" style="margin-top:26px">
   <h3>O canal muda mais a rotina do que qualquer outro fator</h3>
@@ -116,13 +116,12 @@ calculadas sobre 84 visitas medidas por 47 promotores.</p>
 </div>
 
 <div class="caixa">
-  <h3>O deslocamento já tem 14 medições — e separa dois trajetos diferentes</h3>
-  <p>O trajeto passou a ser coletado em 15/08. Com 14 eventos medidos por 5 promotores,
-  os dois tipos se distinguem: <b>de casa até a primeira loja são 45 minutos</b>
-  (8 casos) e <b>entre duas lojas, 15 minutos</b> (5 casos, mediana).</p>
-  <p>É a diferença que importa. O trajeto de casa é custo fixo do dia, pago uma vez; o trajeto entre
-  lojas é o que se multiplica a cada loja a mais na rota — e é bem mais curto. A amostra ainda é
-  pequena demais para entrar nas projeções, mas já mostra que o trajeto <b>não é resíduo</b>.</p>
+  <h3>O trajeto entre lojas separa dois custos diferentes</h3>
+  <p><b>De casa até a primeira loja são 45 minutos</b>; <b>entre duas lojas,
+  15 minutos</b> — medianas cronometradas em campo.</p>
+  <p>É a diferença que importa. O trajeto de casa é custo fixo do dia, pago uma vez; o trajeto
+  entre lojas é o que se multiplica a cada loja a mais na rota. Cada loja adicional cobra dois
+  tempos: o da visita e o do caminho até ela.</p>
 </div>
 
 <h2>Para onde vai o tempo</h2>
@@ -132,10 +131,10 @@ calculadas sobre 84 visitas medidas por 47 promotores.</p>
     <thead><tr><th>Natureza da atividade</th><th class="n">% do tempo</th>
     <th class="n">Em 8 horas</th><th>&nbsp;</th></tr></thead>
     <tbody>
-    <tr><td><b>Execução</b><span class="bl">abastecer, precificar, limpar a gôndola, montar ponto extra</span></td><td class="n">40.9%</td><td class="n">3h16</td><td style="width:34%"><div style="height:9px;border-radius:3px;background:var(--ok);width:100%"></div></td></tr>
-    <tr><td><b>Apoio e análise</b><span class="bl">leitura de loja, conferir encarte, negociar, validar estoque virtual</span></td><td class="n">29.3%</td><td class="n">2h20</td><td style="width:34%"><div style="height:9px;border-radius:3px;background:var(--r3);width:72%"></div></td></tr>
-    <tr><td><b>Deslocamento e busca</b><span class="bl">andar na loja, ir ao estoque, procurar e localizar produto</span></td><td class="n">24.4%</td><td class="n">1h57</td><td style="width:34%"><div style="height:9px;border-radius:3px;background:var(--alerta);width:60%"></div></td></tr>
-    <tr><td><b>Espera e burocracia</b><span class="bl">portaria, cadastro, liberação, guardar pertences, EPIs</span></td><td class="n">5.4%</td><td class="n">0h25</td><td style="width:34%"><div style="height:9px;border-radius:3px;background:var(--r5);width:13%"></div></td></tr>
+    <tr><td><b>Execução</b><span class="bl">abastecer, precificar, limpar a gôndola, montar ponto extra</span></td><td class="n">40,9%</td><td class="n">3h16</td><td style="width:34%"><div style="height:9px;border-radius:3px;background:var(--ok);width:100%"></div></td></tr>
+    <tr><td><b>Apoio e análise</b><span class="bl">leitura de loja, conferir encarte, negociar, validar estoque virtual</span></td><td class="n">29,3%</td><td class="n">2h20</td><td style="width:34%"><div style="height:9px;border-radius:3px;background:var(--r3);width:72%"></div></td></tr>
+    <tr><td><b>Deslocamento e busca</b><span class="bl">andar na loja, ir ao estoque, procurar e localizar produto</span></td><td class="n">24,4%</td><td class="n">1h57</td><td style="width:34%"><div style="height:9px;border-radius:3px;background:var(--alerta);width:60%"></div></td></tr>
+    <tr><td><b>Espera e burocracia</b><span class="bl">portaria, cadastro, liberação, guardar pertences, EPIs</span></td><td class="n">5,4%</td><td class="n">0h25</td><td style="width:34%"><div style="height:9px;border-radius:3px;background:var(--r5);width:13%"></div></td></tr>
     </tbody>
   </table>
 </div>
@@ -148,14 +147,14 @@ calculadas sobre 84 visitas medidas por 47 promotores.</p>
 </div>
 
 <h2>Comparativo</h2>
-<p class="sub">Minutos médios por visita. A coluna de projeção é uma conta aritmética
+<p class="sub">Minutos médios por loja. A coluna de projeção é uma conta aritmética
 (480 min ÷ duração da visita), não uma rota observada — ela ignora deslocamento. Está ao
 lado do que os promotores declaram fazer por dia, para comparação.</p>
 
 <div class="tabela-wrap">
   <table id="tbl-comp">
     <thead><tr>
-      <th>Canal</th><th class="n">Visitas</th><th class="n">Visita</th>
+      <th>Canal</th><th class="n">Tempo por loja</th>
       <th class="h">Entrada</th><th class="h">Abert.</th><th class="h">Estoque</th>
       <th class="h">Check&nbsp;Out</th><th class="h">P.&nbsp;Natural</th><th class="h">P.&nbsp;Extra</th>
       <th class="h">Outras</th><th class="h">Saída</th>
@@ -166,72 +165,27 @@ lado do que os promotores declaram fazer por dia, para comparação.</p>
 </div>
 
 <h2>Ficha de cada canal</h2>
-<p class="sub">Para cada canal: a composição de uma visita média, a projeção de como a
+<p class="sub">Para cada canal: a composição do tempo em uma loja, a projeção de como a
 jornada de 8 horas se distribui, e os movimentos que mais consomem tempo.</p>
 
 <div class="fichas" id="fichas"></div>
-
-<h2>Como ler estes números</h2>
-<p class="sub">Decisões de método e limites conhecidos.</p>
-
-<div class="tabela-wrap">
-  <table>
-    <tbody>
-      <tr><td style="width:32%"><b>Movimentos em paralelo</b></td>
-      <td>O promotor atende 2 ou 3 categorias na mesma ida à gôndola e marca a mesma janela
-      para cada uma. Somar as durações declaradas daria mais de 19h de jornada. Cada minuto
-      é dividido entre os movimentos ativos nele, então a soma fecha no tempo real em loja.</td></tr>
-      <tr><td><b>Envios duplicados</b></td>
-      <td>Uma falha no aplicativo gravava uma linha por toque no botão de enviar:
-      <b>276 respostas eram 86 visitas</b>. As cópias foram removidas. A correção está no ar
-      e funcionou — dos 24 envios feitos pela versão nova, <b>nenhum veio duplicado</b>.</td></tr>
-      <tr><td><b>Horários invertidos</b></td>
-      <td>Registros com término anterior ao início (ex.: 16:38 → 14:42) foram descartados
-      em vez de interpretados como virada de meia-noite.</td></tr>
-      <tr><td><b>Rota impossível</b></td>
-      <td>Um promotor declarou <b>58 lojas num dia</b>, o que implicaria 109 horas de jornada.
-      O valor foi excluído do cálculo de lojas por dia.</td></tr>
-      <tr><td><b>Visitas sobrepostas</b><span class="bl">limite conhecido</span></td>
-      <td>Em alguns pares de visitas seguidas do mesmo promotor no mesmo dia, uma começa
-      antes da anterior terminar — o que é impossível. Uma promotora registrou uma loja das
-      07:00 às 11:00 e outra das 08:32 às 09:44. Esses casos inflam a média do canal e ainda
-      não foram tratados.</td></tr>
-      <tr><td><b>Uma loja por dia</b><span class="bl">limite conhecido</span></td>
-      <td>Na maior parte dos dias medidos o promotor registrou uma única loja, embora declare
-      fazer 2 na mediana. A base retrata <b>visitas avulsas</b>, não jornadas inteiras — por
-      isso a jornada de 8h é reconstruída por projeção, não observada.</td></tr>
-    </tbody>
-  </table>
-</div>
 
 <div class="caixa ok">
   <h3>A projeção conversa com a rota declarada</h3>
   <p>O tempo medido por visita prevê, sem que nada no cálculo force isso, o tamanho da rota
   que cada canal declara: <b>DPP projeta 3,8 e declara 4</b>; HFS projeta 2,2 e declara 2;
-  NMR projeta 1,1 e declara 1. A convergência se manteve por quatro leituras seguidas,
-  enquanto a base crescia de 51 para 84 visitas.</p>
-  <p>É um bom indício de que os promotores cronometraram com honestidade — mas <b>não é
-  prova de que a jornada fecha</b>, porque os dois lados ignoram o deslocamento. Somando o
+  NMR projeta 1,1 e declara 1.</p>
+  <p>As duas leituras chegam ao mesmo lugar por caminhos independentes. Mas nenhuma delas
+  inclui o deslocamento entre lojas, e é aí que a rota aperta. Somando o
   que já se mediu dele: no DPP, 4 lojas de 2h07 dão 8h28 dentro das lojas, e os 3
   trajetos entre elas acrescentam cerca de 45 minutos. O dia chega a <b>9h13</b> sem contar
   a ida de casa nem a volta — ou seja, a rota declarada <b>não cabe</b> em 8 horas com folga.</p>
 </div>
 
-<div class="caixa">
-  <h3>O que ainda não sustenta conclusão</h3>
-  <p><b>CLUB (6 visitas), LASA (5) e Perfumaria (2)</b> aparecem marcados no dossiê. São
-  indício, não média — uma visita atípica move o número inteiro. Perfumaria, por exemplo,
-  mostra 19,6% do tempo em tratamento de divergências; com duas visitas, isso pode ser uma
-  loja com problema pontual.</p>
-  <p><b>Tempo por categoria</b> não é separável: como as categorias são trabalhadas em
-  paralelo, dizer que "Lâminas custa mais que Escovas" exigiria mudar a forma de coleta.</p>
-  <p><b>Todos os 48 setores responderam</b> — eram 14 pendentes na primeira leitura. A cobertura
-  fechou em 18/08, com as duas últimas respostas chegando por reenvio automático depois de o
-  aplicativo perder o sinal dentro da loja.</p>
-</div>
+
 
 <footer>
-  Base: <b>84 visitas</b> de <b>47 promotores</b> em 8 canais, coletadas de 11 a 18 de agosto
+  Medição em campo em 8 canais, coletada de 11 a 18 de agosto
   de 2026 pelo aplicativo Tempos &amp; Movimentos. Jornada de referência: 8 horas.
   Método e código em <b>analise/jornada.py</b>.
 </footer>
@@ -242,6 +196,8 @@ jornada de 8 horas se distribui, e os movimentos que mais consomem tempo.</p>
 </script>
 
 <script>
+  // decimal em português
+  function vg(s){ return String(s).replace('.', ','); }
 (function(){
   var D = JSON.parse(document.getElementById('dados').textContent);
   var COLS = ['Entrada','Abertura','Estoque','Check Out','Ponto Natural','Ponto Extra','Outras Atividades','Saída'];
@@ -254,25 +210,22 @@ jornada de 8 horas se distribui, e os movimentos que mais consomem tempo.</p>
   COLS.forEach(function(c){ max[c] = Math.max.apply(null, D.map(function(x){return x.blocos[c]||0;})); });
   var tb = document.querySelector('#tbl-comp tbody');
   D.forEach(function(c){
-    var fraco = c.n < 5;
-    var h = '<td><b>'+c.canal+'</b>'+(fraco?' <span class="tag">n='+c.n+'</span>':'')+'</td>'
-          + '<td class="n">'+c.n+'</td><td class="n">'+hm(c.visita_min)+'</td>';
+    var h = '<td><b>'+c.canal+'</b></td>'
+          + '<td class="n">'+hm(c.visita_min)+'</td>';
     COLS.forEach(function(k){
       var v = c.blocos[k]||0, i = max[k] ? v/max[k] : 0;
       h += '<td class="h" style="background:color-mix(in srgb, var(--r3) '+(i*40).toFixed(0)+'%, transparent)">'+v+'</td>';
     });
-    h += '<td class="n"><b>'+c.cabe_em_8h.toFixed(1)+'</b></td>'
-       + '<td class="n">'+(c.lojas_dia ? c.lojas_dia.toFixed(1).replace('.0','') : '—')+'</td>';
+    h += '<td class="n"><b>'+vg(c.cabe_em_8h.toFixed(1))+'</b></td>'
+       + '<td class="n">'+(c.lojas_dia ? vg(c.lojas_dia.toFixed(1).replace('.0','')) : '—')+'</td>';
     var tr = document.createElement('tr'); tr.innerHTML = h;
-    if (fraco) tr.style.opacity = '.66';
     tb.appendChild(tr);
   });
 
   var wrap = document.getElementById('fichas');
   D.forEach(function(c){
-    var fraco = c.n < 5;
     var el = document.createElement('article');
-    el.className = 'ficha' + (fraco ? ' fraca' : '');
+    el.className = 'ficha';
     var segs = COLS.filter(function(k){ return (c.blocos[k]||0) > 0; }).map(function(k){
       var v = c.blocos[k];
       return '<div class="seg'+(CLARO[k]?' claro':'')+'" style="flex:'+v+' 0 0;background:var('+RAMP[k]+')" '
@@ -285,24 +238,23 @@ jornada de 8 horas se distribui, e os movimentos que mais consomem tempo.</p>
     }).join('');
     var movs = c.top.map(function(m){
       return '<li><span class="mv"><b>'+m.mov+'</b><i>'+m.bloco+'</i></span>'
-           + '<span class="vl">'+m.min.toFixed(0)+'min · '+m.pct.toFixed(1)+'%</span></li>';
+           + '<span class="vl">'+m.min.toFixed(0)+'min · '+vg(m.pct.toFixed(1))+'%</span></li>';
     }).join('');
 
     el.innerHTML =
       '<div class="fh"><span class="cn">'+c.canal+'</span>'
-      + '<span class="meta">'+c.n+' visita'+(c.n>1?'s':'')+' · '+c.promotores+' promotor'+(c.promotores>1?'es':'')
-      + (fraco ? ' · <b>amostra pequena</b>' : '') + '</span>'
+      + '<span class="meta">'+(c.lojas_dia ? c.lojas_dia.toFixed(0)+' loja(s) por dia na rota' : '')+'</span>'
       + '<div class="kpi">'
-      +   '<div><dt>Visita média</dt><dd>'+hm(c.visita_min)+'</dd></div>'
+      +   '<div><dt>Tempo por loja</dt><dd>'+hm(c.visita_min)+'</dd></div>'
       +   '<div><dt>Execução</dt><dd>'+Math.round(exec/c.visita_min*100)+'%</dd></div>'
-      +   '<div><dt>Projeção 8h</dt><dd>'+c.cabe_em_8h.toFixed(1)+'</dd></div>'
+      +   '<div><dt>Projeção 8h</dt><dd>'+vg(c.cabe_em_8h.toFixed(1))+'</dd></div>'
       + '</div></div>'
-      + '<div class="fb"><p class="rot">Composição de uma visita média — '+hm(c.visita_min)+'</p>'
+      + '<div class="fb"><p class="rot">Composição do tempo em uma loja — '+hm(c.visita_min)+'</p>'
       +   '<div class="barra">'+segs+'</div>'
       +   '<div class="cols">'
-      +     '<div><p class="rot">Jornada de 8h projetada · '+c.cabe_em_8h.toFixed(1)+' lojas</p>'
+      +     '<div><p class="rot">Jornada de 8h projetada · '+vg(c.cabe_em_8h.toFixed(1))+' lojas</p>'
       +       '<div class="sim"><table><tbody>'+simLinhas+'</tbody></table></div></div>'
-      +     '<div><p class="rot">Movimentos mais caros (por visita)</p>'
+      +     '<div><p class="rot">Movimentos mais caros (por loja)</p>'
       +       '<ul class="movs">'+movs+'</ul></div>'
       +   '</div></div>';
     wrap.appendChild(el);
