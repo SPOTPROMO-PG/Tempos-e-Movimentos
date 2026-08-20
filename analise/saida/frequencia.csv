@@ -1,0 +1,38 @@
+﻿bloco,movimento,lojas_com_tempo,dur_mediana,pct_lojas
+Ponto Natural,Abastecimento e organização (Layout/KBDs etc),70,65.0,0.8333333333333334
+Ponto Natural,Buscar itens faltantes no estoque,63,55.0,0.75
+Outras Atividades,Leitura de loja (checklist / auditoria),53,53.0,0.6309523809523809
+Ponto Natural,Precificar todos os itens,61,45.0,0.7261904761904762
+Ponto Natural,Validar estoque virtual,49,41.0,0.5833333333333334
+Ponto Natural,Limpeza antes do abastecimento,61,30.0,0.7261904761904762
+Outras Atividades,Deslocamento interno dentro da loja,48,23.0,0.5714285714285714
+Ponto Extra,Montagem do display / ponto extra,34,20.5,0.40476190476190477
+Ponto Extra,Abastecer seguindo guia de execução + KBD's,43,20.0,0.5119047619047619
+Check Out,Abastecer seguindo o guia de execução,66,16.5,0.7857142857142857
+Abertura,Passar por todas as categorias puxando frentes,80,15.0,0.9523809523809523
+Check Out,Precificar todos os itens,62,15.0,0.7380952380952381
+Ponto Extra,Precificar todos os itens,40,13.5,0.47619047619047616
+Ponto Extra,Limpeza do móvel / display,40,13.0,0.47619047619047616
+Check Out,Conferir KBD's (Direcionamentos Chaves),53,12.0,0.6309523809523809
+Check Out,Limpeza dos móveis antes do abastecimento,61,11.0,0.7261904761904762
+Abertura,Identificar pontos de atenção / rupturas,72,10.0,0.8571428571428571
+Outras Atividades,Tratamento de divergências (estoque/preço/validade),38,9.5,0.4523809523809524
+Estoque,Organização / arrumação do estoque,61,8.0,0.7261904761904762
+Estoque,Separação de itens para abastecimento,67,7.0,0.7976190476190477
+Abertura,Pegar relatório de estoque para conferência,64,6.0,0.7619047619047619
+Outras Atividades,Negociação com encarregado / gerente,37,6.0,0.44047619047619047
+Abertura,"Conferir encarte, Guia de PDV e MOP",67,5.0,0.7976190476190477
+Saída,Guardar equipamentos / materiais,47,5.0,0.5595238095238095
+Entrada,Chegada à loja (portaria/entrada),52,5.0,0.6190476190476191
+Estoque,Localizar produtos no estoque,71,5.0,0.8452380952380952
+Outras Atividades,Busca de produtos ou materiais em outros setores,34,5.0,0.40476190476190477
+Estoque,Retorno ao setor com os produtos,62,4.5,0.7380952380952381
+Abertura,Cumprimentar gerente / encarregado,53,4.0,0.6309523809523809
+Estoque,Deslocamento até o estoque,69,4.0,0.8214285714285714
+Entrada,Espera para autorização / cadastro / liberação,53,3.0,0.6309523809523809
+Entrada,Guardar pertences / retirar equipamentos / EPIs,47,3.0,0.5595238095238095
+Entrada,Localizar o setor / estoque / responsável,59,3.0,0.7023809523809523
+Saída,Saída da loja (portaria/catraca),43,3.0,0.5119047619047619
+Saída,Deslocamento até a saída da loja,47,3.0,0.5595238095238095
+Entrada,Registro de entrada (app / sistema do cliente),55,2.0,0.6547619047619048
+Saída,Deixar o setor / estoque,40,2.0,0.47619047619047616

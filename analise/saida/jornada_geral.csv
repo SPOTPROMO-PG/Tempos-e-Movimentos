@@ -1,38 +1,38 @@
-﻿bloco,movimento,min_equiv,visitas,mediana_por_visita,pct_tempo_loja,min_em_8h,classe
-Ponto Natural,Abastecimento e organização (Layout/KBDs etc),2776.6728763709875,70,29.458333333333297,0.1266441448743894,60.78918953970692,Execução (agrega valor)
-Ponto Natural,Buscar itens faltantes no estoque,1891.4787471715208,63,18.0,0.0862704103613008,41.4097969734244,Deslocamento e busca
-Ponto Natural,Precificar todos os itens,1385.6935358915905,61,14.999999999999998,0.0632015295731626,30.33673419511806,Execução (agrega valor)
-Outras Atividades,Leitura de loja (checklist / auditoria),1364.860323673261,53,15.0,0.0622513260512319,29.880636504591347,Apoio e análise
-Ponto Natural,Limpeza antes do abastecimento,1163.4437484819175,61,15.385317460317452,0.0530647091667921,25.471060400060228,Execução (agrega valor)
-Outras Atividades,Deslocamento interno dentro da loja,1154.356148934206,48,7.249999999999998,0.0526502234405567,25.272107251467222,Deslocamento e busca
-Abertura,Passar por todas as categorias puxando frentes,929.1601317335486,80,7.0,0.0423790253926361,20.34193218846537,Apoio e análise
-Ponto Natural,Validar estoque virtual,916.1017567250587,49,12.285714285714269,0.0417834324618042,20.056047581666054,Apoio e análise
-Entrada,Chegada à loja (portaria/entrada),789.318580217861,52,3.5,0.0360008474443722,17.280406773298665,Deslocamento e busca
-Abertura,Identificar pontos de atenção / rupturas,683.4124080138897,72,5.0,0.0311704633073609,14.961822387533276,Apoio e análise
-Check Out,Abastecer seguindo o guia de execução,589.0332716584481,66,6.629761904761903,0.0268658276697125,12.895597281462036,Execução (agrega valor)
-Ponto Extra,Abastecer seguindo guia de execução + KBD's,553.3674367685899,43,8.0,0.0252391077203461,12.114771705766165,Execução (agrega valor)
-Check Out,Precificar todos os itens,538.79817660904,62,6.021428571428571,0.0245746032660907,11.795809567723566,Execução (agrega valor)
-Abertura,Pegar relatório de estoque para conferência,522.4481269981702,64,4.166666666666666,0.0238288769440442,11.43786093314124,Apoio e análise
-Estoque,Organização / arrumação do estoque,456.2240560643691,61,4.0,0.0208083948033919,9.98802950562815,Apoio e análise
-Abertura,"Conferir encarte, Guia de PDV e MOP",454.7667646107555,67,2.971008732646668,0.0207419276903423,9.956125291364316,Apoio e análise
-Estoque,Separação de itens para abastecimento,441.3156821855727,67,5.0,0.0201284233608014,9.661643213184716,Apoio e análise
-Estoque,Localizar produtos no estoque,438.59174670705977,71,3.25,0.0200041845704474,9.602008593814762,Deslocamento e busca
-Ponto Extra,Limpeza do móvel / display,407.24826756060486,40,6.666666666666666,0.0185746074143947,8.915811558909478,Execução (agrega valor)
-Ponto Extra,Precificar todos os itens,405.5861271365979,40,5.208333333333334,0.018498797132798,8.879422623743078,Execução (agrega valor)
-Check Out,Limpeza dos móveis antes do abastecimento,400.61683654799583,61,5.804856677436155,0.0182721476190648,8.770630857151106,Execução (agrega valor)
-Ponto Extra,Montagem do display / ponto extra,396.49997141230864,34,10.685801698301702,0.0180843772593983,8.680501084511205,Execução (agrega valor)
-Check Out,Conferir KBD's (Direcionamentos Chaves),354.141566192714,53,5.827689169018647,0.0161524089483563,7.75315629521107,Execução (agrega valor)
-Entrada,Localizar o setor / estoque / responsável,319.8812816468669,59,3.0,0.0145897961982607,7.003102175165159,Deslocamento e busca
-Outras Atividades,Tratamento de divergências (estoque/preço/validade),307.0777356042953,38,3.0,0.0140058260252814,6.722796492135085,Apoio e análise
-Entrada,Registro de entrada (app / sistema do cliente),306.9483407351217,55,2.0,0.0139999243208721,6.719963674018628,Espera e burocracia
-Entrada,Espera para autorização / cadastro / liberação,300.44944934873024,53,2.0,0.0137035096624278,6.57768463796536,Espera e burocracia
-Entrada,Guardar pertences / retirar equipamentos / EPIs,240.35789090717185,47,3.0,0.0109627316263248,5.262111180635917,Espera e burocracia
-Estoque,Retorno ao setor com os produtos,224.74538581527628,62,2.0,0.0102506447350183,4.9203094728087855,Deslocamento e busca
-Estoque,Deslocamento até o estoque,210.5944847799188,69,2.0,0.0096052216547283,4.610506394269602,Deslocamento e busca
-Saída,Guardar equipamentos / materiais,200.44289044289044,47,3.0,0.0091422070897555,4.388259403082664,Espera e burocracia
-Abertura,Cumprimentar gerente / encarregado,172.3311670154538,53,2.0,0.0078600304225976,3.77281460284688,Apoio e análise
-Outras Atividades,Negociação com encarregado / gerente,165.6228959994557,37,2.0,0.0075540659520846,3.6259516570006265,Apoio e análise
-Outras Atividades,Busca de produtos ou materiais em outros setores,134.95180042836017,34,2.5,0.0061551562339046,2.954474992274248,Deslocamento e busca
-Saída,Saída da loja (portaria/catraca),132.89924242424243,43,1.6666666666666663,0.0060615389931239,2.909538716699492,Espera e burocracia
-Saída,Deslocamento até a saída da loja,108.65757575757576,47,1.6666666666666663,0.0049558757472098,2.3788203586607235,Deslocamento e busca
-Saída,Deixar o setor / estoque,86.90357142857142,40,2.0,0.0039636748656132,1.90256393549438,Deslocamento e busca
+﻿bloco,movimento,min_equiv,visitas,mediana_por_visita,classe,pct_tempo_loja,min_em_8h
+Ponto Natural,Abastecimento e organização (Layout/KBDs etc),2776.6728763709875,70,29.458333333333297,Execução (agrega valor),0.1266441448743894,60.78918953970692
+Ponto Natural,Buscar itens faltantes no estoque,1891.4787471715206,63,18.0,Deslocamento e busca,0.08627041036130083,41.4097969734244
+Ponto Natural,Precificar todos os itens,1385.6935358915905,61,14.999999999999998,Execução (agrega valor),0.06320152957316262,30.33673419511806
+Outras Atividades,Leitura de loja (checklist / auditoria),1364.860323673261,53,15.0,Apoio e análise,0.06225132605123197,29.880636504591347
+Ponto Natural,Limpeza antes do abastecimento,1163.4437484819177,61,15.385317460317452,Execução (agrega valor),0.053064709166792144,25.471060400060228
+Outras Atividades,Deslocamento interno dentro da loja,1154.356148934206,48,7.249999999999998,Deslocamento e busca,0.05265022344055671,25.272107251467222
+Abertura,Passar por todas as categorias puxando frentes,929.1601317335486,80,7.0,Apoio e análise,0.042379025392636195,20.341932188465375
+Ponto Natural,Validar estoque virtual,916.1017567250587,49,12.285714285714267,Apoio e análise,0.04178343246180428,20.056047581666054
+Entrada,Chegada à loja (portaria/entrada),789.318580217861,52,3.5,Deslocamento e busca,0.03600084744437222,17.280406773298665
+Abertura,Identificar pontos de atenção / rupturas,683.4124080138897,72,5.0,Apoio e análise,0.03117046330736099,14.961822387533275
+Check Out,Abastecer seguindo o guia de execução,589.0332716584481,66,6.629761904761903,Execução (agrega valor),0.026865827669712572,12.895597281462035
+Ponto Extra,Abastecer seguindo guia de execução + KBD's,553.3674367685899,43,8.0,Execução (agrega valor),0.025239107720346175,12.114771705766165
+Check Out,Precificar todos os itens,538.79817660904,62,6.021428571428571,Execução (agrega valor),0.02457460326609076,11.795809567723566
+Abertura,Pegar relatório de estoque para conferência,522.4481269981702,64,4.166666666666666,Apoio e análise,0.02382887694404425,11.437860933141241
+Estoque,Organização / arrumação do estoque,456.2240560643691,61,4.0,Apoio e análise,0.02080839480339198,9.98802950562815
+Abertura,"Conferir encarte, Guia de PDV e MOP",454.7667646107555,67,2.9710087326466676,Apoio e análise,0.020741927690342325,9.956125291364316
+Estoque,Separação de itens para abastecimento,441.3156821855727,67,5.0,Apoio e análise,0.020128423360801492,9.661643213184716
+Estoque,Localizar produtos no estoque,438.59174670705977,71,3.25,Deslocamento e busca,0.020004184570447423,9.602008593814762
+Ponto Extra,Limpeza do móvel / display,407.24826756060486,40,6.666666666666666,Execução (agrega valor),0.018574607414394748,8.915811558909478
+Ponto Extra,Precificar todos os itens,405.5861271365979,40,5.208333333333334,Execução (agrega valor),0.01849879713279808,8.879422623743078
+Check Out,Limpeza dos móveis antes do abastecimento,400.61683654799583,61,5.804856677436155,Execução (agrega valor),0.018272147619064805,8.770630857151106
+Ponto Extra,Montagem do display / ponto extra,396.49997141230864,34,10.685801698301702,Execução (agrega valor),0.018084377259398342,8.680501084511205
+Check Out,Conferir KBD's (Direcionamentos Chaves),354.141566192714,53,5.827689169018647,Execução (agrega valor),0.016152408948356397,7.75315629521107
+Entrada,Localizar o setor / estoque / responsável,319.8812816468669,59,3.0,Deslocamento e busca,0.014589796198260748,7.003102175165159
+Outras Atividades,Tratamento de divergências (estoque/preço/validade),307.0777356042953,38,3.0,Apoio e análise,0.014005826025281427,6.722796492135085
+Entrada,Registro de entrada (app / sistema do cliente),306.9483407351217,55,2.0,Espera e burocracia,0.013999924320872142,6.719963674018628
+Entrada,Espera para autorização / cadastro / liberação,300.44944934873024,53,2.0,Espera e burocracia,0.013703509662427834,6.57768463796536
+Entrada,Guardar pertences / retirar equipamentos / EPIs,240.35789090717182,47,3.0,Espera e burocracia,0.010962731626324827,5.262111180635917
+Estoque,Retorno ao setor com os produtos,224.74538581527628,62,2.0,Deslocamento e busca,0.010250644735018303,4.9203094728087855
+Estoque,Deslocamento até o estoque,210.5944847799188,69,2.0,Deslocamento e busca,0.009605221654728336,4.610506394269602
+Saída,Guardar equipamentos / materiais,200.44289044289044,47,3.0,Espera e burocracia,0.00914220708975555,4.388259403082664
+Abertura,Cumprimentar gerente / encarregado,172.33116701545381,53,2.0,Apoio e análise,0.007860030422597666,3.7728146028468794
+Outras Atividades,Negociação com encarregado / gerente,165.6228959994557,37,2.0,Apoio e análise,0.007554065952084638,3.6259516570006265
+Outras Atividades,Busca de produtos ou materiais em outros setores,134.95180042836017,34,2.5,Deslocamento e busca,0.006155156233904683,2.954474992274248
+Saída,Saída da loja (portaria/catraca),132.89924242424243,43,1.6666666666666665,Espera e burocracia,0.0060615389931239425,2.909538716699492
+Saída,Deslocamento até a saída da loja,108.65757575757576,47,1.6666666666666665,Deslocamento e busca,0.004955875747209841,2.3788203586607235
+Saída,Deixar o setor / estoque,86.90357142857142,40,2.0,Deslocamento e busca,0.0039636748656132915,1.90256393549438

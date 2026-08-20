@@ -345,7 +345,9 @@ for c in canais:
                                   + c['blocos']['Check Out']) / c['visita_min'] * 100),
                 '{:.1f}'.format(c['cabe_em_8h']).replace('.', ','),
                 '—' if c['lojas_dia'] is None else '{:.0f}'.format(c['lojas_dia'])])
-E += [Spacer(1, 6), tabela(lin, [3.4, 3.4, 2.9, 3.2, 4.1], alinha_dir=(1, 2, 3, 4))]
+E += [KeepTogether([Spacer(1, 14),
+                    Paragraph('Resumo por canal', H2),
+                    tabela(lin, [3.4, 3.4, 2.9, 3.2, 4.1], alinha_dir=(1, 2, 3, 4))])]
 
 # ------------------------------------------------------ 3 · movimentos
 E += [PageBreak(), Paragraph('Os movimentos que mais consomem a jornada', H1),
@@ -356,6 +358,28 @@ E += [PageBreak(), Paragraph('Os movimentos que mais consomem a jornada', H1),
                 'buscar no estoque o item que faltava. Os dois primeiros movimentos somam {:.0f} minutos da '
                 'jornada — e apenas um deles agrega valor.'.format(
                     float(top.min_em_8h.iloc[-1]) + float(top.min_em_8h.iloc[-2])), P)]
+
+# O gráfico acima responde "quanto este movimento pesa na jornada". Quem vai
+# definir um padrão de execução precisa da outra pergunta: "quanto ele leva
+# quando é feito" — que é bem maior, porque nenhum movimento acontece em
+# todas as lojas.
+tf = pd.read_csv('analise/saida/frequencia.csv')
+tt = (ger.nlargest(10, 'pct_tempo_loja')
+         .merge(tf, on=['bloco', 'movimento'], how='left'))
+lin = [['Movimento', 'Acontece em', 'Leva quando acontece', 'Peso na jornada']]
+for _, r in tt.iterrows():
+    lin.append([r.movimento, '{:.0f}% das lojas'.format(r.pct_lojas * 100),
+                '{:.0f} min'.format(r.dur_mediana), '{:.0f} min'.format(r.min_em_8h)])
+E += [PageBreak(), Paragraph('O mesmo movimento, pelas duas medidas', H1),
+      Paragraph('Quanto o movimento pesa na jornada e quanto ele leva quando é feito.', SUB),
+      tabela(lin, [7.0, 3.2, 3.6, 3.2], alinha_dir=(1, 2, 3)), Spacer(1, 12),
+      Paragraph('As duas colunas da direita respondem perguntas diferentes. <b>Peso na jornada</b> dilui o '
+                'movimento por todas as lojas, inclusive as em que ele não acontece — é a medida certa para '
+                'dimensionar o dia. <b>Leva quando acontece</b> é o tempo do movimento isolado, e é a medida '
+                'certa para definir um padrão de execução.', P),
+      Paragraph('A leitura de loja é o exemplo mais claro: pesa 30 minutos na jornada, mas leva 53 minutos '
+                'nas lojas em que é feita. Um padrão construído sobre os 30 minutos não daria conta do '
+                'trabalho real.', P)]
 
 # --------------------------------------------------- 4 · variabilidade
 E += [PageBreak(), Paragraph('A mesma tarefa leva tempos muito diferentes', H1),

@@ -19,6 +19,7 @@ mov = pd.read_csv('analise/saida/jornada_por_canal.csv')
 ger = pd.read_csv('analise/saida/jornada_geral.csv')
 vis = pd.read_csv('analise/saida/resumo_visitas.csv')
 cob = pd.read_csv('analise/saida/cobertura.csv')
+fcan = pd.read_csv('analise/saida/frequencia_canal.csv')
 meta = json.load(open('analise/saida/meta.json', encoding='utf-8'))
 meta['periodo'] = ['{2}/{1}/{0}'.format(*d.split('-')) for d in meta['periodo']]   # ISO -> dd/mm/aaaa
 desl = json.load(open('analise/saida/desloc.json', encoding='utf-8'))
@@ -82,6 +83,13 @@ LINHAS = [
     ('Lojas — uma linha por loja medida.', 'p'),
     ('Deslocamento — o trajeto até a loja.', 'p'),
     ('', ''),
+    ('DUAS LEITURAS DE CADA MOVIMENTO', 'h'),
+    ('"Min por loja" é quanto o movimento consome de uma loja típica — diluído nas lojas em que ele', 'p'),
+    ('não acontece. "Dura quando ocorre" é o tempo do movimento isolado, só nas lojas em que foi feito.', 'p'),
+    ('', ''),
+    ('As duas respondem perguntas diferentes. Para dimensionar a jornada, use a primeira; para', 'p'),
+    ('definir um padrão de execução, use a segunda.', 'p'),
+    ('', ''),
     ('COMO O TEMPO FOI MEDIDO', 'h'),
     ('Cada movimento foi cronometrado em campo, com horário de início e de término, dentro de nove', 'p'),
     ('blocos de atividade, na rotina real de trabalho.', 'p'),
@@ -119,11 +127,13 @@ mv = mov.sort_values(['canal', 'bloco', 'min_equiv'],
 ws = wb.create_sheet('Movimentos')
 ws.cell(row=1, column=1, value='Detalhe completo — todos os movimentos medidos, por canal').font = h1
 ws.cell(row=2, column=1, value='Min equivalente = minutos alocados ao movimento, já descontada a '
-        'sobreposição entre atividades simultâneas.').font = it
+        'sobreposição entre atividades simultâneas. "Ocorre em" e "Dura quando ocorre" mostram '
+        'o movimento isolado, sem diluir nas lojas em que ele não acontece.').font = it
 cabecalho(ws, 4,
           ['Canal', 'Bloco', 'Movimento', 'Classificação', 'Min equivalente (total)',
-           'Lojas do canal', 'Min por loja', '% do tempo de loja'],
-          [12, 18, 48, 22, 15, 12, 12, 14])
+           'Lojas do canal', 'Min por loja', '% do tempo de loja',
+           'Ocorre em', 'Dura quando ocorre (min)'],
+          [12, 18, 48, 22, 15, 12, 12, 14, 11, 15])
 NM = 4 + len(mv)
 for i, x in mv.iterrows():
     R = 5 + i
@@ -137,7 +147,18 @@ for i, x in mv.iterrows():
     for c in (5, 7):
         ws.cell(row=R, column=c).number_format = '0.0'
     ws.cell(row=R, column=8).number_format = '0.0%'
-    zebrar(ws, R, 8, i)
+    # Frequência x duração: um movimento cronometrado em metade das lojas tem
+    # participação baixa mesmo durando muito onde acontece. Sem estas duas
+    # colunas, "min por loja" é lido como "quanto o movimento leva", que é
+    # outra coisa.
+    fq = fcan[(fcan.canal == x.canal) & (fcan.bloco == x.bloco)
+              & (fcan.movimento == x.movimento)]
+    if len(fq):
+        ws.cell(row=R, column=9, value=int(fq.lojas_com_tempo.iloc[0]) / nvis[x.canal]).font = nm
+        ws.cell(row=R, column=9).number_format = '0%'
+        ws.cell(row=R, column=10, value=float(fq.dur_mediana.iloc[0])).font = nm
+        ws.cell(row=R, column=10).number_format = '0'
+    zebrar(ws, R, 10, i)
 
 # ----------------------------------------------------------------- Resumo
 ws = wb.create_sheet('Resumo', 1)

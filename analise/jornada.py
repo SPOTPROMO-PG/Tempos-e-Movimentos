@@ -33,6 +33,40 @@ RAIZ = '.'
 JORNADA_MIN = 8 * 60          # jornada de referência: 8 horas
 LIMITE_ATIV_MIN = 240         # acima disso é erro de digitação, não atividade
 
+# Classificação de cada movimento pela natureza do trabalho. "Execução" é o
+# que muda a gôndola para o shopper; "deslocamento e busca" é andar e
+# procurar; "espera" é portaria, cadastro e EPI. O que sobra é apoio e
+# análise — trabalho necessário, mas que não move produto.
+EXECUCAO = {
+    'Abastecimento e organização (Layout/KBDs etc)', 'Precificar todos os itens',
+    'Limpeza antes do abastecimento', 'Limpeza dos móveis antes do abastecimento',
+    'Abastecer seguindo o guia de execução', "Abastecer seguindo guia de execução + KBD's",
+    'Montagem do display / ponto extra', 'Limpeza do móvel / display',
+    "Conferir KBD's (Direcionamentos Chaves)",
+}
+DESLOCAMENTO = {
+    'Deslocamento interno dentro da loja', 'Deslocamento até o estoque',
+    'Busca de produtos ou materiais em outros setores', 'Retorno ao setor com os produtos',
+    'Buscar itens faltantes no estoque', 'Localizar produtos no estoque',
+    'Deslocamento até a saída da loja', 'Localizar o setor / estoque / responsável',
+    'Chegada à loja (portaria/entrada)', 'Deixar o setor / estoque',
+}
+ESPERA = {
+    'Espera para autorização / cadastro / liberação',
+    'Registro de entrada (app / sistema do cliente)', 'Saída da loja (portaria/catraca)',
+    'Guardar pertences / retirar equipamentos / EPIs', 'Guardar equipamentos / materiais',
+}
+
+
+def classe_do(movimento):
+    if movimento in EXECUCAO:
+        return 'Execução (agrega valor)'
+    if movimento in DESLOCAMENTO:
+        return 'Deslocamento e busca'
+    if movimento in ESPERA:
+        return 'Espera e burocracia'
+    return 'Apoio e análise'
+
 
 def para_min(v):
     if pd.isna(v):
@@ -117,9 +151,14 @@ def main(caminho_xlsx):
                 mapa.append((b['titulo'], item['label'], cat,
                              f'{pre} - Início', f'{pre} - Término'))
 
-    linhas_mov, linhas_visita = [], []
+    linhas_mov, linhas_visita, linhas_freq = [], [], []
     for _, r in df.iterrows():
         intervalos = []
+        # Duração declarada (soma das janelas do movimento naquela loja), antes
+        # de dividir a sobreposição. Serve para responder "quanto dura este
+        # movimento quando ele acontece", que é pergunta diferente de "quanto
+        # do tempo da loja ele consome".
+        declarado = {}
         for bloco, mov, cat, ci, cf in mapa:
             if ci not in df.columns:
                 continue
@@ -129,6 +168,7 @@ def main(caminho_xlsx):
             if b_ - a > LIMITE_ATIV_MIN:
                 continue                      # implausível para uma atividade
             intervalos.append((f'{bloco}||{mov}', a, b_))
+            declarado[(bloco, mov)] = declarado.get((bloco, mov), 0) + (b_ - a)
 
         credito, tempo_loja = alocar_por_minuto(intervalos)
         if tempo_loja <= 0:
@@ -149,10 +189,39 @@ def main(caminho_xlsx):
                 'min_equivalente': v, 'tempo_loja_min': tempo_loja,
                 'pct_da_visita': v / tempo_loja,
             })
+        for (bloco, mov), dur in declarado.items():
+            linhas_freq.append({
+                'canal': r.get('Canal'), 'loja': r.get('Loja'),
+                'bloco': bloco, 'movimento': mov, 'declarado_min': dur,
+            })
 
     mov = pd.DataFrame(linhas_mov)
     vis = pd.DataFrame(linhas_visita)
     vis.to_csv(f'{RAIZ}/analise/saida/resumo_visitas.csv', index=False, encoding='utf-8-sig')
+
+    # --- FREQUÊNCIA x DURAÇÃO ---
+    # "Quanto do tempo da loja este movimento consome" e "quanto ele dura
+    # quando acontece" são perguntas diferentes, e a distância entre as duas
+    # respostas é grande: um movimento que só é cronometrado em metade das
+    # lojas tem participação baixa mesmo durando muito nas lojas em que ocorre.
+    # Sem esta tabela, a leitura de loja parece levar 30 min quando na verdade
+    # leva 53 min nas lojas em que é feita.
+    frq = pd.DataFrame(linhas_freq)
+    freq = (frq.groupby(['bloco', 'movimento'])
+               .agg(lojas_com_tempo=('declarado_min', lambda s: int((s > 0).sum())),
+                    dur_mediana=('declarado_min',
+                                 lambda s: s[s > 0].median() if (s > 0).any() else 0))
+               .reset_index())
+    freq['pct_lojas'] = freq.lojas_com_tempo / len(vis)
+    freq = freq.sort_values('dur_mediana', ascending=False)
+    freq.to_csv(f'{RAIZ}/analise/saida/frequencia.csv', index=False, encoding='utf-8-sig')
+
+    fcan = (frq.groupby(['canal', 'bloco', 'movimento'])
+               .agg(lojas_com_tempo=('declarado_min', lambda s: int((s > 0).sum())),
+                    dur_mediana=('declarado_min',
+                                 lambda s: s[s > 0].median() if (s > 0).any() else 0))
+               .reset_index())
+    fcan.to_csv(f'{RAIZ}/analise/saida/frequencia_canal.csv', index=False, encoding='utf-8-sig')
 
     # --- GERAL: participação de cada movimento no tempo de loja ---
     tot = mov.min_equivalente.sum()
@@ -161,6 +230,7 @@ def main(caminho_xlsx):
                      visitas=('loja', 'size'),
                      mediana_por_visita=('min_equivalente', 'median'))
                 .reset_index())
+    geral['classe'] = geral.movimento.map(classe_do)
     geral['pct_tempo_loja'] = geral.min_equiv / tot
     geral['min_em_8h'] = geral.pct_tempo_loja * JORNADA_MIN
     geral = geral.sort_values('pct_tempo_loja', ascending=False)
@@ -172,6 +242,7 @@ def main(caminho_xlsx):
                 .agg(min_equiv=('min_equivalente', 'sum'),
                      visitas=('loja', 'nunique'))
                 .reset_index().join(tc, on='canal'))
+    canal['classe'] = canal.movimento.map(classe_do)
     canal['pct_tempo_loja'] = canal.min_equiv / canal.tot_canal
     canal['min_em_8h'] = canal.pct_tempo_loja * JORNADA_MIN
     canal.to_csv(f'{RAIZ}/analise/saida/jornada_por_canal.csv', index=False, encoding='utf-8-sig')

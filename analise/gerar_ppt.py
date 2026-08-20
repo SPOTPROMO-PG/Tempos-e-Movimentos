@@ -275,21 +275,24 @@ rodape(s, 'Ponto Natural é o maior bloco em todos os canais.')
 # ================================== 7 · para onde vai o tempo (top movs)
 s = slide()
 titulo(s, 'Os movimentos que mais consomem a jornada',
-       'Os dez movimentos com maior peso, projetados em uma jornada de 8 horas.')
+       'Os dez de maior peso, projetados em uma jornada de 8 horas. Peso não é a mesma coisa que '
+       'duração: nenhum movimento acontece em todas as lojas.')
 top = ger.nlargest(10, 'pct_tempo_loja').iloc[::-1]
 cd = CategoryChartData()
 cd.categories = [(m[:44] + '…') if len(m) > 45 else m for m in top.movimento]
 cd.add_series('min em 8h', tuple(float(x) for x in top.min_em_8h))
-gf = s.shapes.add_chart(XL_CHART_TYPE.BAR_CLUSTERED, Inches(0.9), Inches(2.25),
-                        Inches(11.55), Inches(4.0), cd).chart
+gf = s.shapes.add_chart(XL_CHART_TYPE.BAR_CLUSTERED, Inches(0.9), Inches(2.35),
+                        Inches(11.55), Inches(3.5), cd).chart
 estiliza(gf, tam=11)
 pinta(gf, ['123A4D'] * 10)
 eixos(gf)
 gf.plots[0].data_labels.number_format = '0" min"'
 gf.plots[0].data_labels.number_format_is_linked = False
 gf.plots[0].gap_width = 45
-rodape(s, 'Abastecimento e busca de itens no estoque somam {:.0f} minutos da jornada.'.format(
-    float(top.min_em_8h.iloc[-1]) + float(top.min_em_8h.iloc[-2])))
+cx(s, 0.9, 6.0, 11.55, 0.6,
+   'A leitura de loja é o exemplo: pesa {:.0f} min na jornada, mas leva {:.0f} min nas {:.0f}% das lojas em que é feita.'.format(
+       30, 53, 63), 13, TINTA, esp=1.35)
+rodape(s, 'Peso na jornada: o movimento diluído por todas as lojas, inclusive as em que ele não acontece.')
 
 # ============================================ 8 · deslocamento e busca
 s = slide()

@@ -1,0 +1,296 @@
+﻿canal,bloco,movimento,lojas_com_tempo,dur_mediana
+C&C,Abertura,"Conferir encarte, Guia de PDV e MOP",11,10.0
+C&C,Abertura,Cumprimentar gerente / encarregado,8,5.0
+C&C,Abertura,Identificar pontos de atenção / rupturas,11,9.0
+C&C,Abertura,Passar por todas as categorias puxando frentes,11,24.0
+C&C,Abertura,Pegar relatório de estoque para conferência,10,5.0
+C&C,Check Out,Abastecer seguindo o guia de execução,10,16.0
+C&C,Check Out,Conferir KBD's (Direcionamentos Chaves),9,13.0
+C&C,Check Out,Limpeza dos móveis antes do abastecimento,8,23.0
+C&C,Check Out,Precificar todos os itens,9,19.0
+C&C,Entrada,Chegada à loja (portaria/entrada),5,3.0
+C&C,Entrada,Espera para autorização / cadastro / liberação,8,3.0
+C&C,Entrada,Guardar pertences / retirar equipamentos / EPIs,6,2.5
+C&C,Entrada,Localizar o setor / estoque / responsável,9,5.0
+C&C,Entrada,Registro de entrada (app / sistema do cliente),8,2.5
+C&C,Estoque,Deslocamento até o estoque,12,5.0
+C&C,Estoque,Localizar produtos no estoque,10,6.0
+C&C,Estoque,Organização / arrumação do estoque,8,5.5
+C&C,Estoque,Retorno ao setor com os produtos,10,3.5
+C&C,Estoque,Separação de itens para abastecimento,10,8.5
+C&C,Outras Atividades,Busca de produtos ou materiais em outros setores,4,5.5
+C&C,Outras Atividades,Deslocamento interno dentro da loja,4,23.0
+C&C,Outras Atividades,Leitura de loja (checklist / auditoria),4,122.0
+C&C,Outras Atividades,Negociação com encarregado / gerente,5,5.0
+C&C,Outras Atividades,Tratamento de divergências (estoque/preço/validade),4,12.5
+C&C,Ponto Extra,Abastecer seguindo guia de execução + KBD's,5,57.0
+C&C,Ponto Extra,Limpeza do móvel / display,5,31.0
+C&C,Ponto Extra,Montagem do display / ponto extra,4,57.0
+C&C,Ponto Extra,Precificar todos os itens,5,29.0
+C&C,Ponto Natural,Abastecimento e organização (Layout/KBDs etc),9,94.0
+C&C,Ponto Natural,Buscar itens faltantes no estoque,11,58.0
+C&C,Ponto Natural,Limpeza antes do abastecimento,9,53.0
+C&C,Ponto Natural,Precificar todos os itens,8,50.0
+C&C,Ponto Natural,Validar estoque virtual,8,33.5
+C&C,Saída,Deixar o setor / estoque,5,3.0
+C&C,Saída,Deslocamento até a saída da loja,9,1.0
+C&C,Saída,Guardar equipamentos / materiais,6,7.0
+C&C,Saída,Saída da loja (portaria/catraca),6,1.0
+CLUB,Abertura,"Conferir encarte, Guia de PDV e MOP",6,4.0
+CLUB,Abertura,Cumprimentar gerente / encarregado,4,32.5
+CLUB,Abertura,Identificar pontos de atenção / rupturas,6,21.0
+CLUB,Abertura,Passar por todas as categorias puxando frentes,6,24.5
+CLUB,Abertura,Pegar relatório de estoque para conferência,4,6.0
+CLUB,Check Out,Abastecer seguindo o guia de execução,6,50.0
+CLUB,Check Out,Conferir KBD's (Direcionamentos Chaves),6,51.0
+CLUB,Check Out,Limpeza dos móveis antes do abastecimento,6,50.0
+CLUB,Check Out,Precificar todos os itens,6,55.0
+CLUB,Entrada,Chegada à loja (portaria/entrada),3,60.0
+CLUB,Entrada,Espera para autorização / cadastro / liberação,6,45.0
+CLUB,Entrada,Guardar pertences / retirar equipamentos / EPIs,4,12.5
+CLUB,Entrada,Localizar o setor / estoque / responsável,4,12.0
+CLUB,Entrada,Registro de entrada (app / sistema do cliente),5,1.0
+CLUB,Estoque,Deslocamento até o estoque,6,5.0
+CLUB,Estoque,Localizar produtos no estoque,6,10.0
+CLUB,Estoque,Organização / arrumação do estoque,4,16.0
+CLUB,Estoque,Retorno ao setor com os produtos,6,7.0
+CLUB,Estoque,Separação de itens para abastecimento,4,28.5
+CLUB,Outras Atividades,Busca de produtos ou materiais em outros setores,4,61.5
+CLUB,Outras Atividades,Deslocamento interno dentro da loja,4,47.0
+CLUB,Outras Atividades,Leitura de loja (checklist / auditoria),4,56.0
+CLUB,Outras Atividades,Negociação com encarregado / gerente,3,137.0
+CLUB,Outras Atividades,Tratamento de divergências (estoque/preço/validade),4,61.5
+CLUB,Ponto Extra,Abastecer seguindo guia de execução + KBD's,3,39.0
+CLUB,Ponto Extra,Limpeza do móvel / display,3,39.0
+CLUB,Ponto Extra,Montagem do display / ponto extra,1,259.0
+CLUB,Ponto Extra,Precificar todos os itens,3,9.0
+CLUB,Ponto Natural,Abastecimento e organização (Layout/KBDs etc),6,127.0
+CLUB,Ponto Natural,Buscar itens faltantes no estoque,6,88.5
+CLUB,Ponto Natural,Limpeza antes do abastecimento,6,50.5
+CLUB,Ponto Natural,Precificar todos os itens,6,54.5
+CLUB,Ponto Natural,Validar estoque virtual,5,59.0
+CLUB,Saída,Deixar o setor / estoque,1,20.0
+CLUB,Saída,Deslocamento até a saída da loja,3,3.0
+CLUB,Saída,Guardar equipamentos / materiais,2,10.5
+CLUB,Saída,Saída da loja (portaria/catraca),1,20.0
+DPP,Abertura,"Conferir encarte, Guia de PDV e MOP",14,3.0
+DPP,Abertura,Cumprimentar gerente / encarregado,9,2.0
+DPP,Abertura,Identificar pontos de atenção / rupturas,19,6.0
+DPP,Abertura,Passar por todas as categorias puxando frentes,26,9.5
+DPP,Abertura,Pegar relatório de estoque para conferência,16,5.0
+DPP,Check Out,Abastecer seguindo o guia de execução,18,6.0
+DPP,Check Out,Conferir KBD's (Direcionamentos Chaves),9,7.0
+DPP,Check Out,Limpeza dos móveis antes do abastecimento,14,5.0
+DPP,Check Out,Precificar todos os itens,15,5.0
+DPP,Entrada,Chegada à loja (portaria/entrada),15,54.0
+DPP,Entrada,Espera para autorização / cadastro / liberação,10,4.5
+DPP,Entrada,Guardar pertences / retirar equipamentos / EPIs,9,3.0
+DPP,Entrada,Localizar o setor / estoque / responsável,14,1.0
+DPP,Entrada,Registro de entrada (app / sistema do cliente),16,4.5
+DPP,Estoque,Deslocamento até o estoque,16,3.5
+DPP,Estoque,Localizar produtos no estoque,19,4.0
+DPP,Estoque,Organização / arrumação do estoque,12,4.0
+DPP,Estoque,Retorno ao setor com os produtos,12,1.5
+DPP,Estoque,Separação de itens para abastecimento,17,5.0
+DPP,Outras Atividades,Busca de produtos ou materiais em outros setores,9,3.0
+DPP,Outras Atividades,Deslocamento interno dentro da loja,21,20.0
+DPP,Outras Atividades,Leitura de loja (checklist / auditoria),24,30.5
+DPP,Outras Atividades,Negociação com encarregado / gerente,10,5.5
+DPP,Outras Atividades,Tratamento de divergências (estoque/preço/validade),12,5.0
+DPP,Ponto Extra,Abastecer seguindo guia de execução + KBD's,11,2.0
+DPP,Ponto Extra,Limpeza do móvel / display,8,5.5
+DPP,Ponto Extra,Montagem do display / ponto extra,8,7.5
+DPP,Ponto Extra,Precificar todos os itens,8,5.0
+DPP,Ponto Natural,Abastecimento e organização (Layout/KBDs etc),19,30.0
+DPP,Ponto Natural,Buscar itens faltantes no estoque,11,22.0
+DPP,Ponto Natural,Limpeza antes do abastecimento,14,10.5
+DPP,Ponto Natural,Precificar todos os itens,13,20.0
+DPP,Ponto Natural,Validar estoque virtual,10,8.0
+DPP,Saída,Deixar o setor / estoque,7,2.0
+DPP,Saída,Deslocamento até a saída da loja,9,2.0
+DPP,Saída,Guardar equipamentos / materiais,13,3.0
+DPP,Saída,Saída da loja (portaria/catraca),12,3.0
+GMR,Abertura,"Conferir encarte, Guia de PDV e MOP",9,5.0
+GMR,Abertura,Cumprimentar gerente / encarregado,8,3.0
+GMR,Abertura,Identificar pontos de atenção / rupturas,9,10.0
+GMR,Abertura,Passar por todas as categorias puxando frentes,10,19.5
+GMR,Abertura,Pegar relatório de estoque para conferência,7,11.0
+GMR,Check Out,Abastecer seguindo o guia de execução,5,13.0
+GMR,Check Out,Conferir KBD's (Direcionamentos Chaves),5,15.0
+GMR,Check Out,Limpeza dos móveis antes do abastecimento,5,15.0
+GMR,Check Out,Precificar todos os itens,6,17.0
+GMR,Entrada,Chegada à loja (portaria/entrada),9,6.0
+GMR,Entrada,Espera para autorização / cadastro / liberação,10,2.5
+GMR,Entrada,Guardar pertences / retirar equipamentos / EPIs,7,3.0
+GMR,Entrada,Localizar o setor / estoque / responsável,8,5.0
+GMR,Entrada,Registro de entrada (app / sistema do cliente),9,5.0
+GMR,Estoque,Deslocamento até o estoque,10,3.0
+GMR,Estoque,Localizar produtos no estoque,10,13.5
+GMR,Estoque,Organização / arrumação do estoque,10,15.0
+GMR,Estoque,Retorno ao setor com os produtos,8,5.0
+GMR,Estoque,Separação de itens para abastecimento,9,6.0
+GMR,Outras Atividades,Busca de produtos ou materiais em outros setores,3,5.0
+GMR,Outras Atividades,Deslocamento interno dentro da loja,7,20.0
+GMR,Outras Atividades,Leitura de loja (checklist / auditoria),4,10.0
+GMR,Outras Atividades,Negociação com encarregado / gerente,4,7.0
+GMR,Outras Atividades,Tratamento de divergências (estoque/preço/validade),3,5.0
+GMR,Ponto Extra,Abastecer seguindo guia de execução + KBD's,7,14.0
+GMR,Ponto Extra,Limpeza do móvel / display,7,13.0
+GMR,Ponto Extra,Montagem do display / ponto extra,5,20.0
+GMR,Ponto Extra,Precificar todos os itens,8,10.5
+GMR,Ponto Natural,Abastecimento e organização (Layout/KBDs etc),9,59.0
+GMR,Ponto Natural,Buscar itens faltantes no estoque,8,51.0
+GMR,Ponto Natural,Limpeza antes do abastecimento,8,23.5
+GMR,Ponto Natural,Precificar todos os itens,8,34.5
+GMR,Ponto Natural,Validar estoque virtual,6,44.5
+GMR,Saída,Deixar o setor / estoque,9,2.0
+GMR,Saída,Deslocamento até a saída da loja,9,3.0
+GMR,Saída,Guardar equipamentos / materiais,8,5.0
+GMR,Saída,Saída da loja (portaria/catraca),7,5.0
+HFS,Abertura,"Conferir encarte, Guia de PDV e MOP",9,1.0
+HFS,Abertura,Cumprimentar gerente / encarregado,8,2.0
+HFS,Abertura,Identificar pontos de atenção / rupturas,8,10.5
+HFS,Abertura,Passar por todas as categorias puxando frentes,8,12.0
+HFS,Abertura,Pegar relatório de estoque para conferência,9,10.0
+HFS,Check Out,Abastecer seguindo o guia de execução,8,27.5
+HFS,Check Out,Conferir KBD's (Direcionamentos Chaves),7,8.0
+HFS,Check Out,Limpeza dos móveis antes do abastecimento,9,11.0
+HFS,Check Out,Precificar todos os itens,8,11.5
+HFS,Entrada,Chegada à loja (portaria/entrada),7,3.0
+HFS,Entrada,Espera para autorização / cadastro / liberação,6,2.0
+HFS,Entrada,Guardar pertences / retirar equipamentos / EPIs,8,2.0
+HFS,Entrada,Localizar o setor / estoque / responsável,7,3.0
+HFS,Entrada,Registro de entrada (app / sistema do cliente),5,1.0
+HFS,Estoque,Deslocamento até o estoque,8,1.5
+HFS,Estoque,Localizar produtos no estoque,7,3.0
+HFS,Estoque,Organização / arrumação do estoque,8,5.0
+HFS,Estoque,Retorno ao setor com os produtos,8,3.0
+HFS,Estoque,Separação de itens para abastecimento,8,5.0
+HFS,Outras Atividades,Busca de produtos ou materiais em outros setores,5,3.0
+HFS,Outras Atividades,Deslocamento interno dentro da loja,3,121.0
+HFS,Outras Atividades,Leitura de loja (checklist / auditoria),4,61.5
+HFS,Outras Atividades,Negociação com encarregado / gerente,5,2.0
+HFS,Outras Atividades,Tratamento de divergências (estoque/preço/validade),5,25.0
+HFS,Ponto Extra,Abastecer seguindo guia de execução + KBD's,3,8.0
+HFS,Ponto Extra,Limpeza do móvel / display,2,5.0
+HFS,Ponto Extra,Montagem do display / ponto extra,2,2.5
+HFS,Ponto Extra,Precificar todos os itens,2,4.5
+HFS,Ponto Natural,Abastecimento e organização (Layout/KBDs etc),8,50.5
+HFS,Ponto Natural,Buscar itens faltantes no estoque,8,26.5
+HFS,Ponto Natural,Limpeza antes do abastecimento,7,52.0
+HFS,Ponto Natural,Precificar todos os itens,8,51.5
+HFS,Ponto Natural,Validar estoque virtual,3,9.0
+HFS,Saída,Deixar o setor / estoque,3,1.0
+HFS,Saída,Deslocamento até a saída da loja,3,1.0
+HFS,Saída,Guardar equipamentos / materiais,4,3.0
+HFS,Saída,Saída da loja (portaria/catraca),4,1.0
+LASA,Abertura,"Conferir encarte, Guia de PDV e MOP",4,2.5
+LASA,Abertura,Cumprimentar gerente / encarregado,2,17.0
+LASA,Abertura,Identificar pontos de atenção / rupturas,4,13.0
+LASA,Abertura,Passar por todas as categorias puxando frentes,4,8.0
+LASA,Abertura,Pegar relatório de estoque para conferência,3,8.0
+LASA,Check Out,Abastecer seguindo o guia de execução,4,10.0
+LASA,Check Out,Conferir KBD's (Direcionamentos Chaves),2,18.0
+LASA,Check Out,Limpeza dos móveis antes do abastecimento,4,4.0
+LASA,Check Out,Precificar todos os itens,3,15.0
+LASA,Entrada,Chegada à loja (portaria/entrada),1,210.0
+LASA,Entrada,Espera para autorização / cadastro / liberação,2,2.0
+LASA,Entrada,Guardar pertences / retirar equipamentos / EPIs,1,10.0
+LASA,Entrada,Localizar o setor / estoque / responsável,3,3.0
+LASA,Entrada,Registro de entrada (app / sistema do cliente),1,5.0
+LASA,Estoque,Deslocamento até o estoque,2,4.0
+LASA,Estoque,Localizar produtos no estoque,4,4.0
+LASA,Estoque,Organização / arrumação do estoque,4,5.5
+LASA,Estoque,Retorno ao setor com os produtos,3,2.0
+LASA,Estoque,Separação de itens para abastecimento,4,4.5
+LASA,Outras Atividades,Busca de produtos ou materiais em outros setores,0,0.0
+LASA,Outras Atividades,Deslocamento interno dentro da loja,1,240.0
+LASA,Outras Atividades,Leitura de loja (checklist / auditoria),2,169.0
+LASA,Outras Atividades,Negociação com encarregado / gerente,0,0.0
+LASA,Outras Atividades,Tratamento de divergências (estoque/preço/validade),0,0.0
+LASA,Ponto Extra,Abastecer seguindo guia de execução + KBD's,2,28.0
+LASA,Ponto Extra,Limpeza do móvel / display,2,14.0
+LASA,Ponto Extra,Montagem do display / ponto extra,0,0.0
+LASA,Ponto Extra,Precificar todos os itens,1,18.0
+LASA,Ponto Natural,Abastecimento e organização (Layout/KBDs etc),4,43.0
+LASA,Ponto Natural,Buscar itens faltantes no estoque,4,28.0
+LASA,Ponto Natural,Limpeza antes do abastecimento,3,22.0
+LASA,Ponto Natural,Precificar todos os itens,3,49.0
+LASA,Ponto Natural,Validar estoque virtual,4,17.0
+LASA,Saída,Deixar o setor / estoque,2,2.0
+LASA,Saída,Deslocamento até a saída da loja,1,3.0
+LASA,Saída,Guardar equipamentos / materiais,1,5.0
+LASA,Saída,Saída da loja (portaria/catraca),1,2.0
+NMR,Abertura,"Conferir encarte, Guia de PDV e MOP",12,3.5
+NMR,Abertura,Cumprimentar gerente / encarregado,12,5.0
+NMR,Abertura,Identificar pontos de atenção / rupturas,13,10.0
+NMR,Abertura,Passar por todas as categorias puxando frentes,13,22.0
+NMR,Abertura,Pegar relatório de estoque para conferência,13,5.0
+NMR,Check Out,Abastecer seguindo o guia de execução,13,20.0
+NMR,Check Out,Conferir KBD's (Direcionamentos Chaves),13,15.0
+NMR,Check Out,Limpeza dos móveis antes do abastecimento,13,17.0
+NMR,Check Out,Precificar todos os itens,13,15.0
+NMR,Entrada,Chegada à loja (portaria/entrada),12,3.0
+NMR,Entrada,Espera para autorização / cadastro / liberação,11,2.0
+NMR,Entrada,Guardar pertences / retirar equipamentos / EPIs,11,3.0
+NMR,Entrada,Localizar o setor / estoque / responsável,12,2.5
+NMR,Entrada,Registro de entrada (app / sistema do cliente),9,2.0
+NMR,Estoque,Deslocamento até o estoque,13,4.0
+NMR,Estoque,Localizar produtos no estoque,13,8.0
+NMR,Estoque,Organização / arrumação do estoque,13,10.0
+NMR,Estoque,Retorno ao setor com os produtos,13,5.0
+NMR,Estoque,Separação de itens para abastecimento,13,22.0
+NMR,Outras Atividades,Busca de produtos ou materiais em outros setores,8,10.0
+NMR,Outras Atividades,Deslocamento interno dentro da loja,8,6.5
+NMR,Outras Atividades,Leitura de loja (checklist / auditoria),9,38.0
+NMR,Outras Atividades,Negociação com encarregado / gerente,8,6.5
+NMR,Outras Atividades,Tratamento de divergências (estoque/preço/validade),8,5.0
+NMR,Ponto Extra,Abastecer seguindo guia de execução + KBD's,10,40.0
+NMR,Ponto Extra,Limpeza do móvel / display,11,13.0
+NMR,Ponto Extra,Montagem do display / ponto extra,12,24.5
+NMR,Ponto Extra,Precificar todos os itens,11,14.0
+NMR,Ponto Natural,Abastecimento e organização (Layout/KBDs etc),13,114.0
+NMR,Ponto Natural,Buscar itens faltantes no estoque,13,64.0
+NMR,Ponto Natural,Limpeza antes do abastecimento,13,40.0
+NMR,Ponto Natural,Precificar todos os itens,13,56.0
+NMR,Ponto Natural,Validar estoque virtual,12,55.5
+NMR,Saída,Deixar o setor / estoque,11,4.0
+NMR,Saída,Deslocamento até a saída da loja,12,4.5
+NMR,Saída,Guardar equipamentos / materiais,12,5.0
+NMR,Saída,Saída da loja (portaria/catraca),11,5.0
+PERFUMARIA,Abertura,"Conferir encarte, Guia de PDV e MOP",2,7.5
+PERFUMARIA,Abertura,Cumprimentar gerente / encarregado,2,6.5
+PERFUMARIA,Abertura,Identificar pontos de atenção / rupturas,2,7.0
+PERFUMARIA,Abertura,Passar por todas as categorias puxando frentes,2,41.5
+PERFUMARIA,Abertura,Pegar relatório de estoque para conferência,2,7.5
+PERFUMARIA,Check Out,Abastecer seguindo o guia de execução,2,55.0
+PERFUMARIA,Check Out,Conferir KBD's (Direcionamentos Chaves),2,22.5
+PERFUMARIA,Check Out,Limpeza dos móveis antes do abastecimento,2,25.5
+PERFUMARIA,Check Out,Precificar todos os itens,2,51.5
+PERFUMARIA,Entrada,Espera para autorização / cadastro / liberação,0,0.0
+PERFUMARIA,Entrada,Guardar pertences / retirar equipamentos / EPIs,1,135.0
+PERFUMARIA,Entrada,Localizar o setor / estoque / responsável,2,100.5
+PERFUMARIA,Entrada,Registro de entrada (app / sistema do cliente),2,3.0
+PERFUMARIA,Estoque,Deslocamento até o estoque,2,2.5
+PERFUMARIA,Estoque,Localizar produtos no estoque,2,16.0
+PERFUMARIA,Estoque,Organização / arrumação do estoque,2,32.0
+PERFUMARIA,Estoque,Retorno ao setor com os produtos,2,10.5
+PERFUMARIA,Estoque,Separação de itens para abastecimento,2,21.0
+PERFUMARIA,Outras Atividades,Busca de produtos ou materiais em outros setores,1,22.0
+PERFUMARIA,Outras Atividades,Deslocamento interno dentro da loja,0,0.0
+PERFUMARIA,Outras Atividades,Leitura de loja (checklist / auditoria),2,131.5
+PERFUMARIA,Outras Atividades,Negociação com encarregado / gerente,2,115.5
+PERFUMARIA,Outras Atividades,Tratamento de divergências (estoque/preço/validade),2,172.5
+PERFUMARIA,Ponto Extra,Abastecer seguindo guia de execução + KBD's,2,126.0
+PERFUMARIA,Ponto Extra,Limpeza do móvel / display,2,135.5
+PERFUMARIA,Ponto Extra,Montagem do display / ponto extra,2,40.5
+PERFUMARIA,Ponto Extra,Precificar todos os itens,2,123.5
+PERFUMARIA,Ponto Natural,Abastecimento e organização (Layout/KBDs etc),2,113.0
+PERFUMARIA,Ponto Natural,Buscar itens faltantes no estoque,2,104.5
+PERFUMARIA,Ponto Natural,Limpeza antes do abastecimento,1,191.0
+PERFUMARIA,Ponto Natural,Precificar todos os itens,2,74.0
+PERFUMARIA,Ponto Natural,Validar estoque virtual,1,93.0
+PERFUMARIA,Saída,Deixar o setor / estoque,2,26.0
+PERFUMARIA,Saída,Deslocamento até a saída da loja,1,5.0
+PERFUMARIA,Saída,Guardar equipamentos / materiais,1,40.0
+PERFUMARIA,Saída,Saída da loja (portaria/catraca),1,8.0

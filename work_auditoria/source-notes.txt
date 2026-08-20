@@ -1,0 +1,4 @@
+Factual sources: analise/saida/meta.json, resumo_visitas.csv, dossie_min.json, extra.json and jornada_geral.csv.
+Design source: Manual de Identidade Visual SPOT V10 2026 previously supplied by the user.
+
+Analytical policy: data are presented as observed activity patterns, not causal explanations or productivity targets. Channel comparisons show sample size and distinguish consolidated from exploratory samples.
