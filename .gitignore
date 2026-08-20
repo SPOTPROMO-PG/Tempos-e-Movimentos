@@ -18,3 +18,8 @@ lancamento/
 analise/__pycache__/
 analise/eventos.csv
 analise/saida/_fig/
+
+# Artefatos de outras ferramentas que caíram na pasta de trabalho
+work_auditoria/
+*.inspect.ndjson
+mso*.tmp
